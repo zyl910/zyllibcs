@@ -21,6 +21,7 @@
 * DOTNET2: .Net 2.0 .
 * DOTNET3: .Net 3.0 .
 * DOTNET4: .Net 4.0 .
+* DT_PORTABLE: Portable Library.
 * UNSAFE: Allow unsafe.
 
 

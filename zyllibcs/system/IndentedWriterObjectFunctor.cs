@@ -38,14 +38,9 @@ namespace zyllibcs.system {
 	/// <remarks>不支持的类型: Enum、Pointer、Primitive.</remarks>
 	public class IndentedObjectFunctor {
 		/// <summary>
-		/// 公用函数子的绑定.
-		/// </summary>
-		private const BindingFlags CommonBindingFlags = BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance;
-		
-		/// <summary>
 		/// 公用函数子.
 		/// </summary>
-		private static readonly IndentedObjectFunctor CommonFunctor = new IndentedObjectFunctor(typeof(object), IndentedObjectFunctorOptions.Default, CommonBindingFlags);
+		private static readonly IndentedObjectFunctor CommonFunctor = new IndentedObjectFunctor(typeof(object));
 
 		/// <summary>
 		/// 公用输出过程.

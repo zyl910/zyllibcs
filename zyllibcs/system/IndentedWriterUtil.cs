@@ -49,6 +49,10 @@ namespace zyllibcs.system {
 		/// 不使用默认输出过程.
 		/// </summary>
 		NoCommonProcs = 2,
+		/// <summary>
+		/// 允许枚举方法. 默认情况下仅枚举字段与属性, 加上次标识后才枚举方法.
+		/// </summary>
+		AllowMethod = 0x100,
 	}
 
 	/// <summary>
@@ -82,7 +86,7 @@ namespace zyllibcs.system {
 		/// <summary>
 		/// 常用成员(字段,属性,方法).
 		/// </summary>
-		public const BindingFlags BindingMember = BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.InvokeMethod;
+		public const BindingFlags BindingMember = 0;
 
 		/// <summary>
 		/// 公开的实例成员.
@@ -203,38 +207,6 @@ namespace zyllibcs.system {
 		}
 
 		/// <summary>
-		/// 检测成员类型.
-		/// </summary>
-		/// <param name="mt">成员类型.</param>
-		/// <param name="bf">绑定标志.</param>
-		/// <returns>返回是否匹配.</returns>
-		public static bool CheckMemberType(MemberTypes mt, BindingFlags bf) {
-			if (false) {
-			}
-			else if ((mt & MemberTypes.Constructor) != 0) {
-				if ((bf & BindingFlags.CreateInstance)!=0) return true;
-			}
-			else if ((mt & MemberTypes.Event) != 0) {
-			}
-			else if ((mt & MemberTypes.Field) != 0) {
-				if ((bf & BindingFlags.GetField) != 0) return true;
-			}
-			else if ((mt & MemberTypes.Method) != 0) {
-				if ((bf & BindingFlags.InvokeMethod) != 0) return true;
-			}
-			else if ((mt & MemberTypes.Property) != 0) {
-				if ((bf & BindingFlags.GetProperty) != 0) return true;
-			}
-			else if ((mt & MemberTypes.TypeInfo) != 0) {
-			}
-			else if ((mt & MemberTypes.Custom) != 0) {
-			}
-			else if ((mt & MemberTypes.NestedType) != 0) {
-			}
-			return false;
-		}
-
-		/// <summary>
 		/// 输出对象的各个成员.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -254,7 +226,8 @@ namespace zyllibcs.system {
 			}
 			if (null == owner && (bindingAttr & BindingFlags.Instance) != 0) throw new ArgumentException("bindingAttr has Instance, but owner is null.", "bindingAttr");
 			foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
-				if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
+				//if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
+				bool bOk = false;
 				const IndentedWriterValueOptions default_iwvo = IndentedWriterValueOptions.Default;
 				object value = null;
 				IndentedWriterObjectProc writeproc = null;
@@ -265,6 +238,7 @@ namespace zyllibcs.system {
 				}
 				else if (mi is FieldInfo) {
 					FieldInfo fi = mi as FieldInfo;
+					bOk = true;
 					if (true) {
 						try {
 							value = fi.GetValue(owner);
@@ -278,7 +252,9 @@ namespace zyllibcs.system {
 				}
 				else if (mi is PropertyInfo) {
 					PropertyInfo pi = mi as PropertyInfo;
-					if (pi.CanRead && pi.GetIndexParameters().Length <= 0) {
+					bOk = true;
+					if (pi.CanRead && pi.GetIndexParameters().Length <= 0)
+					{
 						try {
 							value = pi.GetValue(owner, null);
 							iwvo = default_iwvo;
@@ -289,6 +265,13 @@ namespace zyllibcs.system {
 						}
 					}
 				}
+				else if (mi is MethodInfo)
+				{
+					if ((options & IndentedWriterMemberOptions.AllowMethod) != 0) {
+						bOk = true;
+					}
+				}
+				if (!bOk) continue;
 				// get proc.
 				if (null != value) {
 					writeproc = LookupWriteProcAt(value, procs);

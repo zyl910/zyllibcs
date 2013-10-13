@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
@@ -31,7 +31,7 @@ namespace zyllibcs.system {
 		/// <summary>
 		/// 历史缩进集.
 		/// </summary>
-		private readonly ArrayList m_IndentHistory = new ArrayList();
+		private readonly List<object> m_IndentHistory = new List<object>();
 
 		/// <summary>
 		/// 析构.
