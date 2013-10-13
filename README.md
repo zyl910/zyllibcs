@@ -1,4 +1,4 @@
-zyllibcs
+﻿zyllibcs
 ========
 
 [zyl910](https://github.com/zyl910)'s C# librarys.
@@ -6,10 +6,10 @@ zyllibcs
 
 ## Files
 
-* bin2/: .Net 2.0 release binary.
-* bin4/: .Net 4.0 release binary.
-* bind2/: .Net 2.0 debug binary.
-* bind4/: .Net 4.0 debug binary.
+* bin2/: .Net 2.0 Library Release.
+* bin2_Debug/: .Net 2.0 Library Debug.
+* bin4/: .Net 4.0 Portable Library Release.
+* bin4_Debug/: .Net 4.0 Portable Library Debug.
 * docs/: Documents.
 * examples/: Examples.
 * zinfotools/: zyl910's info tools.

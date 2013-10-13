@@ -4,6 +4,9 @@ using System.Text;
 using System.Threading;
 
 namespace zyllibcs.system {
+	/// <summary>
+	/// 基本的带缩进输出者.
+	/// </summary>
 	public abstract class BaseIndentedWriter : IIndentedWriter, IDisposable {
 		/// <summary>
 		/// 默认的缩进字符.
@@ -151,16 +154,28 @@ namespace zyllibcs.system {
 			SetIndentHistoryCount(n);
 		}
 
+		/// <summary>
+		/// Write a char.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void Write(char value) {
 			ProcessNeedIndent();
 			CoreWrite(value);
 		}
 
+		/// <summary>
+		/// Write a string.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void Write(string value) {
 			ProcessNeedIndent();
 			CoreWrite(value);
 		}
 
+		/// <summary>
+		/// Write a object.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void Write(object value) {
 			ProcessNeedIndent();
 			if (null == value) {
@@ -171,35 +186,60 @@ namespace zyllibcs.system {
 			}
 		}
 
+		/// <summary>
+		/// Write formated string.
+		/// </summary>
+		/// <param name="format">format.</param>
+		/// <param name="args">args.</param>
 		public virtual void Write(string format, params object[] args) {
 			ProcessNeedIndent();
 			Write(string.Format(format, args));
 		}
 
+		/// <summary>
+		/// Write NewLine.
+		/// </summary>
 		public virtual void WriteLine() {
 			ProcessNeedIndent();
 			CoreWrite(NewLine);
 			SetNeedIndent();
 		}
 
+		/// <summary>
+		/// Write a char and NewLine.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void WriteLine(char value) {
 			ProcessNeedIndent();
 			Write(value);
 			WriteLine();
 		}
 
+		/// <summary>
+		/// Write a string and NewLine.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void WriteLine(string value) {
 			ProcessNeedIndent();
 			Write(value);
 			WriteLine();
 		}
 
+		/// <summary>
+		/// Write a object and NewLine.
+		/// </summary>
+		/// <param name="value">value.</param>
 		public virtual void WriteLine(object value) {
 			ProcessNeedIndent();
 			Write(value);
 			WriteLine();
 		}
 
+		/// <summary>
+		/// Write formated string and NewLine.
+		/// </summary>
+		/// <param name="format">format.</param>
+		/// <param name="args">args.</param>
 		public virtual void WriteLine(string format, params object[] args) {
 			ProcessNeedIndent();
 			Write(format, args);
@@ -211,6 +251,9 @@ namespace zyllibcs.system {
 
 		#region IDisposable
 
+		/// <summary>
+		/// IDisposable.Dispose.
+		/// </summary>
 		public void Dispose() {
 			Dispose(true);
 			GC.SuppressFinalize(this);

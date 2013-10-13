@@ -71,7 +71,7 @@ namespace zinfoenvironment {
 			if (null == iw) return true;
 			//
 			if (!iw.Indent(obj)) return false;
-			IndentedWriterValueOptions iwvo = IndentedWriterValueOptions.Default;
+			//IndentedWriterValueOptions iwvo = IndentedWriterValueOptions.Default;
 			Type tp = obj.GetType();
 			iw.WriteLine("# <{0}>", tp.FullName);
 			// propertys.

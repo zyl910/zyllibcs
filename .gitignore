@@ -2,9 +2,9 @@
 [Bb]in/
 [Oo]bj/
 bin2/
+bin2_Debug/
 bin4/
-bind2/
-bind4/
+bin4_Debug/
 
 # mstest test results
 TestResults

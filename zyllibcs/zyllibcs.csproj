@@ -14,11 +14,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bind2\</OutputPath>
+    <OutputPath>..\bin2_Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;UNSAFE,DOTNET2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bind2\zyllibcs.XML</DocumentationFile>
+    <DocumentationFile>..\bin2_Debug\zyllibcs.XML</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

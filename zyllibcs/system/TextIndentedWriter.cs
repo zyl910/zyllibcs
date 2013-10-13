@@ -65,11 +65,19 @@ namespace zyllibcs.system {
 			}
 		}
 
+		/// <summary>
+		/// 核心输出, 参数为字符型.
+		/// </summary>
+		/// <param name="value">value.</param>
 		protected override void CoreWrite(char value) {
 			if (null == m_BaseTextWriter) throw new NullReferenceException("BaseTextWriter is null!");
 			m_BaseTextWriter.Write(value);
 		}
 
+		/// <summary>
+		/// 核心输出, 参数为字符串型.
+		/// </summary>
+		/// <param name="value">value.</param>
 		protected override void CoreWrite(string value) {
 			if (null == m_BaseTextWriter) throw new NullReferenceException("BaseTextWriter is null!");
 			m_BaseTextWriter.Write(value);
