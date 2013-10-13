@@ -1,6 +1,10 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/
+bin2/
+bin4/
+bind2/
+bind4/
 
 # mstest test results
 TestResults
