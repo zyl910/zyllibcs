@@ -194,6 +194,8 @@ namespace zinfoenvironment {
 			IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default);
 			IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default);
 			IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default);
+			IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default);
+			IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default);
 			// root.
 			iw.WriteLine("root:");
 			//decimal? dec = new decimal(1);

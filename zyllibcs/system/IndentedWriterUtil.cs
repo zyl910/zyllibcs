@@ -23,13 +23,13 @@ namespace zyllibcs.system {
 		/// </summary>
 		ExistValue = 2,
 		/// <summary>
-		/// 不显示值的内容与注释.
+		/// 不显示值的内容.
 		/// </summary>
 		HideValue = 4,
 		/// <summary>
-		/// 不显示注释. 例如枚举的实际值、整数的十六进制.
+		/// 不显示默认注释. 例如枚举的实际值、整数的十六进制、字符串的长度、数组或集合的长度.
 		/// </summary>
-		HideComment = 8,
+		HideDefaultComment = 8,
 	}
 
 	/// <summary>
@@ -46,22 +46,23 @@ namespace zyllibcs.system {
 		/// </summary>
 		NoDefaultProcs = 1,
 		/// <summary>
-		/// 不使用默认输出过程.
+		/// 不查找默认输出过程.
 		/// </summary>
 		NoCommonProcs = 2,
+		//TODO: 是否将遍历数组整合到IndentedObjectFunctor, 与集合一起处理?
+		///// <summary>
+		///// 不自动遍历数组.
+		///// </summary>
+		//NoForEachArray = 4,
+		///// <summary>
+		///// 遍历数组时, 不自动简化简单类型（基元类型或<see cref="String"/>等）的信息.
+		///// </summary>
+		//ForEachArrayNoSimple = 8,
 		/// <summary>
 		/// 允许枚举方法. 默认情况下仅枚举字段与属性, 加上次标识后才枚举方法.
 		/// </summary>
 		AllowMethod = 0x100,
 	}
-
-	/// <summary>
-	/// 带缩进输出对象的过程.
-	/// </summary>
-	/// <param name="iw">带缩进输出者.</param>
-	/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-	/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
-	public delegate bool IndentedWriterObjectProc(IIndentedWriter iw, object obj);
 
 	/// <summary>
 	/// 输出成员信息时的处理过程.
@@ -147,14 +148,159 @@ namespace zyllibcs.system {
 		}
 
 		/// <summary>
+		/// C转码字符，仅返回会转码的字符串.
+		/// </summary>
+		/// <param name="ch">字符.</param>
+		/// <returns>返回该字符的C转码的串. 注意不需转码的会返回 null .</returns>
+		private static string EscapeCCharAuto_OnlyEscape(char ch) {
+			string rt = null;
+			switch (ch) {
+				case '\0': rt = "\\0"; break;
+				case '\a': rt = "\\a"; break;
+				case '\b': rt = "\\b"; break;
+				case '\f': rt = "\\f"; break;
+				case '\n': rt = "\\n"; break;
+				case '\r': rt = "\\r"; break;
+				case '\t': rt = "\\t"; break;
+				case '\v': rt = "\\v"; break;
+				default:
+					if (char.IsControl(ch)) {
+						rt = string.Format("\\u{0:X4}", (int)ch);
+					}
+					break;
+			}
+			return rt;
+		}
+
+		/// <summary>
+		/// C转码字符，并自动加上首尾引号.
+		/// </summary>
+		/// <param name="ch">字符.</param>
+		/// <returns>返回该字符的C转码的串. 注意会根据需要自动加上首尾引号.</returns>
+		public static string EscapeCCharAuto(char ch) {
+			string rt = EscapeCCharAuto_OnlyEscape(ch);
+			if (null == rt) return ch.ToString();
+			return string.Format("'{0}'", rt);
+		}
+
+		/// <summary>
+		/// C转码字符串，并自动加上首尾引号.
+		/// </summary>
+		/// <param name="src">源字符串.</param>
+		/// <returns>返回该字符串的C转码的串. 注意会根据需要自动加上首尾引号.</returns>
+		public static string EscapeCStringAuto(string src) {
+			if (string.IsNullOrEmpty(src)) return src;
+			StringBuilder sb = new StringBuilder();
+			bool hasescape = false;
+			foreach (char ch in src) {
+				string s = EscapeCCharAuto_OnlyEscape(ch);
+				if (null != s) {
+					sb.Append(s);
+					hasescape = true;
+				}
+				else {
+					sb.Append(ch);
+				}
+			}
+			if (!hasescape) return src;
+			sb.Insert(0, '"');
+			sb.Append('"');
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// 简单类型集.
+		/// </summary>
+		private static readonly Type[] SimpleTypes = new Type[] {
+			typeof(string),
+			typeof(StringBuilder),
+			typeof(Decimal),
+			typeof(DateTime),
+			typeof(TimeSpan),
+		};
+
+		/// <summary>
+		/// 判断简单类型. 如 <see cref="String"/>, <see cref="StringBuilder"/>, <see cref="Decimal"/>, <see cref="DateTime"/>, <see cref="TimeSpan"/> .
+		/// </summary>
+		/// <param name="tp">类型.</param>
+		/// <returns></returns>
+		public static bool IsSimpleType(Type tp) {
+			if (null == tp) return false;
+			foreach (Type p in SimpleTypes) {
+				if (tp.Equals(p)) return true;
+				if (tp.IsSubclassOf(p)) return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// 计算简单值的文本. 
+		/// </summary>
+		/// <param name="value">值.</param>
+		/// <returns>返回文本. 对于不支持类型返回null.</returns>
+		public static string GetSimpleValueText(object value) {
+			string rt = null;
+			if (null == value) return rt;
+			if (value is char) {
+				rt = EscapeCCharAuto((char)value);
+			}
+			else if (value is string || value is StringBuilder) {
+				rt = EscapeCStringAuto(value.ToString());
+			}
+			return rt;
+		}
+
+		/// <summary>
+		/// 计算默认注释.
+		/// </summary>
+		/// <param name="value">值.</param>
+		/// <returns>返回默认注释. 失败时返回null.</returns>
+		public static string GetCommentText(object value) {
+			string rt = null;
+			if (null == value) return rt;
+			Type tp = value.GetType();
+			if (tp.IsEnum) {
+				return string.Format("0x{0:X}, {0:d}, {1}", value, tp.Name);
+			}
+			else if (tp.IsPrimitive) {
+				if (value is char) {
+					return string.Format("0x{0:X}, {0:d}", (int)(char)value);
+				}
+				else if (value is sbyte
+					|| value is byte
+					|| value is short
+					|| value is ushort
+					|| value is int
+					|| value is uint
+					|| value is long
+					|| value is ulong
+					) {
+					return string.Format("0x{0:X}", value);
+				}
+			}
+			else if (value is string) {
+				return string.Format("Length={0:d} (0x{0:X})", (value as string).Length);
+			}
+			else if (value is StringBuilder) {
+				return string.Format("Length={0:d} (0x{0:X})", (value as StringBuilder).Length);
+			}
+			else if (tp.IsArray) {
+				return string.Format("Length={0:d} (0x{0:X})", (value as Array).Length);
+			}
+			return rt;
+		}
+
+		/// <summary>
 		/// 输出值的信息行.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="name">名称.</param>
 		/// <param name="value">值.</param>
 		/// <param name="options">选项.</param>
+		/// <param name="appendcomment">追加注释. 可为 null 或 <c>String.Empty</c>. </param>
 		/// <returns>若成功输出, 便返回true. 否则返回false.</returns>
-		public static bool WriteLineValue(IIndentedWriter iw, string name, object value, IndentedWriterValueOptions options) {
+		/// <remarks>信息行的格式为: <c>"[name]:\t[value]\t# [DefaultComment] . [appendcomment]"</c></remarks>
+		public static bool WriteLineValue(IIndentedWriter iw, string name, object value, IndentedWriterValueOptions options, string appendcomment) {
 			bool rt = false;
 			// check.
 			if (null == iw) return rt;
@@ -169,41 +315,40 @@ namespace zyllibcs.system {
 			iw.Write("{0}:", name);
 			if ((options & IndentedWriterValueOptions.ExistValue) == 0) {
 				iw.Write('\t');
-				if (value is char) {
-					char ch = (char)value;
-					if (ch != '\t' && char.IsControl(ch)) ch = '.';	// 将控制字符转为'.' .
-					iw.Write(ch);
+				string s = GetSimpleValueText(value);
+				if (null != s) {
+					iw.Write(s);
 				}
 				else {
 					iw.Write(value);
 				}
-				if (null != value && (options & IndentedWriterValueOptions.HideComment) == 0) {
-					Type tp = value.GetType();
-					if (tp.IsEnum) {
-						iw.Write("\t# 0x{0:X}, {0:d}, {1}", value, tp.Name);
-					}
-					else if (tp.IsPrimitive) {
-						if (value is char) {
-							iw.Write("\t# 0x{0:X}, {0:d}", (int)(char)value);
-						}
-						else if (value is sbyte
-							|| value is byte
-							|| value is short
-							|| value is ushort
-							|| value is int
-							|| value is uint
-							|| value is long
-							|| value is ulong
-							) {
-							iw.Write("\t# 0x{0:X}", value);
-						}
-					}
-				}
+			}
+			string defaultcomment = null;
+			if (null != value && (options & IndentedWriterValueOptions.HideDefaultComment) == 0) {
+				defaultcomment = GetCommentText(value);
+			}
+			if (!string.IsNullOrEmpty(defaultcomment) || !string.IsNullOrEmpty(appendcomment)) {
+				iw.Write("\t# ");
+				if (!string.IsNullOrEmpty(defaultcomment)) iw.Write(defaultcomment);
+				if (!string.IsNullOrEmpty(defaultcomment) && !string.IsNullOrEmpty(appendcomment)) iw.Write(" . ");
+				if (!string.IsNullOrEmpty(appendcomment)) iw.Write(appendcomment);
 			}
 			iw.WriteLine();
 			// return.
 			rt = true;
 			return rt;
+		}
+
+		/// <summary>
+		/// 输出值的信息行.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="name">名称.</param>
+		/// <param name="value">值.</param>
+		/// <param name="options">选项.</param>
+		/// <returns>若成功输出, 便返回true. 否则返回false.</returns>
+		public static bool WriteLineValue(IIndentedWriter iw, string name, object value, IndentedWriterValueOptions options) {
+			return WriteLineValue(iw, name, value, options, null);
 		}
 
 		/// <summary>

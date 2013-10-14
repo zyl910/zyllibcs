@@ -246,10 +246,7 @@ namespace zyllibcs.system {
 				}
 			}
 			if ((m_Options & IndentedObjectFunctorOptions.AllowSimple) == 0) {
-				if (obj is string) return false;
-				if (obj is decimal) return false;
-				if (obj is DateTime) return false;
-				if (obj is TimeSpan) return false;
+				if (IndentedWriterUtil.IsSimpleType(tp)) return false;
 			}
 			if (null == iw) return true;
 			// write.
