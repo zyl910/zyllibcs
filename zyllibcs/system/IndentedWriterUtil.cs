@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
+using zyllibcs.text;
 
 namespace zyllibcs.system {
 	/// <summary>
@@ -148,39 +149,12 @@ namespace zyllibcs.system {
 		}
 
 		/// <summary>
-		/// C转码字符，仅返回会转码的字符串.
-		/// </summary>
-		/// <param name="ch">字符.</param>
-		/// <returns>返回该字符的C转码的串. 注意不需转码的会返回 null .</returns>
-		private static string EscapeCCharAuto_OnlyEscape(char ch) {
-			string rt = null;
-			switch (ch) {
-				case '\0': rt = "\\0"; break;
-				case '\a': rt = "\\a"; break;
-				case '\b': rt = "\\b"; break;
-				case '\f': rt = "\\f"; break;
-				case '\n': rt = "\\n"; break;
-				case '\r': rt = "\\r"; break;
-				case '\t': rt = "\\t"; break;
-				case '\v': rt = "\\v"; break;
-				default:
-					if (char.IsControl(ch)) {
-						rt = string.Format("\\u{0:X4}", (int)ch);
-					}
-					break;
-			}
-			return rt;
-		}
-
-		/// <summary>
 		/// C转码字符，并自动加上首尾引号.
 		/// </summary>
 		/// <param name="ch">字符.</param>
 		/// <returns>返回该字符的C转码的串. 注意会根据需要自动加上首尾引号.</returns>
 		public static string EscapeCCharAuto(char ch) {
-			string rt = EscapeCCharAuto_OnlyEscape(ch);
-			if (null == rt) return ch.ToString();
-			return string.Format("'{0}'", rt);
+			return StringEscapeC.EscapeChar(ch, StringEscapeCMode.QuoteAuto);
 		}
 
 		/// <summary>
@@ -189,23 +163,7 @@ namespace zyllibcs.system {
 		/// <param name="src">源字符串.</param>
 		/// <returns>返回该字符串的C转码的串. 注意会根据需要自动加上首尾引号.</returns>
 		public static string EscapeCStringAuto(string src) {
-			if (string.IsNullOrEmpty(src)) return src;
-			StringBuilder sb = new StringBuilder();
-			bool hasescape = false;
-			foreach (char ch in src) {
-				string s = EscapeCCharAuto_OnlyEscape(ch);
-				if (null != s) {
-					sb.Append(s);
-					hasescape = true;
-				}
-				else {
-					sb.Append(ch);
-				}
-			}
-			if (!hasescape) return src;
-			sb.Insert(0, '"');
-			sb.Append('"');
-			return sb.ToString();
+			return StringEscapeC.EscapeString(src, StringEscapeCMode.QuoteAuto);
 		}
 
 		/// <summary>
@@ -340,18 +298,6 @@ namespace zyllibcs.system {
 		}
 
 		/// <summary>
-		/// 输出值的信息行.
-		/// </summary>
-		/// <param name="iw">带缩进输出者.</param>
-		/// <param name="name">名称.</param>
-		/// <param name="value">值.</param>
-		/// <param name="options">选项.</param>
-		/// <returns>若成功输出, 便返回true. 否则返回false.</returns>
-		public static bool WriteLineValue(IIndentedWriter iw, string name, object value, IndentedWriterValueOptions options) {
-			return WriteLineValue(iw, name, value, options, null);
-		}
-
-		/// <summary>
 		/// 输出对象的各个成员.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -433,7 +379,7 @@ namespace zyllibcs.system {
 				}
 				// show.
 				if (isdefault) {
-					WriteLineValue(iw, mi.Name, value, iwvo);
+					WriteLineValue(iw, mi.Name, value, iwvo, null);
 					if (null != writeproc) {
 						writeproc(iw, value);
 					}

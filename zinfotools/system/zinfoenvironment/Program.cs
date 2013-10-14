@@ -191,11 +191,12 @@ namespace zinfoenvironment {
 			//}
 			//lwo(iw, "");
 			//lwo.Invoke(iw, "");
-			IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default);
-			IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default);
-			IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default);
-			IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default);
-			IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default);
+			IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default, null);
+			IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default, null);
+			IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default, null);
+			IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default, null);
+			IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default, null);
+			IndentedWriterUtil.WriteLineValue(iw, "string(2)", "\\\'\"", IndentedWriterValueOptions.Default, null);
 			// root.
 			iw.WriteLine("root:");
 			//decimal? dec = new decimal(1);
