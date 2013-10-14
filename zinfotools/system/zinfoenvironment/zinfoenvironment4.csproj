@@ -61,7 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs_2010.csproj">
+    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs4.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs</Name>
     </ProjectReference>

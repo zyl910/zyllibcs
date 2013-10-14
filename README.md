@@ -13,7 +13,9 @@
 * docs/: Documents.
 * examples/: Examples.
 * zinfotools/: zyl910's info tools.
-* zyllibcs/: zyllibcs source code.
+* zyllibcs/: zyllibcs's source code.
+* zyllibcs.sln: zyllibcs's .Net 2.0 Library Solution File.
+* zyllibcs4.sln: zyllibcs's .Net 4.0 Portable Library Solution File.
 
 
 ## Conditional compilation symbols
