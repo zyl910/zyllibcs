@@ -111,7 +111,7 @@ namespace zyllibcs.text {
 			bool bQuoteIn = false;	// 已经进入括号内.
 			bool bBackslash = false;	// 前一个是反斜杠.
 			long posBackslash = 0;	// 反斜杠的位置.
-			for(long i=0; i<arr.LongLength; ++i) {
+			for(int i=0; i<arr.Length; ++i) {
 				bool bOutChar = true;	// 输出当前字符.
 				char ch = arr[i];
 				if (bQuoteIn) {
@@ -291,7 +291,7 @@ namespace zyllibcs.text {
 			if ((mode & StringEscapeCMode.QuoteMask) == StringEscapeCMode.QuoteAuto && hasescape) hasquote = true;
 			if (!hasescape && !hasquote) return src;
 			if (hasquote) {
-				sb.Insert(0, '"');
+				sb.Insert(0, "\"");
 				sb.Append('"');
 			}
 			return sb.ToString();
