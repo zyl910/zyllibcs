@@ -38,11 +38,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="system\BaseIndentedWriter.cs" />
-    <Compile Include="system\IIndentedWriter.cs" />
-    <Compile Include="system\IndentedWriterObjectFunctor.cs" />
-    <Compile Include="system\IndentedWriterUtil.cs" />
-    <Compile Include="system\TextIndentedWriter.cs" />
+    <Compile Include="text\BaseIndentedWriter.cs" />
+    <Compile Include="text\IIndentedWriter.cs" />
+    <Compile Include="text\IndentedWriterObjectFunctor.cs" />
+    <Compile Include="text\IndentedWriterUtil.cs" />
+    <Compile Include="text\TextIndentedWriter.cs" />
     <Compile Include="text\StringEscapeC.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

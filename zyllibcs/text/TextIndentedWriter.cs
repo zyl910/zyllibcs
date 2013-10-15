@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
-namespace zyllibcs.system {
+namespace zyllibcs.text {
 	/// <summary>
 	/// 文本流的带缩进输出者.
 	/// </summary>

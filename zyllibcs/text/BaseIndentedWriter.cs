@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace zyllibcs.system {
+namespace zyllibcs.text {
 	/// <summary>
 	/// 基本的带缩进输出者.
 	/// </summary>

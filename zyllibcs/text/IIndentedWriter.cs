@@ -4,7 +4,7 @@ using System.Text;
 
 [assembly: CLSCompliant(true)]
 
-namespace zyllibcs.system {
+namespace zyllibcs.text {
 	/// <summary>
 	/// 带缩进输出对象的过程.
 	/// </summary>

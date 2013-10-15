@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
-using zyllibcs.text;
 
-namespace zyllibcs.system {
+namespace zyllibcs.text {
 	/// <summary>
 	/// 带缩进输出数值的选项.
 	/// </summary>

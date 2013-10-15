@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Reflection;
 
-namespace zyllibcs.system {
+namespace zyllibcs.text {
 	/// <summary>
 	/// 带缩进输出对象的函数对象的选项.
 	/// </summary>

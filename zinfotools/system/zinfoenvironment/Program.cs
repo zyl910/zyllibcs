@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-using zyllibcs.system;
+using zyllibcs.text;
 
 namespace zinfoenvironment {
 	/// <summary>
