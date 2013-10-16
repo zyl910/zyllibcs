@@ -87,7 +87,7 @@ namespace zinfoenvironment {
 			//        IndentedWriterUtil.WriteLineValue(iw, pi.Name, value, iwvo);
 			//    }
 			//}
-			IndentedWriterUtil.ForEachMember(iw, obj, null, IndentedWriterUtil.PublicInstance, IndentedWriterMemberOptions.Default, null, null, null);
+			//IndentedWriterUtil.ForEachMember(iw, obj, null, IndentedWriterUtil.PublicInstance, IndentedWriterMemberOptions.Default, null, null, null);
 			iw.Unindent();
 			return true;
 		}
@@ -203,7 +203,7 @@ namespace zinfoenvironment {
 			//IndentedWriterUtil.WriteLineValue(iw, "dec", dec, IndentedWriterValueOptions.Default);
 			//IndentedObjectFunctor.CommonProc(iw, dec);
 			// Environment.
-			IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion);
+			IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
 			//outl_Environment(iw);
 		}
 
