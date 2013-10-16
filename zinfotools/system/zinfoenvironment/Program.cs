@@ -273,6 +273,7 @@ namespace zinfoenvironment {
 			//IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "string(2)", "\\\'\"", IndentedWriterValueOptions.Default, null);
 			// root.
+			iw.WriteLine("# zinfoenvironment");
 			iw.WriteLine("root:");
 			//decimal? dec = new decimal(1);
 			//IndentedWriterUtil.WriteLineValue(iw, "dec", dec, IndentedWriterValueOptions.Default);

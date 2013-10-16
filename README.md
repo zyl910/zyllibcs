@@ -8,14 +8,17 @@
 
 * bin2/: .Net 2.0 Library Release.
 * bin2_Debug/: .Net 2.0 Library Debug.
-* bin4/: .Net 4.0 Portable Library Release.
-* bin4_Debug/: .Net 4.0 Portable Library Debug.
+* bin4/: .Net 4.0 Library Release.
+* bin4_Debug/: .Net 4.0 Library Debug.
+* binp4/: .Net 4.0 Portable Library Release.
+* binp4_Debug/: .Net 4.0 Portable Library Debug.
 * docs/: Documents.
 * examples/: Examples.
 * zinfotools/: zyl910's info tools.
 * zyllibcs/: zyllibcs's source code.
 * zyllibcs.sln: zyllibcs's .Net 2.0 Library Solution File.
-* zyllibcs4.sln: zyllibcs's .Net 4.0 Portable Library Solution File.
+* zyllibcs4.sln: zyllibcs's .Net 4.0 Library Solution File.
+* zyllibcsp4.sln: zyllibcs's .Net 4.0 Portable Library Solution File.
 
 
 ## Conditional compilation symbols

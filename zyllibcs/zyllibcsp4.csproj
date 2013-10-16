@@ -19,20 +19,20 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin4_Debug\</OutputPath>
+    <OutputPath>..\binp4_Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;DOTNET2;DOTNET3;DOTNET4;DN_PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin4_Debug\zyllibcs.XML</DocumentationFile>
+    <DocumentationFile>..\binp4_Debug\zyllibcs.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin4\</OutputPath>
+    <OutputPath>..\binp4\</OutputPath>
     <DefineConstants>TRACE;DOTNET2;DOTNET3;DOTNET4;DN_PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin4\zyllibcs.XML</DocumentationFile>
+    <DocumentationFile>..\binp4\zyllibcs.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

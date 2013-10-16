@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zyllibcs", "zyllibcs\zyllibcs4.csproj", "{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zyllibcs", "zyllibcs\zyllibcsp4.csproj", "{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
