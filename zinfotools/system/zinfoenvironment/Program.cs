@@ -191,7 +191,7 @@ namespace zinfoenvironment {
 					int cntparam = memberinfo.GetParameters().Length;
 					if (false) {
 					}
-					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetFolderPath")) {
+					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetFolderPath") && cntparam <= 1) {
 						e.IsCancel = true;
 						IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
 						iw.Indent(null);
@@ -247,6 +247,25 @@ namespace zinfoenvironment {
 		}
 
 		/// <summary>
+		/// 输出多行_IntPtr.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		public static bool outl_static_IntPtr(IIndentedWriter iw, object stateobject) {
+			if (null == iw) return false;
+			Type tp = typeof(System.IntPtr);
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+#if UNSAFE
+			unsafe {
+				iw.WriteLine(string.Format("# sizeof:\t{0}", sizeof(System.IntPtr)));
+			}
+#endif
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, null, stateobject);
+			iw.Unindent();
+			return true;
+		}
+
+		/// <summary>
 		/// 输出多行_主函数.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -282,6 +301,8 @@ namespace zinfoenvironment {
 			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
 			//outl_Environment(iw);
 			outl_Environment(iw, null);
+			iw.WriteLine("IntPtr:");
+			outl_static_IntPtr(iw, null);
 		}
 
 		static void Main(string[] args) {

@@ -1,0 +1,119 @@
+# Darwin zmactekiMac.local 12.4.0 Darwin Kernel Version 12.4.0: Wed May  1 17:57:12 PDT 2013; root:xnu-2050.24.15~1/RELEASE_X86_64 x86_64
+
+# zinfoenvironment
+root:
+	# <System.Environment>
+	GetEnvironmentVariables():
+		_:	/usr/bin/mono
+		__CF_USER_TEXT_ENCODING:	0x1F5:25:52
+		Apple_PubSub_Socket_Render:	/tmp/launch-iaFWof/Render
+		Apple_Ubiquity_Message:	/tmp/launch-qtuZxJ/Apple_Ubiquity_Message
+		COMMAND_MODE:	unix2003
+		HOME:	/Users/zmac
+		LANG:	zh_CN.UTF-8
+		LOGNAME:	zmac
+		OLDPWD:	/Users/zmac
+		PATH:	/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+		PWD:	/Volumes/VMware Shared Folders/E/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug
+		SHELL:	/bin/bash
+		SHLVL:	1
+		SSH_AUTH_SOCK:	/tmp/launch-xdbKpv/Listeners
+		TERM:	xterm-256color
+		TERM_PROGRAM:	Apple_Terminal
+		TERM_PROGRAM_VERSION:	309
+		TERM_SESSION_ID:	AE47439B-F80F-4D46-A152-CD8FC13A1CA6
+		TMPDIR:	/var/folders/p_/bg8kcjlx0sz__9tmsp7m4gyw0000gn/T/
+		USER:	zmac
+	GetFolderPath():
+		0(0x00000000, Desktop):	/Users/zmac/Desktop
+		2(0x00000002, Programs):	
+		5(0x00000005, MyDocuments):	/Users/zmac
+		5(0x00000005, MyDocuments):	/Users/zmac
+		6(0x00000006, Favorites):	/Users/zmac/Library/Favorites
+		7(0x00000007, Startup):	
+		8(0x00000008, Recent):	
+		9(0x00000009, SendTo):	
+		11(0x0000000B, StartMenu):	
+		13(0x0000000D, MyMusic):	/Users/zmac/Music
+		14(0x0000000E, MyVideos):	/Users/zmac/Videos
+		16(0x00000010, DesktopDirectory):	/Users/zmac/Desktop
+		17(0x00000011, MyComputer):	
+		19(0x00000013, NetworkShortcuts):	
+		20(0x00000014, Fonts):	/Users/zmac/Library/Fonts
+		21(0x00000015, Templates):	/Users/zmac/Templates
+		22(0x00000016, CommonStartMenu):	
+		23(0x00000017, CommonPrograms):	
+		24(0x00000018, CommonStartup):	
+		25(0x00000019, CommonDesktopDirectory):	
+		26(0x0000001A, ApplicationData):	/Users/zmac/.config
+		27(0x0000001B, PrinterShortcuts):	
+		28(0x0000001C, LocalApplicationData):	/Users/zmac/.local/share
+		32(0x00000020, InternetCache):	/Users/zmac/Library/Caches
+		33(0x00000021, Cookies):	
+		34(0x00000022, History):	
+		35(0x00000023, CommonApplicationData):	/usr/share
+		36(0x00000024, Windows):	
+		37(0x00000025, System):	
+		38(0x00000026, ProgramFiles):	/Applications
+		39(0x00000027, MyPictures):	/Users/zmac/Pictures
+		40(0x00000028, UserProfile):	/Users/zmac
+		41(0x00000029, SystemX86):	
+		42(0x0000002A, ProgramFilesX86):	
+		43(0x0000002B, CommonProgramFiles):	
+		44(0x0000002C, CommonProgramFilesX86):	
+		45(0x0000002D, CommonTemplates):	/usr/share/templates
+		46(0x0000002E, CommonDocuments):	
+		47(0x0000002F, CommonAdminTools):	
+		48(0x00000030, AdminTools):	
+		53(0x00000035, CommonMusic):	
+		54(0x00000036, CommonPictures):	
+		55(0x00000037, CommonVideos):	
+		56(0x00000038, Resources):	
+		57(0x00000039, LocalizedResources):	
+		58(0x0000003A, CommonOemLinks):	
+		59(0x0000003B, CDBurning):	
+	GetLogicalDrives():	/, /dev, /net, /home, /Volumes/VMware Shared Folders	# Length=52 (0x34)
+	CommandLine:	"\"/Volumes/VMware Shared Folders/E/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe\""	# Length=130 (0x82)
+	CurrentDirectory:	/Volumes/VMware Shared Folders/E/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug	# Length=107 (0x6B)
+	CurrentManagedThreadId:	1	# 0x1
+	ExitCode:	0	# 0x0
+	HasShutdownStarted:	False
+	MachineName:	zmactekiMac.local	# Length=17 (0x11)
+	NewLine:	"\n"	# Length=1 (0x1)
+	OSVersion:	Unix 12.4.0.0
+		# <System.OperatingSystem>
+		Platform:	Unix	# 0x00000004, 4, PlatformID
+		Version:	12.4.0.0
+			# <System.Version>
+			Build:	0	# 0x0
+			Major:	12	# 0xC
+			Minor:	4	# 0x4
+			Revision:	0	# 0x0
+			MajorRevision:	0	# 0x0
+			MinorRevision:	0	# 0x0
+		ServicePack:		# Length=0 (0x0)
+		VersionString:	Unix 12.4.0.0	# Length=13 (0xD)
+	StackTrace:	"   at System.Environment.get_StackTrace()\n   at System.Reflection.MonoProperty.StaticGetterAdapterFrame(System.Reflection.StaticGetter`1 getter, System.Object obj)\n   at System.Reflection.MonoProperty.GetValue(System.Object obj, System.Object[] index)\n   at zyllibcs.text.IndentedWriterUtil.ForEachMember(IIndentedWriter iw, System.Object owner, System.Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, IEnumerable`1 procs, System.EventHandler`1 handle, System.Object stateobject)\n   at zinfoenvironment.Program.outl_Environment(IIndentedWriter iw, System.Object stateobject)\n   at zinfoenvironment.Program.outl_main(IIndentedWriter iw)\n   at zinfoenvironment.Program.Main(System.String[] args)"	# Length=716 (0x2CC)
+	SystemDirectory:		# Length=0 (0x0)
+	TickCount:	850	# 0x352
+	UserDomainName:	zmactekiMac.local	# Length=17 (0x11)
+	UserInteractive:	False
+	UserName:	zmac	# Length=4 (0x4)
+	Version:	4.0.30319.17020
+		# <System.Version>
+		Build:	30319	# 0x766F
+		Major:	4	# 0x4
+		Minor:	0	# 0x0
+		Revision:	17020	# 0x427C
+		MajorRevision:	0	# 0x0
+		MinorRevision:	17020	# 0x427C
+	WorkingSet:	0	# 0x0
+	Is64BitOperatingSystem:	False
+	SystemPageSize:	4096	# 0x1000
+	Is64BitProcess:	False
+	ProcessorCount:	2	# 0x2
+IntPtr:
+	# <System.IntPtr>
+	# sizeof:	4
+	Size:	4	# 0x4
+	Zero:	0
