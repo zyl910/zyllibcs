@@ -58,6 +58,7 @@ namespace zyllibcs.text {
 		/// <param name="obj">预检测的对象.</param>
 		/// <returns></returns>
 		public bool ExistIndentHistory(object obj) {
+			if (null == obj) return false;
 			return m_IndentHistory.Contains(obj);
 		}
 
@@ -66,7 +67,7 @@ namespace zyllibcs.text {
 		/// </summary>
 		/// <param name="count">新数量.</param>
 		protected void SetIndentHistoryCount(int count) {
-			if (count < 0) return;
+			if (count < 0) count = 0;
 			while (m_IndentHistory.Count < count) m_IndentHistory.Add(null);
 			if (m_IndentHistory.Count > count) {
 				m_IndentHistory.RemoveRange(count, m_IndentHistory.Count - count);
@@ -142,6 +143,7 @@ namespace zyllibcs.text {
 		/// <param name="obj">新级别的相关对象. 可设为null.</param>
 		/// <returns>是否成功增加一级. 若之前级别存在 <paramref name="obj"/>, 便返回 false.</returns>
 		public virtual bool Indent(object obj) {
+			m_IndentHistory.Add(obj);
 			Interlocked.Increment(ref m_IndentLevel);
 			return true;
 		}

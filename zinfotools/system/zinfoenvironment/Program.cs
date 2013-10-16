@@ -172,6 +172,81 @@ namespace zinfoenvironment {
 		}
 
 		/// <summary>
+		/// 输出多行_环境.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		public static bool outl_Environment(IIndentedWriter iw, object stateobject) {
+			if (null == iw) return false;
+			Type tp = typeof(System.Environment);
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, delegate(object sender, IndentedWriterMemberEventArgs e) {
+				// http://msdn.microsoft.com/zh-cn/library/system.environment(v=vs.110).aspx
+				MethodInfo memberinfo = e.MemberInfo as MethodInfo;
+				if (null != memberinfo) {
+					//if (!memberinfo.IsSpecialName) {
+					//    e.HasDefault = true;
+					//}
+					string name = memberinfo.Name;
+					int cntparam = memberinfo.GetParameters().Length;
+					if (false) {
+					}
+					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetFolderPath")) {
+						e.IsCancel = true;
+						IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
+						iw.Indent(null);
+						foreach (Environment.SpecialFolder p in Enum.GetValues(typeof(Environment.SpecialFolder))) {
+							iw.Write("{0:d}(0x{0:X}, {0}):\t", p);
+							try {
+								iw.Write(Environment.GetFolderPath(p));
+							}
+							catch {
+							}
+							iw.WriteLine();
+						}
+						iw.Unindent();
+					}
+					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetLogicalDrives")) {
+						e.HasDefault = true;
+						e.Value = string.Join(", ", Environment.GetLogicalDrives());
+					}
+					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetEnvironmentVariables")) {
+						if (cntparam <= 0) {
+							e.IsCancel = true;
+							IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
+							iw.Indent(null);
+							IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+							ArrayList lst = new ArrayList(environmentVariables.Keys);
+							lst.Sort();
+							foreach (object k in lst) {
+								iw.WriteLine("{0}:\t{1}", k, environmentVariables[k]);
+							}
+							iw.Unindent();
+						}
+						// [2013-10-16] 一般情况下用户不需要看这么详细的环境变量.
+						//else if (cntparam <= 1) {
+						//    e.IsCancel = true;
+						//    foreach (EnvironmentVariableTarget p in Enum.GetValues(typeof(EnvironmentVariableTarget))) {
+						//        e.MemberName = string.Format("{0}(EnvironmentVariableTarget.{1})", memberinfo.Name, p);
+						//        IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
+						//        iw.Indent(null);
+						//        IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+						//        ArrayList lst = new ArrayList(environmentVariables.Keys);
+						//        lst.Sort();
+						//        foreach (object k in lst) {
+						//            iw.WriteLine("{0}:\t{1}", k, environmentVariables[k]);
+						//        }
+						//        iw.Unindent();
+						//    }
+						//}
+					}
+				}
+			}, stateobject);
+			iw.Unindent();
+			return true;
+		}
+
+		/// <summary>
 		/// 输出多行_主函数.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -191,20 +266,21 @@ namespace zinfoenvironment {
 			//}
 			//lwo(iw, "");
 			//lwo.Invoke(iw, "");
-			IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default, null);
-			IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default, null);
-			IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default, null);
-			IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default, null);
-			IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default, null);
-			IndentedWriterUtil.WriteLineValue(iw, "string(2)", "\\\'\"", IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default, null);
+			//IndentedWriterUtil.WriteLineValue(iw, "string(2)", "\\\'\"", IndentedWriterValueOptions.Default, null);
 			// root.
 			iw.WriteLine("root:");
 			//decimal? dec = new decimal(1);
 			//IndentedWriterUtil.WriteLineValue(iw, "dec", dec, IndentedWriterValueOptions.Default);
 			//IndentedObjectFunctor.CommonProc(iw, dec);
 			// Environment.
-			IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
+			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
 			//outl_Environment(iw);
+			outl_Environment(iw, null);
 		}
 
 		static void Main(string[] args) {

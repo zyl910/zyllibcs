@@ -91,10 +91,10 @@ namespace zyllibcs.text {
 		/// </summary>
 		IEnumerable<IndentedWriterObjectProc> m_Procs;
 
-		///// <summary>
-		///// 用户自定义数据.
-		///// </summary>
-		//private object m_Tag;
+		/// <summary>
+		/// State Object.
+		/// </summary>
+		private object m_StateObject;
 
 		/// <summary>
 		/// 是否取消当前成员的默认处理. (推荐修改) .
@@ -216,13 +216,13 @@ namespace zyllibcs.text {
 			set { m_Procs = value; }
 		}
 
-		///// <summary>
-		///// 用户自定义数据.
-		///// </summary>
-		//public object Tag {
-		//    get { return m_Tag; }
-		//    set { m_Tag = value; }
-		//}
+		/// <summary>
+		/// State Object.
+		/// </summary>
+		public object StateObject {
+			get { return m_StateObject; }
+			set { m_StateObject = value; }
+		}
 
 		/// <summary>
 		/// 构造 IndentedWriterMemberEventArgs 对象.

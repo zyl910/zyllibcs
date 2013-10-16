@@ -23,13 +23,17 @@ namespace zyllibcs.text {
 		/// </summary>
 		ExistValue = 2,
 		/// <summary>
+		/// 自动隐藏值的内容. 当发现值为null时不显示.
+		/// </summary>
+		AutoHideValue = 4,
+		/// <summary>
 		/// 不显示值的内容.
 		/// </summary>
-		HideValue = 4,
+		HideValue = 8,
 		/// <summary>
 		/// 不显示默认注释. 例如枚举的实际值、整数的十六进制、字符串的长度、数组或集合的长度.
 		/// </summary>
-		HideDefaultComment = 8,
+		HideDefaultComment = 0x10,
 	}
 
 	/// <summary>
@@ -103,6 +107,11 @@ namespace zyllibcs.text {
 		/// 公开的静态与实例成员.
 		/// </summary>
 		public const BindingFlags PublicStaticInstance = PublicInstance | PublicStatic;
+
+		/// <summary>
+		/// 默认字符串比较器. 区分大小写.
+		/// </summary>
+		public static readonly StringComparer StringComparer = StringComparer.Ordinal;
 
 		/// <summary>
 		/// 默认的输出过程集合.
@@ -272,7 +281,8 @@ namespace zyllibcs.text {
 			}
 			// format
 			iw.Write("{0}:", name);
-			if ((options & IndentedWriterValueOptions.ExistValue) == 0) {
+			bool showvalue = ((options & IndentedWriterValueOptions.HideValue) == 0 && (null != value || (options & IndentedWriterValueOptions.AutoHideValue) == 0));
+			if (showvalue) {
 				iw.Write('\t');
 				string s = GetSimpleValueText(value);
 				if (null != s) {
@@ -420,16 +430,15 @@ namespace zyllibcs.text {
 			args.BindingAttr = bindingAttr;
 			args.MemberOptions = options;
 			args.Procs = procs;
-			//args.Tag = stateobject;
+			args.StateObject = stateobject;
 			// foreach.
 			foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
 				//if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
-				const IndentedWriterValueOptions default_iwvo = IndentedWriterValueOptions.Default;
 				args.IsCancel = true;
 				args.HasDefault = false;
 				args.MemberInfo = mi;
 				args.MemberName = mi.Name;
-				args.Value = mi;
+				args.Value = null;
 				args.ValueOptions = IndentedWriterValueOptions.ExistValue;
 				args.AppendComment = null;
 				args.WriteProc = null;
@@ -448,7 +457,7 @@ namespace zyllibcs.text {
 					if (true) {
 						try {
 							args.Value = fi.GetValue(owner);
-							args.ValueOptions = default_iwvo;
+							args.ValueOptions = IndentedWriterValueOptions.Default; ;
 							args.HasDefault = true;
 						}
 						catch (Exception ex) {
@@ -462,7 +471,7 @@ namespace zyllibcs.text {
 					if (pi.CanRead && pi.GetIndexParameters().Length <= 0) {
 						try {
 							args.Value = pi.GetValue(owner, null);
-							args.ValueOptions = default_iwvo;
+							args.ValueOptions = IndentedWriterValueOptions.Default; ;
 							args.HasDefault = true;
 						}
 						catch (Exception ex) {
@@ -472,7 +481,10 @@ namespace zyllibcs.text {
 				}
 				else if (mi is MethodInfo) {
 					if ((options & IndentedWriterMemberOptions.AllowMethod) != 0) {
+						//MethodInfo methodinfo = mi as MethodInfo;
 						args.IsCancel = false;
+						args.ValueOptions = IndentedWriterValueOptions.AutoHideValue;
+						args.MemberName = string.Format("{0}()", mi.Name);
 					}
 				}
 				if (args.IsCancel) continue;
