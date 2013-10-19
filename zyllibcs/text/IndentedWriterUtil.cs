@@ -109,6 +109,16 @@ namespace zyllibcs.text {
 		public const BindingFlags PublicStaticInstance = PublicInstance | PublicStatic;
 
 		/// <summary>
+		/// 默认类型名称选项.
+		/// </summary>
+		public static readonly MemberNameOptions DefaultTypeNameOption = MemberNameOptions.FullName | MemberNameOptions.TypeParamActual | MemberNameOptions.ParamSeparator;
+
+		/// <summary>
+		/// 默认成员名称选项.
+		/// </summary>
+		public static readonly MemberNameOptions DefaultMemberNameOption = MemberNameOptions.TypeParamSeparator | MemberNameOptions.ParamSeparator;
+
+		/// <summary>
 		/// 默认字符串比较器. 区分大小写.
 		/// </summary>
 		public static readonly StringComparer StringComparer = StringComparer.Ordinal;
@@ -437,11 +447,12 @@ namespace zyllibcs.text {
 				args.IsCancel = true;
 				args.HasDefault = false;
 				args.MemberInfo = mi;
-				args.MemberName = mi.Name;
+				args.MemberName = MemberInfoFormat.GetMemberNameAuto(mi, DefaultMemberNameOption);//mi.Name;
 				args.Value = null;
 				args.ValueOptions = IndentedWriterValueOptions.ExistValue;
 				args.AppendComment = null;
 				args.WriteProc = null;
+				//Debug.WriteLine(mi.ToString());
 				//
 				//bool bOk = false;
 				//object value = null;
@@ -484,7 +495,7 @@ namespace zyllibcs.text {
 						//MethodInfo methodinfo = mi as MethodInfo;
 						args.IsCancel = false;
 						args.ValueOptions = IndentedWriterValueOptions.AutoHideValue;
-						args.MemberName = string.Format("{0}()", mi.Name);
+						//args.MemberName = string.Format("{0}()", mi.Name);
 					}
 				}
 				if (args.IsCancel) continue;

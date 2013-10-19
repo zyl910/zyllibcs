@@ -227,6 +227,16 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
+		/// 取得类型名称.
+		/// </summary>
+		/// <param name="tp">type.</param>
+		/// <returns>返回名称.</returns>
+		/// <remarks>默认返回 <c>MemberInfoFormat.GetMemberName(tp, IndentedWriterUtil.DefaultTypeNameOption)</c>. </remarks>
+		public static string GetTypeName(Type tp) {
+			return MemberInfoFormat.GetMemberName(tp, IndentedWriterUtil.DefaultTypeNameOption);
+		}
+
+		/// <summary>
 		/// 输出对象.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -272,28 +282,16 @@ namespace zyllibcs.text {
 			// write.
 			if ((m_Options & IndentedObjectFunctorOptions.NotWrite) != 0) return true;
 			if (!iw.Indent(obj)) return false;
-			//m_CurrentWriter = iw;
-			//m_CurrentObject = obj;
 			bool needtitle = true;
 			try {
-				//IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, m_MemberProcs, m_Userdata, delegate (object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault) {
-				//    //Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
-				//    if (needtitle) {
-				//        // 仅当至少有一个成员, 才输出标题.
-				//        needtitle = false;
-				//        string title = string.Format("# <{0}>", tp.FullName);
-				//        if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", tp.FullName, m_BaseType.FullName);
-				//        iw.WriteLine(title);
-				//    }
-				//    OnHandleMemberProc(userdata, mi, value, ref writeproc, ref iwvo, ref isdefault);
-				//});
 				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, m_MemberProcs, delegate(object sender, IndentedWriterMemberEventArgs e) {
 					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
 					if (needtitle && null!=e && e.HasDefault) {
 						// 仅当至少有一个成员, 才输出标题.
 						needtitle = false;
-						string title = string.Format("# <{0}>", tp.FullName);
-						if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", tp.FullName, m_BaseType.FullName);
+						string title;
+						if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", GetTypeName(tp), GetTypeName(m_BaseType));
+						else title = string.Format("# <{0}>", GetTypeName(tp));
 						iw.WriteLine(title);
 					}
 					OnHandlerMember(this, e);
@@ -303,8 +301,6 @@ namespace zyllibcs.text {
 				System.Diagnostics.Debug.WriteLine(ex);
 			}
 			iw.Unindent();
-			//m_CurrentWriter = null;
-			//m_CurrentObject = null;
 			return !needtitle;
 		}
 

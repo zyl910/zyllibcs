@@ -67,6 +67,7 @@
     <Compile Include="text\IndentedWriterMemberEventArgs.cs" />
     <Compile Include="text\IndentedWriterObjectFunctor.cs" />
     <Compile Include="text\IndentedWriterUtil.cs" />
+    <Compile Include="text\MemberInfoFormat.cs" />
     <Compile Include="text\TextIndentedWriter.cs" />
     <Compile Include="text\StringEscapeC.cs" />
   </ItemGroup>
