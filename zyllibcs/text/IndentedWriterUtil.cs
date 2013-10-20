@@ -68,21 +68,21 @@ namespace zyllibcs.text {
 		AllowMethod = 0x100,
 	}
 
-	/// <summary>
-	/// 输出成员信息时的处理过程.
-	/// </summary>
-	/// <param name="userdata">用户自定义数据.</param>
-	/// <param name="mi">成员信息.</param>
-	/// <param name="value">值.</param>
-	/// <param name="writeproc">匹配的输出过程.</param>
-	/// <param name="iwvo">输出数值的选项. 注意但不是字段或属性时, 其初始值不同.</param>
-	/// <param name="isdefault">是否进行默认处理. 若不需要进行默认处理, 便返回false. 注意但不是字段或属性时, 其初始值不同.</param>
-	/// <remarks>
-	/// 若 <paramref name="isdefault"/> 为 true, 则默认会调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 输出值的信息行, 再使用 <paramref name="writeproc"/> 输出值的详细内容 .
-	/// 如果你想定制输出信息, 请将 <paramref name="isdefault"/> 设为 false, 并自行调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 与 <see cref="IndentedWriterObjectProc"/> .
-	/// 注意默认操作仅支持字段与(非索引化的)属性.
-	/// </remarks>
-	public delegate void IndentedWriterHandleMemberProc(object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault);
+	///// <summary>
+	///// 输出成员信息时的处理过程.
+	///// </summary>
+	///// <param name="userdata">用户自定义数据.</param>
+	///// <param name="mi">成员信息.</param>
+	///// <param name="value">值.</param>
+	///// <param name="writeproc">匹配的输出过程.</param>
+	///// <param name="iwvo">输出数值的选项. 注意但不是字段或属性时, 其初始值不同.</param>
+	///// <param name="isdefault">是否进行默认处理. 若不需要进行默认处理, 便返回false. 注意但不是字段或属性时, 其初始值不同.</param>
+	///// <remarks>
+	///// 若 <paramref name="isdefault"/> 为 true, 则默认会调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 输出值的信息行, 再使用 <paramref name="writeproc"/> 输出值的详细内容 .
+	///// 如果你想定制输出信息, 请将 <paramref name="isdefault"/> 设为 false, 并自行调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 与 <see cref="IndentedWriterObjectProc"/> .
+	///// 注意默认操作仅支持字段与(非索引化的)属性.
+	///// </remarks>
+	//public delegate void IndentedWriterHandleMemberProc(object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault);
 
 	/// <summary>
 	/// 带缩进输出者工具.
@@ -142,12 +142,12 @@ namespace zyllibcs.text {
 		/// 查找匹配的输出过程.
 		/// </summary>
 		/// <param name="obj">对象.</param>
-		/// <param name="stateobject">State Object. Can be NULL.</param>
+		/// <param name="context">State Object. Can be NULL.</param>
 		/// <returns>返回匹配的输出过程, 失败时返回null.</returns>
-		public static IndentedWriterObjectProc LookupWriteProc(object obj, object stateobject) {
+		public static IndentedWriterObjectProc LookupWriteProc(object obj, IndentedWriterContext context) {
 			if (null == obj) return null;
 			lock (m_WriteProcs) {
-				return LookupWriteProcAt(obj, stateobject, m_WriteProcs);
+				return LookupWriteProcAt(obj, context, m_WriteProcs);
 			}
 		}
 
@@ -155,15 +155,15 @@ namespace zyllibcs.text {
 		/// 在集合中查找匹配的输出过程.
 		/// </summary>
 		/// <param name="obj">对象.</param>
-		/// <param name="stateobject">State Object. Can be NULL.</param>
+		/// <param name="context">State Object. Can be NULL.</param>
 		/// <param name="procs">输出过程的集合.</param>
 		/// <returns>返回匹配的输出过程, 失败时返回null.</returns>
-		public static IndentedWriterObjectProc LookupWriteProcAt(object obj, object stateobject, IEnumerable<IndentedWriterObjectProc> procs) {
+		public static IndentedWriterObjectProc LookupWriteProcAt(object obj, IndentedWriterContext context, IEnumerable<IndentedWriterObjectProc> procs) {
 			if (null == obj) return null;
 			if (null == procs) return null;
 			foreach (IndentedWriterObjectProc p in procs) {
 				if (null == p) continue;
-				if (p(null, obj, stateobject)) return p;
+				if (p(null, obj, context)) return p;
 			}
 			return null;
 		}
@@ -417,12 +417,12 @@ namespace zyllibcs.text {
 		/// <param name="owner">欲查询成员的对象. 查询静态成员时可以设为 null.</param>
 		/// <param name="tp">类型. 当 <paramref name="owner"/> 非 null 时, 可设为null, 即自动设为 <c>owner.GetType()</c> . </param>
 		/// <param name="bindingAttr">绑定标志.</param>
-		/// <param name="options">成员选项.</param>
+		/// <param name="options">成员选项. 实际的成员选项是本参数与 <see cref="IndentedWriterContext.MemberOptions"/> 属性做或运算后的值. </param>
 		/// <param name="procs">输出过程的集合, 可以为 null.</param>
 		/// <param name="handle">每个成员的处理过程, 可以为 null. 默认在调用时会将其 <c>sender</c>参数设为null. </param>
-		/// <param name="stateobject">状态对象, 可以为 null. 会传递给 <paramref name="procs"/>,<paramref name="handle"/> , 会嵌套传递. </param>
+		/// <param name="context">环境对象, 可以为 null. 会嵌套传递. </param>
 		/// <returns>是否成功.</returns>
-		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, IEnumerable<IndentedWriterObjectProc> procs, EventHandler<IndentedWriterMemberEventArgs> handle, object stateobject) {
+		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, IEnumerable<IndentedWriterObjectProc> procs, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = false;
 			if (null == tp) {
 				if (null == owner) return rt;
@@ -440,7 +440,7 @@ namespace zyllibcs.text {
 			args.BindingAttr = bindingAttr;
 			args.MemberOptions = options;
 			args.Procs = procs;
-			args.StateObject = stateobject;
+			args.Context = context;
 			// foreach.
 			foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
 				//if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
@@ -501,17 +501,17 @@ namespace zyllibcs.text {
 				if (args.IsCancel) continue;
 				// get proc.
 				if (null != args.Value) {
-					args.WriteProc = LookupWriteProcAt(args.Value, stateobject, procs);
+					args.WriteProc = LookupWriteProcAt(args.Value, context, procs);
 					if (null == args.WriteProc && (options & IndentedWriterMemberOptions.NoDefaultProcs) == 0) {
-						args.WriteProc = LookupWriteProc(args.Value, stateobject);
+						args.WriteProc = LookupWriteProc(args.Value, context);
 					}
 					if (null == args.WriteProc && (options & IndentedWriterMemberOptions.NoCommonProcs) == 0) {
-						if (IndentedObjectFunctor.CommonProc(null, args.Value, stateobject)) args.WriteProc = IndentedObjectFunctor.CommonProc;
+						if (IndentedObjectFunctor.CommonProc(null, args.Value, context)) args.WriteProc = IndentedObjectFunctor.CommonProc;
 					}
 				}
 				// handle
 				if (null != handle) {
-					//handle(stateobject, mi, value, ref writeproc, ref iwvo, ref isdefault);
+					//handle(context, mi, value, ref writeproc, ref iwvo, ref isdefault);
 					handle(null, args);
 				}
 				if (args.IsCancelAll) break;
@@ -520,7 +520,7 @@ namespace zyllibcs.text {
 				if (args.HasDefault) {
 					WriteLineValue(iw, args.MemberName, args.Value, args.ValueOptions, args.AppendComment);
 					if (null != args.WriteProc) {
-						args.WriteProc(iw, args.Value, stateobject);
+						args.WriteProc(iw, args.Value, context);
 					}
 				}
 			}

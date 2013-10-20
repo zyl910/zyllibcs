@@ -38,6 +38,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="text\BaseIndentedWriter.cs" />
     <Compile Include="text\IIndentedWriter.cs" />
+    <Compile Include="text\IndentedWriterContext.cs" />
     <Compile Include="text\IndentedWriterMemberEventArgs.cs" />
     <Compile Include="text\IndentedWriterObjectFunctor.cs" />
     <Compile Include="text\IndentedWriterUtil.cs" />

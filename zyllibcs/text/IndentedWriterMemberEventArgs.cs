@@ -92,9 +92,9 @@ namespace zyllibcs.text {
 		IEnumerable<IndentedWriterObjectProc> m_Procs;
 
 		/// <summary>
-		/// State Object.
+		/// Context Object.
 		/// </summary>
-		private object m_StateObject;
+		private IndentedWriterContext m_Context;
 
 		/// <summary>
 		/// 是否取消当前成员的默认处理. (推荐修改) .
@@ -217,11 +217,11 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// State Object.
+		/// Context Object.
 		/// </summary>
-		public object StateObject {
-			get { return m_StateObject; }
-			set { m_StateObject = value; }
+		public IndentedWriterContext Context {
+			get { return m_Context; }
+			set { m_Context = value; }
 		}
 
 		/// <summary>

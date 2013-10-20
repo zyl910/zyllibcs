@@ -241,10 +241,10 @@ namespace zyllibcs.text {
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-		/// <param name="stateobject">State Object.</param>
+		/// <param name="context">State Object.</param>
 		/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
-		public bool WriterObject(IIndentedWriter iw, object obj, object stateobject) {
-			return WriterObject_Core(iw, obj, stateobject);
+		public bool WriterObject(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+			return WriterObject_Core(iw, obj, context);
 		}
 
 		/// <summary>
@@ -252,9 +252,9 @@ namespace zyllibcs.text {
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-		/// <param name="stateobject">State Object.</param>
+		/// <param name="context">State Object.</param>
 		/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
-		protected virtual bool WriterObject_Core(IIndentedWriter iw, object obj, object stateobject) {
+		protected virtual bool WriterObject_Core(IIndentedWriter iw, object obj, IndentedWriterContext context) {
 			// check.
 			if (null == obj) return false;
 			if (null == m_BaseType) return false;
@@ -295,7 +295,7 @@ namespace zyllibcs.text {
 						iw.WriteLine(title);
 					}
 					OnHandlerMember(this, e);
-				}, stateobject);
+				}, context);
 			}
 			catch (Exception ex) {
 				System.Diagnostics.Debug.WriteLine(ex);

@@ -175,7 +175,8 @@ namespace zinfoenvironment {
 		/// 输出多行_环境.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		public static bool outl_Environment(IIndentedWriter iw, object stateobject) {
+		/// <param name="context">Context Object.</param>
+		public static bool outl_Environment(IIndentedWriter iw, IndentedWriterContext context) {
 			if (null == iw) return false;
 			Type tp = typeof(System.Environment);
 			if (!iw.Indent(tp)) return false;
@@ -241,7 +242,7 @@ namespace zinfoenvironment {
 						//}
 					}
 				}
-			}, stateobject);
+			}, context);
 			iw.Unindent();
 			return true;
 		}
@@ -250,7 +251,8 @@ namespace zinfoenvironment {
 		/// 输出多行_IntPtr.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		public static bool outl_static_IntPtr(IIndentedWriter iw, object stateobject) {
+		/// <param name="context">Context Object.</param>
+		public static bool outl_static_IntPtr(IIndentedWriter iw, IndentedWriterContext context) {
 			if (null == iw) return false;
 			Type tp = typeof(System.IntPtr);
 			if (!iw.Indent(tp)) return false;
@@ -260,7 +262,7 @@ namespace zinfoenvironment {
 				iw.WriteLine(string.Format("# sizeof:\t{0}", sizeof(System.IntPtr)));
 			}
 #endif
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, null, stateobject);
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, null, context);
 			iw.Unindent();
 			return true;
 		}
