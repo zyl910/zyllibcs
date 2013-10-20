@@ -86,10 +86,10 @@ namespace zyllibcs.text {
 		/// </summary>
 		private IndentedWriterMemberOptions m_MemberOptions;
 
-		/// <summary>
-		/// [原参数]输出过程的集合.
-		/// </summary>
-		IEnumerable<IndentedWriterObjectProc> m_Procs;
+		///// <summary>
+		///// [原参数]输出过程的集合.
+		///// </summary>
+		//IEnumerable<IndentedWriterObjectProc> m_Procs;
 
 		/// <summary>
 		/// Context Object.
@@ -208,13 +208,13 @@ namespace zyllibcs.text {
 			set { m_MemberOptions = value; }
 		}
 
-		/// <summary>
-		/// [原参数]输出过程的集合.
-		/// </summary>
-		public IEnumerable<IndentedWriterObjectProc> Procs {
-			get { return m_Procs; }
-			set { m_Procs = value; }
-		}
+		///// <summary>
+		///// [原参数]输出过程的集合.
+		///// </summary>
+		//public IEnumerable<IndentedWriterObjectProc> Procs {
+		//    get { return m_Procs; }
+		//    set { m_Procs = value; }
+		//}
 
 		/// <summary>
 		/// Context Object.

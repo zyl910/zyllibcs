@@ -67,10 +67,10 @@ namespace zyllibcs.text {
 		/// </summary>
 		IndentedWriterMemberOptions m_WriterOptions;
 
-		/// <summary>
-		/// 成员的输出过程集.
-		/// </summary>
-		private IEnumerable<IndentedWriterObjectProc> m_MemberProcs;
+		///// <summary>
+		///// 成员的输出过程集.
+		///// </summary>
+		//private IEnumerable<IndentedWriterObjectProc> m_MemberProcs;
 
 		///// <summary>
 		///// 用户自定义数据.
@@ -134,13 +134,13 @@ namespace zyllibcs.text {
 			set { m_WriterOptions = value; }
 		}
 
-		/// <summary>
-		/// 成员的输出过程集.
-		/// </summary>
-		public IEnumerable<IndentedWriterObjectProc> MemberProcs {
-			get { return m_MemberProcs; }
-			set { m_MemberProcs = value; }
-		}
+		///// <summary>
+		///// 成员的输出过程集.
+		///// </summary>
+		//public IEnumerable<IndentedWriterObjectProc> MemberProcs {
+		//    get { return m_MemberProcs; }
+		//    set { m_MemberProcs = value; }
+		//}
 
 		///// <summary>
 		///// 用户自定义数据.
@@ -195,7 +195,7 @@ namespace zyllibcs.text {
 			m_Options = options;
 			m_BaseBinding = basebinding;
 			m_WriterOptions = writeroptions;
-			m_MemberProcs = memberprocs;
+			//m_MemberProcs = memberprocs;
 			m_Tag = tag;
 		}
 
@@ -284,7 +284,7 @@ namespace zyllibcs.text {
 			if (!iw.Indent(obj)) return false;
 			bool needtitle = true;
 			try {
-				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, m_MemberProcs, delegate(object sender, IndentedWriterMemberEventArgs e) {
+				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
 					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
 					if (needtitle && null!=e && e.HasDefault) {
 						// 仅当至少有一个成员, 才输出标题.

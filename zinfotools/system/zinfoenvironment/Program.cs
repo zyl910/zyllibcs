@@ -181,7 +181,7 @@ namespace zinfoenvironment {
 			Type tp = typeof(System.Environment);
 			if (!iw.Indent(tp)) return false;
 			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, delegate(object sender, IndentedWriterMemberEventArgs e) {
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, delegate(object sender, IndentedWriterMemberEventArgs e) {
 				// http://msdn.microsoft.com/zh-cn/library/system.environment(v=vs.110).aspx
 				MethodInfo memberinfo = e.MemberInfo as MethodInfo;
 				if (null != memberinfo) {
@@ -262,7 +262,7 @@ namespace zinfoenvironment {
 				iw.WriteLine(string.Format("# sizeof:\t{0}", sizeof(System.IntPtr)));
 			}
 #endif
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, null, context);
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, context);
 			iw.Unindent();
 			return true;
 		}

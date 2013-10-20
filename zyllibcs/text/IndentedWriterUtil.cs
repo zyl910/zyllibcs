@@ -45,10 +45,10 @@ namespace zyllibcs.text {
 		/// 默认.
 		/// </summary>
 		Default = 0,
-		/// <summary>
-		/// 不查找默认输出过程集.
-		/// </summary>
-		NoDefaultProcs = 1,
+		///// <summary>
+		///// 不查找默认输出过程集.
+		///// </summary>
+		//NoDefaultProcs = 1,
 		/// <summary>
 		/// 不查找默认输出过程.
 		/// </summary>
@@ -123,39 +123,39 @@ namespace zyllibcs.text {
 		/// </summary>
 		public static readonly StringComparer StringComparer = StringComparer.Ordinal;
 
-		/// <summary>
-		/// 默认的输出过程集合.
-		/// </summary>
-		private static List<IndentedWriterObjectProc> m_WriteProcs = new List<IndentedWriterObjectProc>();
+		///// <summary>
+		///// 默认的输出过程集合.
+		///// </summary>
+		//private static List<IndentedWriterObjectProc> m_WriteProcs = new List<IndentedWriterObjectProc>();
 
-		/// <summary>
-		/// 向默认集合中添加输出过程.
-		/// </summary>
-		/// <param name="proc"></param>
-		public static void AddWriteProc(IndentedWriterObjectProc proc) {
-			lock (m_WriteProcs) {
-				m_WriteProcs.Add(proc);
-			}
-		}
+		///// <summary>
+		///// 向默认集合中添加输出过程.
+		///// </summary>
+		///// <param name="proc"></param>
+		//public static void AddWriteProc(IndentedWriterObjectProc proc) {
+		//    lock (m_WriteProcs) {
+		//        m_WriteProcs.Add(proc);
+		//    }
+		//}
 
-		/// <summary>
-		/// 查找匹配的输出过程.
-		/// </summary>
-		/// <param name="obj">对象.</param>
-		/// <param name="context">State Object. Can be NULL.</param>
-		/// <returns>返回匹配的输出过程, 失败时返回null.</returns>
-		public static IndentedWriterObjectProc LookupWriteProc(object obj, IndentedWriterContext context) {
-			if (null == obj) return null;
-			lock (m_WriteProcs) {
-				return LookupWriteProcAt(obj, context, m_WriteProcs);
-			}
-		}
+		///// <summary>
+		///// 查找匹配的输出过程.
+		///// </summary>
+		///// <param name="obj">对象.</param>
+		///// <param name="context">Context Object. Can be NULL.</param>
+		///// <returns>返回匹配的输出过程, 失败时返回null.</returns>
+		//public static IndentedWriterObjectProc LookupWriteProc(object obj, IndentedWriterContext context) {
+		//    if (null == obj) return null;
+		//    lock (m_WriteProcs) {
+		//        return LookupWriteProcAt(obj, context, m_WriteProcs);
+		//    }
+		//}
 
 		/// <summary>
 		/// 在集合中查找匹配的输出过程.
 		/// </summary>
 		/// <param name="obj">对象.</param>
-		/// <param name="context">State Object. Can be NULL.</param>
+		/// <param name="context">Context Object. Can be NULL.</param>
 		/// <param name="procs">输出过程的集合.</param>
 		/// <returns>返回匹配的输出过程, 失败时返回null.</returns>
 		public static IndentedWriterObjectProc LookupWriteProcAt(object obj, IndentedWriterContext context, IEnumerable<IndentedWriterObjectProc> procs) {
@@ -418,11 +418,10 @@ namespace zyllibcs.text {
 		/// <param name="tp">类型. 当 <paramref name="owner"/> 非 null 时, 可设为null, 即自动设为 <c>owner.GetType()</c> . </param>
 		/// <param name="bindingAttr">绑定标志.</param>
 		/// <param name="options">成员选项. 实际的成员选项是本参数与 <see cref="IndentedWriterContext.MemberOptions"/> 属性做或运算后的值. </param>
-		/// <param name="procs">输出过程的集合, 可以为 null.</param>
 		/// <param name="handle">每个成员的处理过程, 可以为 null. 默认在调用时会将其 <c>sender</c>参数设为null. </param>
 		/// <param name="context">环境对象, 可以为 null. 会嵌套传递. </param>
 		/// <returns>是否成功.</returns>
-		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, IEnumerable<IndentedWriterObjectProc> procs, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
+		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = false;
 			if (null == tp) {
 				if (null == owner) return rt;
@@ -439,9 +438,11 @@ namespace zyllibcs.text {
 			args.OwnerType = tp;
 			args.BindingAttr = bindingAttr;
 			args.MemberOptions = options;
-			args.Procs = procs;
+			//args.Procs = procs;
 			args.Context = context;
 			// foreach.
+			IndentedWriterMemberOptions realoptions = options;
+			if (null != context) realoptions |= context.MemberOptions;
 			foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
 				//if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
 				args.IsCancel = true;
@@ -491,7 +492,7 @@ namespace zyllibcs.text {
 					}
 				}
 				else if (mi is MethodInfo) {
-					if ((options & IndentedWriterMemberOptions.AllowMethod) != 0) {
+					if ((realoptions & IndentedWriterMemberOptions.AllowMethod) != 0) {
 						//MethodInfo methodinfo = mi as MethodInfo;
 						args.IsCancel = false;
 						args.ValueOptions = IndentedWriterValueOptions.AutoHideValue;
@@ -501,11 +502,14 @@ namespace zyllibcs.text {
 				if (args.IsCancel) continue;
 				// get proc.
 				if (null != args.Value) {
-					args.WriteProc = LookupWriteProcAt(args.Value, context, procs);
-					if (null == args.WriteProc && (options & IndentedWriterMemberOptions.NoDefaultProcs) == 0) {
-						args.WriteProc = LookupWriteProc(args.Value, context);
+					//args.WriteProc = LookupWriteProcAt(args.Value, context, procs);
+					if (null != context) {
+						args.WriteProc = LookupWriteProcAt(args.Value, context, context.Procs);
 					}
-					if (null == args.WriteProc && (options & IndentedWriterMemberOptions.NoCommonProcs) == 0) {
+					//if (null == args.WriteProc && (realoptions & IndentedWriterMemberOptions.NoDefaultProcs) == 0) {
+					//    args.WriteProc = LookupWriteProc(args.Value, context);
+					//}
+					if (null == args.WriteProc && (realoptions & IndentedWriterMemberOptions.NoCommonProcs) == 0) {
 						if (IndentedObjectFunctor.CommonProc(null, args.Value, context)) args.WriteProc = IndentedObjectFunctor.CommonProc;
 					}
 				}
