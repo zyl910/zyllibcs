@@ -302,13 +302,14 @@ namespace zyllibcs.text {
 			// write.
 			if ((m_Options & IndentedObjectFunctorOptions.NotWrite) != 0) return true;
 			if (!iw.Indent(obj)) return false;
-			if (null != context) {
-				foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
-					iw.Write(p.Key.FullName);
-					iw.Write('/');
-				}
-				iw.WriteLine();
-			}
+			//if (null != context) {
+			//    // debug: show path.
+			//    foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
+			//        iw.Write(p.Key.FullName);
+			//        iw.Write('/');
+			//    }
+			//    iw.WriteLine();
+			//}
 			bool needtitle = true;
 			try {
 				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
