@@ -85,6 +85,19 @@ namespace zyllibcs.text {
 	//public delegate void IndentedWriterHandleMemberProc(object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault);
 
 	/// <summary>
+	/// 输出对象成员的通知.
+	/// </summary>
+	/// <param name="iw">带缩进输出者.</param>
+	/// <param name="owner">欲查询成员的对象.</param>
+	/// <param name="tp">类型.</param>
+	/// <param name="bindingAttr">绑定标志.</param>
+	/// <param name="options">成员选项. </param>
+	/// <param name="handle">每个成员的处理过程. </param>
+	/// <param name="context">环境对象. </param>
+	/// <returns>若在开始枚举成员之前, 返回值表示是否允许枚举. 其他时候忽略.</returns>
+	public delegate bool IndentedWriterForEachMemberNotify(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context);
+
+	/// <summary>
 	/// 带缩进输出者工具.
 	/// </summary>
 	public static class IndentedWriterUtil {
@@ -428,6 +441,11 @@ namespace zyllibcs.text {
 				tp = owner.GetType();
 			}
 			if (null == owner && (bindingAttr & BindingFlags.Instance) != 0) throw new ArgumentException("bindingAttr has Instance, but owner is null.", "bindingAttr");
+			// notify begin.
+			if (null == context) context = new IndentedWriterContext();	// 自动创建环境. 有可能以后调整设计, 所以后面还是检查 context.
+			if (null != context) {
+				if (!context.NotifyForEachMemberBegin(iw, owner, tp, bindingAttr, options, handle, context)) return false;
+			}
 			// args
 			IndentedWriterMemberEventArgs args = new IndentedWriterMemberEventArgs();
 			args.IsCancel = false;
@@ -527,6 +545,10 @@ namespace zyllibcs.text {
 						args.WriteProc(iw, args.Value, context);
 					}
 				}
+			}
+			// notify begin.
+			if (null != context) {
+				context.NotifyForEachMemberEnd(iw, owner, tp, bindingAttr, options, handle, context);
 			}
 			rt = true;
 			return rt;

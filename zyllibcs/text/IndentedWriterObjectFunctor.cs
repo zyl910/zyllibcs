@@ -241,25 +241,33 @@ namespace zyllibcs.text {
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-		/// <param name="context">State Object.</param>
+		/// <param name="context">Context.</param>
 		/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
 		public bool WriterObject(IIndentedWriter iw, object obj, IndentedWriterContext context) {
-			return WriterObject_Core(iw, obj, context);
+			Type tp;
+			bool showBaseName;
+			// check.
+			if (!WriterObject_CheckObject(iw, obj, context, out tp, out showBaseName)) return false;
+			if (null == iw) return true;
+			// write.
+			return WriterObject_WriteObject(iw, obj, context, tp, showBaseName);
 		}
 
 		/// <summary>
-		/// 输出对象_内部版.
+		/// 输出对象_检查对象.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-		/// <param name="context">State Object.</param>
-		/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
-		protected virtual bool WriterObject_Core(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+		/// <param name="obj">object.</param>
+		/// <param name="context">Context.</param>
+		/// <param name="tp">返回 类型.</param>
+		/// <param name="showBaseName">返回 是否显示基类类型的名称.</param>
+		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
+		public virtual bool WriterObject_CheckObject(IIndentedWriter iw, object obj, IndentedWriterContext context, out Type tp, out bool showBaseName) {
 			// check.
+			tp = obj.GetType();
+			showBaseName = false;	// 是否显示基类类型的名称.
 			if (null == obj) return false;
 			if (null == m_BaseType) return false;
-			Type tp = obj.GetType();
-			bool showBaseName = false;	// 是否显示基类类型的名称.
 			if (tp.IsEnum) return false;
 			if (tp.IsPointer) return false;
 			if (tp.IsPrimitive) return false;
@@ -278,21 +286,37 @@ namespace zyllibcs.text {
 			if ((m_Options & IndentedObjectFunctorOptions.AllowSimple) == 0) {
 				if (IndentedWriterUtil.IsSimpleType(tp)) return false;
 			}
-			if (null == iw) return true;
+			return true;
+		}
+
+		/// <summary>
+		/// 输出对象_输出对象.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="obj">object.</param>
+		/// <param name="context">Context.</param>
+		/// <param name="tp">返回 类型.</param>
+		/// <param name="showBaseName">返回 是否显示基类类型的名称.</param>
+		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
+		public virtual bool WriterObject_WriteObject(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName) {
 			// write.
 			if ((m_Options & IndentedObjectFunctorOptions.NotWrite) != 0) return true;
 			if (!iw.Indent(obj)) return false;
+			if (null != context) {
+				foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
+					iw.Write(p.Key.FullName);
+					iw.Write('/');
+				}
+				iw.WriteLine();
+			}
 			bool needtitle = true;
 			try {
 				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
 					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
-					if (needtitle && null!=e && e.HasDefault) {
+					if (needtitle && null != e && e.HasDefault) {
 						// 仅当至少有一个成员, 才输出标题.
 						needtitle = false;
-						string title;
-						if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", GetTypeName(tp), GetTypeName(m_BaseType));
-						else title = string.Format("# <{0}>", GetTypeName(tp));
-						iw.WriteLine(title);
+						WriterObject_WriteTitle(iw, obj, context, tp, showBaseName);
 					}
 					OnHandlerMember(this, e);
 				}, context);
@@ -303,6 +327,32 @@ namespace zyllibcs.text {
 			iw.Unindent();
 			return !needtitle;
 		}
+
+		/// <summary>
+		/// 输出对象_输出标题.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="obj">object.</param>
+		/// <param name="context">Context.</param>
+		/// <param name="tp">返回 类型.</param>
+		/// <param name="showBaseName">返回 是否显示基类类型的名称.</param>
+		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
+		public virtual void WriterObject_WriteTitle(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName) {
+			string title;
+			if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", GetTypeName(tp), GetTypeName(m_BaseType));
+			else title = string.Format("# <{0}>", GetTypeName(tp));
+			iw.WriteLine(title);
+		}
+
+		///// <summary>
+		///// 输出对象_内部版.
+		///// </summary>
+		///// <param name="iw">带缩进输出者.</param>
+		///// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
+		///// <param name="context">State Object.</param>
+		///// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
+		//protected virtual bool WriterObject_Core(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+		//}
 
 		/// <summary>
 		/// 当需要处理输出成员信息时.
