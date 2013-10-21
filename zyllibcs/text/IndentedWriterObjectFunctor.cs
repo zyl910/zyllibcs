@@ -58,39 +58,9 @@ namespace zyllibcs.text {
 		private Type m_BaseType;
 
 		/// <summary>
-		/// 基本绑定.
-		/// </summary>
-		private BindingFlags m_BaseBinding;
-
-		/// <summary>
 		/// 输出选项.
 		/// </summary>
 		IndentedWriterMemberOptions m_WriterOptions;
-
-		///// <summary>
-		///// 成员的输出过程集.
-		///// </summary>
-		//private IEnumerable<IndentedWriterObjectProc> m_MemberProcs;
-
-		///// <summary>
-		///// 用户自定义数据.
-		///// </summary>
-		//private object m_Userdata;
-
-		///// <summary>
-		///// 输出成员信息时的处理过程.
-		///// </summary>
-		//private IndentedWriterHandleMemberProc m_MemberHandleProc;
-
-		///// <summary>
-		///// 当前输出者.
-		///// </summary>
-		//private IIndentedWriter m_CurrentWriter = null;
-
-		///// <summary>
-		///// 当前对象.
-		///// </summary>
-		//private object m_CurrentObject = null;
 
 		/// <summary>
 		/// 用户自定义数据.
@@ -119,58 +89,12 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// 基本绑定.
-		/// </summary>
-		public BindingFlags BaseBinding {
-			get { return m_BaseBinding; }
-			set { m_BaseBinding = value; }
-		}
-
-		/// <summary>
 		/// 输出选项.
 		/// </summary>
 		public IndentedWriterMemberOptions WriterOptions {
 			get { return m_WriterOptions; }
 			set { m_WriterOptions = value; }
 		}
-
-		///// <summary>
-		///// 成员的输出过程集.
-		///// </summary>
-		//public IEnumerable<IndentedWriterObjectProc> MemberProcs {
-		//    get { return m_MemberProcs; }
-		//    set { m_MemberProcs = value; }
-		//}
-
-		///// <summary>
-		///// 用户自定义数据.
-		///// </summary>
-		//public object Userdata {
-		//    get { return m_Userdata; }
-		//    set { m_Userdata = value; }
-		//}
-
-		///// <summary>
-		///// 输出成员信息时的处理过程.
-		///// </summary>
-		//public IndentedWriterHandleMemberProc MemberHandleProc {
-		//    get { return m_MemberHandleProc; }
-		//    set { m_MemberHandleProc = value; }
-		//}
-
-		///// <summary>
-		///// 当前输出者.
-		///// </summary>
-		//public IIndentedWriter CurrentWriter {
-		//    get { return m_CurrentWriter; }
-		//}
-
-		///// <summary>
-		///// 当前对象.
-		///// </summary>
-		//public object CurrentObject {
-		//    get { return m_CurrentObject; }
-		//}
 
 		/// <summary>
 		/// 用户自定义数据.
@@ -185,28 +109,16 @@ namespace zyllibcs.text {
 		/// </summary>
 		/// <param name="basetype">基本类型.</param>
 		/// <param name="options">选项.</param>
-		/// <param name="basebinding">基本绑定.</param>
 		/// <param name="writeroptions">输出选项.</param>
 		/// <param name="memberprocs">成员的输出过程集.</param>
 		/// <param name="tag">用户自定义数据.</param>
-		public IndentedObjectFunctor(Type basetype, IndentedObjectFunctorOptions options, BindingFlags basebinding, IndentedWriterMemberOptions writeroptions, IEnumerable<IndentedWriterObjectProc> memberprocs, object tag)
+		public IndentedObjectFunctor(Type basetype, IndentedObjectFunctorOptions options, IndentedWriterMemberOptions writeroptions, IEnumerable<IndentedWriterObjectProc> memberprocs, object tag)
 			: base() {
 			m_BaseType = basetype;
 			m_Options = options;
-			m_BaseBinding = basebinding;
 			m_WriterOptions = writeroptions;
 			//m_MemberProcs = memberprocs;
 			m_Tag = tag;
-		}
-
-		/// <summary>
-		/// 构造 IndentedWriterObjectFunctor 对象, 拥有 类型,选项,绑定 等参数.
-		/// </summary>
-		/// <param name="basetype">基本类型.</param>
-		/// <param name="options">选项.</param>
-		/// <param name="basebinding">基本绑定.</param>
-		public IndentedObjectFunctor(Type basetype, IndentedObjectFunctorOptions options, BindingFlags basebinding)
-			: this(basetype, options, basebinding, IndentedWriterMemberOptions.Default, null, null) {
 		}
 
 		/// <summary>
@@ -215,7 +127,7 @@ namespace zyllibcs.text {
 		/// <param name="basetype">基本类型.</param>
 		/// <param name="options">选项.</param>
 		public IndentedObjectFunctor(Type basetype, IndentedObjectFunctorOptions options)
-			: this(basetype, options, IndentedWriterUtil.PublicInstance) {
+			: this(basetype, options, IndentedWriterMemberOptions.Default, null, null) {
 		}
 
 		/// <summary>
@@ -268,14 +180,25 @@ namespace zyllibcs.text {
 			showBaseName = false;	// 是否显示基类类型的名称.
 			if (null == obj) return false;
 			if (null == m_BaseType) return false;
+#if NETFX_CORE
+			TypeInfo ti = tp.GetTypeInfo();
+			if (ti.IsEnum) return false;
+			if (ti.IsPointer) return false;
+			if (ti.IsPrimitive) return false;
+#else
 			if (tp.IsEnum) return false;
 			if (tp.IsPointer) return false;
 			if (tp.IsPrimitive) return false;
+#endif
 			if ((m_Options & IndentedObjectFunctorOptions.OnlyType) != 0) {
 				if (!m_BaseType.Equals(tp)) return false;
 			}
 			else {
+#if NETFX_CORE
+				if (!m_BaseType.GetTypeInfo().IsAssignableFrom(ti)) return false;
+#else
 				if (!m_BaseType.IsInstanceOfType(obj)) return false;
+#endif
 				if ((m_Options & IndentedObjectFunctorOptions.OnlyMember) != 0) {
 					tp = m_BaseType;
 				}
@@ -302,17 +225,16 @@ namespace zyllibcs.text {
 			// write.
 			if ((m_Options & IndentedObjectFunctorOptions.NotWrite) != 0) return true;
 			if (!iw.Indent(obj)) return false;
-			//if (null != context) {
-			//    // debug: show path.
-			//    foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
-			//        iw.Write(p.Key.FullName);
-			//        iw.Write('/');
-			//    }
-			//    iw.WriteLine();
-			//}
+			if (null != context) {
+				foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
+					iw.Write(p.Key.FullName);
+					iw.Write('/');
+				}
+				iw.WriteLine();
+			}
 			bool needtitle = true;
 			try {
-				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_BaseBinding, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
+				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
 					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
 					if (needtitle && null != e && e.HasDefault) {
 						// 仅当至少有一个成员, 才输出标题.
@@ -345,16 +267,6 @@ namespace zyllibcs.text {
 			iw.WriteLine(title);
 		}
 
-		///// <summary>
-		///// 输出对象_内部版.
-		///// </summary>
-		///// <param name="iw">带缩进输出者.</param>
-		///// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-		///// <param name="context">State Object.</param>
-		///// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 否则返回是否成功输出.</returns>
-		//protected virtual bool WriterObject_Core(IIndentedWriter iw, object obj, IndentedWriterContext context) {
-		//}
-
 		/// <summary>
 		/// 当需要处理输出成员信息时.
 		/// </summary>
@@ -364,25 +276,6 @@ namespace zyllibcs.text {
 			EventHandler<IndentedWriterMemberEventArgs> handler = HandlerMember;
 			if (null != handler) handler(sender, e);
 		}
-
-		///// <summary>
-		///// 当需要处理输出成员信息时.
-		///// </summary>
-		///// <param name="userdata">用户自定义对象.</param>
-		///// <param name="mi">成员信息.</param>
-		///// <param name="value">值.</param>
-		///// <param name="writeproc">匹配的输出过程.</param>
-		///// <param name="iwvo">输出数值的选项. 注意但不是字段或属性时, 其初始值不同.</param>
-		///// <param name="isdefault">是否进行默认处理. 若不需要进行默认处理, 便返回false. 注意但不是字段或属性时, 其初始值不同.</param>
-		///// <remarks>
-		///// 若 <paramref name="isdefault"/> 为 true, 则默认会调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 输出值的信息行, 再使用 <paramref name="writeproc"/> 输出值的详细内容 .
-		///// 如果你想定制输出信息, 请将 <paramref name="isdefault"/> 设为 false, 并自行调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 与 <see cref="IndentedWriterObjectProc"/> .
-		///// 注意默认操作仅支持字段与(非索引化的)属性.
-		///// </remarks>
-		//protected virtual void OnHandleMemberProc(object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault) {
-		//    IndentedWriterHandleMemberProc proc = m_MemberHandleProc;
-		//    if (null != proc) proc(userdata, mi, value, ref writeproc, ref iwvo, ref isdefault);
-		//}
 
 	}
 }

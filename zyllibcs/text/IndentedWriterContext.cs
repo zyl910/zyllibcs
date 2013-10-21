@@ -100,16 +100,15 @@ namespace zyllibcs.text {
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="owner">欲查询成员的对象.</param>
 		/// <param name="tp">类型.</param>
-		/// <param name="bindingAttr">绑定标志.</param>
 		/// <param name="options">成员选项. </param>
 		/// <param name="handle">每个成员的处理过程. </param>
 		/// <param name="context">环境对象. </param>
 		/// <returns>若在开始枚举成员之前, 返回值表示是否允许枚举. 其他时候忽略.</returns>
-		public bool NotifyForEachMemberBegin(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
+		public bool NotifyForEachMemberBegin(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = true;
 			m_TypeOwners.Add(new KeyValuePair<Type, object>(tp, owner));
 			IndentedWriterForEachMemberNotify p = ForEachMemberBegin;
-			if (null != p) rt = p(iw, owner, tp, bindingAttr, options, handle, context);
+			if (null != p) rt = p(iw, owner, tp, options, handle, context);
 			return rt;
 		}
 
@@ -119,15 +118,14 @@ namespace zyllibcs.text {
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="owner">欲查询成员的对象.</param>
 		/// <param name="tp">类型.</param>
-		/// <param name="bindingAttr">绑定标志.</param>
 		/// <param name="options">成员选项. </param>
 		/// <param name="handle">每个成员的处理过程. </param>
 		/// <param name="context">环境对象. </param>
 		/// <returns>若在开始枚举成员之前, 返回值表示是否允许枚举. 其他时候忽略.</returns>
-		public bool NotifyForEachMemberEnd(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
+		public bool NotifyForEachMemberEnd(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = true;
 			IndentedWriterForEachMemberNotify p = ForEachMemberEnd;
-			if (null != p) rt = p(iw, owner, tp, bindingAttr, options, handle, context);
+			if (null != p) rt = p(iw, owner, tp, options, handle, context);
 			if (m_TypeOwners.Count > 0) m_TypeOwners.RemoveAt(m_TypeOwners.Count - 1);
 			return rt;
 		}

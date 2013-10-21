@@ -183,9 +183,11 @@ namespace zyllibcs.text {
 			else if (mi is EventInfo) {
 				rt = GetMemberName(mi as EventInfo, options);
 			}
+#if (!NETFX_CORE)
 			else if (mi is Type) {
 				rt = GetMemberName(mi as Type, options);
 			}
+#endif
 			else {
 				rt = mi.Name;
 			}

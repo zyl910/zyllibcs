@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zinfoenvironments4a", "zinfoenvironments4a.csproj", "{0C62344F-93A8-4235-83C7-35FA864C0E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zyllibcss4a", "..\..\..\zyllibcs\zyllibcss4a.csproj", "{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|ARM.ActiveCfg = Debug|ARM
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|ARM.Build.0 = Debug|ARM
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Debug|ARM.Deploy.0 = Debug|ARM
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|ARM.ActiveCfg = Release|ARM
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|ARM.Build.0 = Release|ARM
+		{0C62344F-93A8-4235-83C7-35FA864C0E20}.Release|ARM.Deploy.0 = Release|ARM
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Debug|ARM.ActiveCfg = Debug|ARM
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Debug|ARM.Build.0 = Debug|ARM
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|ARM.ActiveCfg = Release|ARM
+		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

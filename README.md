@@ -29,8 +29,11 @@
 
 ## Conditional compilation symbols
 
-* DN_APP: Store Apps.
-* DN_PORTABLE: Portable Library.
+//* DN_APP: Store Apps.
+//* DN_PORTABLE: Portable Library.
+
+* NETFX_CORE: Store Apps.
+* NETFX_PORTABLE: Portable Library.
 * DOTNET2: .Net 2.0 .
 * DOTNET3: .Net 3.0 .
 * DOTNET4: .Net 4.0 .

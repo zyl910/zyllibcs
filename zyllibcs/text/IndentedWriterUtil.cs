@@ -45,14 +45,10 @@ namespace zyllibcs.text {
 		/// 默认.
 		/// </summary>
 		Default = 0,
-		///// <summary>
-		///// 不查找默认输出过程集.
-		///// </summary>
-		//NoDefaultProcs = 1,
 		/// <summary>
 		/// 不查找默认输出过程.
 		/// </summary>
-		NoCommonProcs = 2,
+		NoCommonProcs = 1,
 		//TODO: 是否将遍历数组整合到IndentedObjectFunctor, 与集合一起处理?
 		///// <summary>
 		///// 不自动遍历数组.
@@ -62,10 +58,14 @@ namespace zyllibcs.text {
 		///// 遍历数组时, 不自动简化简单类型（基元类型或<see cref="String"/>等）的信息.
 		///// </summary>
 		//ForEachArrayNoSimple = 8,
-		/// <summary>
-		/// 允许枚举方法. 默认情况下仅枚举字段与属性, 加上次标识后才枚举方法.
+        /// <summary>
+        /// 仅枚举静态成员. 默认情况下仅枚举实例成员.
+        /// </summary>
+        OnlyStatic = 0x100,
+        /// <summary>
+		/// 允许枚举方法. 默认情况下仅枚举字段与属性, 加上此标识后才枚举方法.
 		/// </summary>
-		AllowMethod = 0x100,
+		AllowMethod = 0x200,
 	}
 
 	///// <summary>
@@ -90,36 +90,16 @@ namespace zyllibcs.text {
 	/// <param name="iw">带缩进输出者.</param>
 	/// <param name="owner">欲查询成员的对象.</param>
 	/// <param name="tp">类型.</param>
-	/// <param name="bindingAttr">绑定标志.</param>
 	/// <param name="options">成员选项. </param>
 	/// <param name="handle">每个成员的处理过程. </param>
 	/// <param name="context">环境对象. </param>
 	/// <returns>若在开始枚举成员之前, 返回值表示是否允许枚举. 其他时候忽略.</returns>
-	public delegate bool IndentedWriterForEachMemberNotify(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context);
+	public delegate bool IndentedWriterForEachMemberNotify(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context);
 
 	/// <summary>
 	/// 带缩进输出者工具.
 	/// </summary>
 	public static class IndentedWriterUtil {
-		/// <summary>
-		/// 常用成员(字段,属性,方法).
-		/// </summary>
-		public const BindingFlags BindingMember = 0;
-
-		/// <summary>
-		/// 公开的实例成员.
-		/// </summary>
-		public const BindingFlags PublicInstance = BindingMember | BindingFlags.Public | BindingFlags.Instance;
-
-		/// <summary>
-		/// 公开的静态成员.
-		/// </summary>
-		public const BindingFlags PublicStatic = BindingMember | BindingFlags.Public | BindingFlags.Static;
-
-		/// <summary>
-		/// 公开的静态与实例成员.
-		/// </summary>
-		public const BindingFlags PublicStaticInstance = PublicInstance | PublicStatic;
 
 		/// <summary>
 		/// 默认类型名称选项.
@@ -136,33 +116,6 @@ namespace zyllibcs.text {
 		/// </summary>
 		public static readonly StringComparer StringComparer = StringComparer.Ordinal;
 
-		///// <summary>
-		///// 默认的输出过程集合.
-		///// </summary>
-		//private static List<IndentedWriterObjectProc> m_WriteProcs = new List<IndentedWriterObjectProc>();
-
-		///// <summary>
-		///// 向默认集合中添加输出过程.
-		///// </summary>
-		///// <param name="proc"></param>
-		//public static void AddWriteProc(IndentedWriterObjectProc proc) {
-		//    lock (m_WriteProcs) {
-		//        m_WriteProcs.Add(proc);
-		//    }
-		//}
-
-		///// <summary>
-		///// 查找匹配的输出过程.
-		///// </summary>
-		///// <param name="obj">对象.</param>
-		///// <param name="context">Context Object. Can be NULL.</param>
-		///// <returns>返回匹配的输出过程, 失败时返回null.</returns>
-		//public static IndentedWriterObjectProc LookupWriteProc(object obj, IndentedWriterContext context) {
-		//    if (null == obj) return null;
-		//    lock (m_WriteProcs) {
-		//        return LookupWriteProcAt(obj, context, m_WriteProcs);
-		//    }
-		//}
 
 		/// <summary>
 		/// 在集合中查找匹配的输出过程.
@@ -219,7 +172,14 @@ namespace zyllibcs.text {
 			if (null == tp) return false;
 			foreach (Type p in SimpleTypes) {
 				if (tp.Equals(p)) return true;
+#if NETFX_CORE
+				TypeInfo ti = tp.GetTypeInfo();
+				if (null != ti) {
+					if (ti.IsSubclassOf(p)) return true;
+				}
+#else
 				if (tp.IsSubclassOf(p)) return true;
+#endif
 			}
 			return false;
 		}
@@ -250,24 +210,24 @@ namespace zyllibcs.text {
 			string rt = null;
 			if (null == value) return rt;
 			Type tp = value.GetType();
-			if (tp.IsEnum) {
+			if (false) {
+			}
+			else if (value is Enum) {
 				return string.Format("0x{0:X}, {0:d}, {1}", value, tp.Name);
 			}
-			else if (tp.IsPrimitive) {
-				if (value is char) {
-					return string.Format("0x{0:X}, {0:d}", (int)(char)value);
-				}
-				else if (value is sbyte
-					|| value is byte
-					|| value is short
-					|| value is ushort
-					|| value is int
-					|| value is uint
-					|| value is long
-					|| value is ulong
-					) {
-					return string.Format("0x{0:X}", value);
-				}
+			else if (value is char) {
+				return string.Format("0x{0:X}, {0:d}", (int)(char)value);
+			}
+			else if (value is sbyte
+				|| value is byte
+				|| value is short
+				|| value is ushort
+				|| value is int
+				|| value is uint
+				|| value is long
+				|| value is ulong
+				) {
+				return string.Format("0x{0:X}", value);
 			}
 			else if (value is string) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as string).Length);
@@ -331,97 +291,43 @@ namespace zyllibcs.text {
 			return rt;
 		}
 
-		///// <summary>
-		///// 输出对象的各个成员.
-		///// </summary>
-		///// <param name="iw">带缩进输出者.</param>
-		///// <param name="owner">欲查询成员的对象. 查询静态成员时可以设为 null.</param>
-		///// <param name="tp">类型. 当 <paramref name="owner"/> 非 null 时, 可设为null, 即自动设为 <c>owner.GetType()</c> . </param>
-		///// <param name="bindingAttr">绑定标志.</param>
-		///// <param name="options">成员选项.</param>
-		///// <param name="procs">输出过程的集合.</param>
-		///// <param name="userdata">用户自定义数据. 会传递给 <paramref name="handle"/> . </param>
-		///// <param name="handle">每个成员的处理过程.</param>
-		///// <returns>是否成功.</returns>
-		//public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, IEnumerable<IndentedWriterObjectProc> procs, object userdata, IndentedWriterHandleMemberProc handle) {
-		//    bool rt = false;
-		//    if (null == tp) {
-		//        if (null == owner) return rt;
-		//        tp = owner.GetType();
-		//    }
-		//    if (null == owner && (bindingAttr & BindingFlags.Instance) != 0) throw new ArgumentException("bindingAttr has Instance, but owner is null.", "bindingAttr");
-		//    foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
-		//        //if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
-		//        bool bOk = false;
-		//        const IndentedWriterValueOptions default_iwvo = IndentedWriterValueOptions.Default;
-		//        object value = null;
-		//        IndentedWriterObjectProc writeproc = null;
-		//        IndentedWriterValueOptions iwvo = IndentedWriterValueOptions.ExistValue;
-		//        bool isdefault = false;
-		//        // get value.
-		//        if (false) {
-		//        }
-		//        else if (mi is FieldInfo) {
-		//            FieldInfo fi = mi as FieldInfo;
-		//            bOk = true;
-		//            if (true) {
-		//                try {
-		//                    value = fi.GetValue(owner);
-		//                    iwvo = default_iwvo;
-		//                    isdefault = true;
-		//                }
-		//                catch (Exception ex) {
-		//                    Debug.WriteLine(ex);
-		//                }
-		//            }
-		//        }
-		//        else if (mi is PropertyInfo) {
-		//            PropertyInfo pi = mi as PropertyInfo;
-		//            bOk = true;
-		//            if (pi.CanRead && pi.GetIndexParameters().Length <= 0)
-		//            {
-		//                try {
-		//                    value = pi.GetValue(owner, null);
-		//                    iwvo = default_iwvo;
-		//                    isdefault = true;
-		//                }
-		//                catch (Exception ex) {
-		//                    Debug.WriteLine(ex);
-		//                }
-		//            }
-		//        }
-		//        else if (mi is MethodInfo)
-		//        {
-		//            if ((options & IndentedWriterMemberOptions.AllowMethod) != 0) {
-		//                bOk = true;
-		//            }
-		//        }
-		//        if (!bOk) continue;
-		//        // get proc.
-		//        if (null != value) {
-		//            writeproc = LookupWriteProcAt(value, userdata, procs);
-		//            if (null == writeproc && (options & IndentedWriterMemberOptions.NoDefaultProcs) == 0) {
-		//                writeproc = LookupWriteProc(value, userdata);
-		//            }
-		//            if (null == writeproc && (options & IndentedWriterMemberOptions.NoCommonProcs) == 0) {
-		//                if (IndentedObjectFunctor.CommonProc(null, owner, userdata)) writeproc = IndentedObjectFunctor.CommonProc;
-		//            }
-		//        }
-		//        // handle
-		//        if (null != handle) {
-		//            handle(userdata, mi, value, ref writeproc, ref iwvo, ref isdefault);
-		//        }
-		//        // show.
-		//        if (isdefault) {
-		//            WriteLineValue(iw, mi.Name, value, iwvo, null);
-		//            if (null != writeproc) {
-		//                writeproc(iw, value, userdata);
-		//            }
-		//        }
-		//    }
-		//    rt = true;
-		//    return rt;
-		//}
+		/// <summary>
+		/// 取得成员列表. 注意这里是宽松条件, 调用者最好再过滤一下其中的条目.
+		/// </summary>
+		/// <param name="tp">类型.</param>
+		/// <param name="options">选项.</param>
+		/// <returns>返回成员列表.</returns>
+		public static IEnumerable<MemberInfo> GetMembers(Type tp, IndentedWriterMemberOptions options) {
+			if (null == tp) return null;
+			bool onlystatic = (options & IndentedWriterMemberOptions.OnlyStatic) != 0;
+			bool allowmethod = (options & IndentedWriterMemberOptions.AllowMethod) != 0;
+#if NETFX_CORE
+			TypeInfo ti = tp.GetTypeInfo();
+			if (null == ti) return null;
+			List<MemberInfo> rt = new List<MemberInfo>();
+			foreach (FieldInfo p in ti.DeclaredFields) {
+				if (p.IsStatic == onlystatic) rt.Add(p);
+			}
+			foreach (PropertyInfo p in ti.DeclaredProperties) {
+				//if (p.IsStatic == onlystatic) rt.Add(p);
+				// 不支持 IsStatic 与 GetGetMethod.
+				if (p.GetMethod.IsStatic == onlystatic) rt.Add(p);
+			}
+			if (allowmethod) {
+				foreach (MethodInfo p in ti.DeclaredMethods) {
+					if (p.IsStatic == onlystatic) rt.Add(p);
+				}
+			}
+			return rt;
+#else
+			BindingFlags bf = BindingFlags.Public | BindingFlags.Instance;
+			if ((options & IndentedWriterMemberOptions.OnlyStatic) !=0) bf = BindingFlags.Public | BindingFlags.Static;
+			//List<MemberInfo> rt = new List<MemberInfo>();
+			//foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
+			//}
+			return tp.GetMembers(bf);
+#endif
+		}
 
 		/// <summary>
 		/// 输出对象的各个成员.
@@ -429,22 +335,21 @@ namespace zyllibcs.text {
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="owner">欲查询成员的对象. 查询静态成员时可以设为 null.</param>
 		/// <param name="tp">类型. 当 <paramref name="owner"/> 非 null 时, 可设为null, 即自动设为 <c>owner.GetType()</c> . </param>
-		/// <param name="bindingAttr">绑定标志.</param>
 		/// <param name="options">成员选项. 实际的成员选项是本参数与 <see cref="IndentedWriterContext.MemberOptions"/> 属性做或运算后的值. </param>
 		/// <param name="handle">每个成员的处理过程, 可以为 null. 默认在调用时会将其 <c>sender</c>参数设为null. </param>
 		/// <param name="context">环境对象, 可以为 null. 会嵌套传递. </param>
 		/// <returns>是否成功.</returns>
-		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, BindingFlags bindingAttr, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
+		public static bool ForEachMember(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = false;
 			if (null == tp) {
 				if (null == owner) return rt;
 				tp = owner.GetType();
 			}
-			if (null == owner && (bindingAttr & BindingFlags.Instance) != 0) throw new ArgumentException("bindingAttr has Instance, but owner is null.", "bindingAttr");
+            if (null == owner && (options & IndentedWriterMemberOptions.OnlyStatic) == 0) throw new ArgumentException("options not has Static, but owner is null.", "bindingAttr");
 			// notify begin.
 			if (null == context) context = new IndentedWriterContext();	// 自动创建环境. 有可能以后调整设计, 所以后面还是检查 context.
 			if (null != context) {
-				if (!context.NotifyForEachMemberBegin(iw, owner, tp, bindingAttr, options, handle, context)) return false;
+				if (!context.NotifyForEachMemberBegin(iw, owner, tp, options, handle, context)) return false;
 			}
 			// args
 			IndentedWriterMemberEventArgs args = new IndentedWriterMemberEventArgs();
@@ -454,15 +359,13 @@ namespace zyllibcs.text {
 			args.IndentedWriter = iw;
 			args.Owner = owner;
 			args.OwnerType = tp;
-			args.BindingAttr = bindingAttr;
 			args.MemberOptions = options;
 			//args.Procs = procs;
 			args.Context = context;
 			// foreach.
 			IndentedWriterMemberOptions realoptions = options;
 			if (null != context) realoptions |= context.MemberOptions;
-			foreach (MemberInfo mi in tp.GetMembers(bindingAttr)) {
-				//if (!CheckMemberType(mi.MemberType,bindingAttr)) continue;
+			foreach (MemberInfo mi in GetMembers(tp, realoptions)) {
 				args.IsCancel = true;
 				args.HasDefault = false;
 				args.MemberInfo = mi;
@@ -548,7 +451,7 @@ namespace zyllibcs.text {
 			}
 			// notify begin.
 			if (null != context) {
-				context.NotifyForEachMemberEnd(iw, owner, tp, bindingAttr, options, handle, context);
+				context.NotifyForEachMemberEnd(iw, owner, tp, options, handle, context);
 			}
 			rt = true;
 			return rt;

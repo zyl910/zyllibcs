@@ -21,7 +21,8 @@ namespace zinfoenvironment {
 			Type tp = typeof(System.Environment);
 			if (!iw.Indent(tp)) return false;
 			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, delegate(object sender, IndentedWriterMemberEventArgs e) {
+			IndentedWriterMemberOptions options = IndentedWriterMemberOptions.AllowMethod | IndentedWriterMemberOptions.OnlyStatic;
+			IndentedWriterUtil.ForEachMember(iw, null, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
 				// http://msdn.microsoft.com/zh-cn/library/system.environment(v=vs.110).aspx
 				MethodInfo memberinfo = e.MemberInfo as MethodInfo;
 				if (null != memberinfo) {
@@ -32,7 +33,7 @@ namespace zinfoenvironment {
 					int cntparam = memberinfo.GetParameters().Length;
 					if (false) {
 					}
-#if (!DN_APP)
+#if (!NETFX_CORE)
 					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetFolderPath") && cntparam <= 1) {
 						e.IsCancel = true;
 						IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
@@ -54,24 +55,39 @@ namespace zinfoenvironment {
 					}
 #endif
 					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetLogicalDrives")) {
-						e.HasDefault = true;
-						//string[] arr = Environment.GetLogicalDrives();
-						string[] arr = (string[])memberinfo.Invoke(null, null);
-						e.Value = string.Join(", ", arr);
+						try {
+							//string[] arr = Environment.GetLogicalDrives();
+							string[] arr = (string[])memberinfo.Invoke(null, null);
+							e.Value = string.Join(", ", arr);
+							e.HasDefault = true;
+						}
+						catch {
+							// 忽略.
+						}
 					}
 					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetEnvironmentVariables")) {
 						if (cntparam <= 0) {
 							e.IsCancel = true;
 							IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
 							iw.Indent(null);
-							//IDictionary environmentVariables = Environment.GetEnvironmentVariables();
-							IDictionary environmentVariables = memberinfo.Invoke(null, null) as IDictionary;
-							ArrayList lst = new ArrayList(environmentVariables.Keys);
-							lst.Sort();
-							foreach (object k in lst) {
-								iw.WriteLine("{0}:\t{1}", k, environmentVariables[k]);
+							try {
+								//IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+								IDictionary environmentVariables = memberinfo.Invoke(null, null) as IDictionary;
+								List<object> lst = new List<object>();
+								foreach (object k in environmentVariables.Keys) {
+									lst.Add(k);
+								}
+								lst.Sort();
+								foreach (object k in lst) {
+									iw.WriteLine("{0}:\t{1}", k, environmentVariables[k]);
+								}
 							}
-							iw.Unindent();
+							catch {
+								// 忽略.
+							}
+							finally {
+								iw.Unindent();
+							}
 						}
 					}
 				}
@@ -95,7 +111,7 @@ namespace zinfoenvironment {
 				iw.WriteLine(string.Format("# sizeof:\t{0}", sizeof(System.IntPtr)));
 			}
 #endif
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterUtil.PublicStatic, IndentedWriterMemberOptions.AllowMethod, null, context);
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterMemberOptions.OnlyStatic, null, context);
 			iw.Unindent();
 			return true;
 		}

@@ -77,11 +77,6 @@ namespace zyllibcs.text {
 		private Type m_OwnerType;
 
 		/// <summary>
-		/// [原参数]绑定标志.
-		/// </summary>
-		private BindingFlags m_BindingAttr;
-
-		/// <summary>
 		/// [原参数]成员选项.
 		/// </summary>
 		private IndentedWriterMemberOptions m_MemberOptions;
@@ -190,14 +185,6 @@ namespace zyllibcs.text {
 		public Type OwnerType {
 			get { return m_OwnerType; }
 			set { m_OwnerType = value; }
-		}
-
-		/// <summary>
-		/// [原参数]绑定标志.
-		/// </summary>
-		public BindingFlags BindingAttr {
-			get { return m_BindingAttr; }
-			set { m_BindingAttr = value; }
 		}
 
 		/// <summary>

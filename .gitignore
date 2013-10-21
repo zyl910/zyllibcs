@@ -117,3 +117,4 @@ UpgradeLog*.XML
 
 *.pidb
 *.userprefs
+*.pfx
