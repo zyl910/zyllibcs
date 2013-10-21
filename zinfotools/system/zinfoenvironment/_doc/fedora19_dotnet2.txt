@@ -1,160 +1,134 @@
-﻿# Linux dubt-VirtualBox 3.2.0-54-generic #82-Ubuntu SMP Tue Sep 10 20:08:42 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+﻿# Linux localhost.localdomain 3.11.3-201.fc19.x86_64 #1 SMP Thu Oct 3 00:47:03 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
 
 # zinfoenvironment
 Test Dictionary:
-	# <System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
+	# <System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 	Count:	3	# 0x3
 	Comparer:	System.Collections.Generic.InternalStringComparer
 	[0]:	[a, abc]
-		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
+		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	a	# Length=1 (0x1)
 		Value:	abc	# Length=3 (0x3)
 	[1]:	[b, base]
-		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
+		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	b	# Length=1 (0x1)
 		Value:	base	# Length=4 (0x4)
-	[2]:	[ver, 1.0.5042.33873]
-		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
+	[2]:	[ver, 1.0.5042.34099]
+		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	ver	# Length=3 (0x3)
-		Value:	1.0.5042.33873
+		Value:	1.0.5042.34099
 			# <System.Version>
 			Build:	5042	# 0x13B2
 			Major:	1	# 0x1
 			Minor:	0	# 0x0
-			Revision:	33873	# 0x8451
+			Revision:	34099	# 0x8533
 			MajorRevision:	0	# 0x0
-			MinorRevision:	-31663	# 0x8451
+			MinorRevision:	-31437	# 0x8533
 Environment:
 	# <System.Environment>
 	GetEnvironmentVariables():
-		_:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe
+		_:	/usr/bin/mono
 		COLORTERM:	gnome-terminal
-		COMPIZ_CONFIG_PROFILE:	ubuntu
-		DBUS_SESSION_BUS_ADDRESS:	unix:abstract=/tmp/dbus-ItziHE9MtF,guid=37c205e1e0dcdad131a8ffbe0000003b
-		DEFAULTS_PATH:	/usr/share/gconf/ubuntu.default.path
-		DESKTOP_SESSION:	ubuntu
+		DBUS_SESSION_BUS_ADDRESS:	unix:abstract=/tmp/dbus-2IBwzehe0R,guid=eebdb3816430c0075624bb4952650767
+		DESKTOP_SESSION:	gnome
 		DISPLAY:	:0
-		GDMSESSION:	ubuntu
+		GDM_LANG:	zh_CN.utf8
+		GDMSESSION:	gnome
+		GJS_DEBUG_OUTPUT:	stderr
+		GJS_DEBUG_TOPICS:	JS ERROR;JS LOG
 		GNOME_DESKTOP_SESSION_ID:	this-is-deprecated
-		GNOME_KEYRING_CONTROL:	/tmp/keyring-5vFjzJ
-		GNOME_KEYRING_PID:	1572
-		GPG_AGENT_INFO:	/tmp/keyring-5vFjzJ/gpg:0:1
-		GTK_IM_MODULE:	ibus
-		HOME:	/home/dubt
-		LANG:	zh_CN.UTF-8
-		LANGUAGE:	zh_CN:
-		LESSCLOSE:	/usr/bin/lesspipe %s %s
-		LESSOPEN:	| /usr/bin/lesspipe %s
-		LOGNAME:	dubt
-		LS_COLORS:	rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
-		MANDATORY_PATH:	/usr/share/gconf/ubuntu.mandatory.path
-		OLDPWD:	/home/dubt
-		PATH:	/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+		GNOME_KEYRING_CONTROL:	/run/user/1000/keyring-SlMrSe
+		GNOME_KEYRING_PID:	1347
+		GPG_AGENT_INFO:	/run/user/1000/keyring-SlMrSe/gpg:0:1
+		HISTCONTROL:	ignoredups
+		HISTSIZE:	1000
+		HOME:	/home/dfdr
+		HOSTNAME:	localhost.localdomain
+		LANG:	zh_CN.utf8
+		LESSOPEN:	||/usr/bin/lesspipe.sh %s
+		LOGNAME:	dfdr
+		LS_COLORS:	rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+		MAIL:	/var/spool/mail/dfdr
+		OLDPWD:	/home/dfdr
+		PATH:	/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/dfdr/.local/bin:/home/dfdr/bin
 		PWD:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug
-		QT_IM_MODULE:	xim
-		SESSION_MANAGER:	local/dubt-VirtualBox:@/tmp/.ICE-unix/1583,unix/dubt-VirtualBox:/tmp/.ICE-unix/1583
+		QT_IM_MODULE:	ibus
+		SESSION_MANAGER:	local/unix:@/tmp/.ICE-unix/1349,unix/unix:/tmp/.ICE-unix/1349
 		SHELL:	/bin/bash
-		SHLVL:	1
-		SSH_AGENT_PID:	1651
-		SSH_AUTH_SOCK:	/tmp/keyring-5vFjzJ/ssh
-		TERM:	xterm
-		UBUNTU_MENUPROXY:	libappmenu.so
-		USER:	dubt
-		WINDOWID:	71303174
-		XAUTHORITY:	/home/dubt/.Xauthority
-		XDG_CONFIG_DIRS:	/etc/xdg/xdg-ubuntu:/etc/xdg
-		XDG_CURRENT_DESKTOP:	Unity
-		XDG_DATA_DIRS:	/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/
-		XDG_SEAT_PATH:	/org/freedesktop/DisplayManager/Seat0
-		XDG_SESSION_COOKIE:	48c89999fbd41662ccd50bd000000008-1382352017.528830-646073265
-		XDG_SESSION_PATH:	/org/freedesktop/DisplayManager/Session0
+		SHLVL:	2
+		SSH_AUTH_SOCK:	/run/user/1000/keyring-SlMrSe/ssh
+		TERM:	xterm-256color
+		USER:	dfdr
+		USERNAME:	dfdr
+		VTE_VERSION:	3406
+		WINDOWID:	54525958
+		WINDOWPATH:	1
+		XAUTHORITY:	/run/gdm/auth-for-dfdr-ZsSRtR/database
+		XDG_MENU_PREFIX:	gnome-
+		XDG_RUNTIME_DIR:	/run/user/1000
+		XDG_SEAT:	seat0
+		XDG_SESSION_ID:	1
+		XDG_VTNR:	1
 		XMODIFIERS:	@im=ibus
 	GetFolderPath():
-		0(0x00000000, Desktop):	/home/dubt/桌面
+		0(0x00000000, Desktop):	/home/dfdr/桌面
 		2(0x00000002, Programs):	
-		5(0x00000005, Personal):	/home/dubt
-		5(0x00000005, Personal):	/home/dubt
+		5(0x00000005, Personal):	/home/dfdr
+		5(0x00000005, Personal):	/home/dfdr
 		6(0x00000006, Favorites):	
 		7(0x00000007, Startup):	
 		8(0x00000008, Recent):	
 		9(0x00000009, SendTo):	
 		11(0x0000000B, StartMenu):	
-		13(0x0000000D, MyMusic):	/home/dubt/音乐
-		14(0x0000000E, MyVideos):	/home/dubt/视频
-		16(0x00000010, DesktopDirectory):	/home/dubt/桌面
+		13(0x0000000D, MyMusic):	/home/dfdr/音乐
+		16(0x00000010, DesktopDirectory):	/home/dfdr/桌面
 		17(0x00000011, MyComputer):	
-		19(0x00000013, NetworkShortcuts):	
-		20(0x00000014, Fonts):	/home/dubt/.fonts
-		21(0x00000015, Templates):	/home/dubt/模板
-		22(0x00000016, CommonStartMenu):	
-		23(0x00000017, CommonPrograms):	
-		24(0x00000018, CommonStartup):	
-		25(0x00000019, CommonDesktopDirectory):	
-		26(0x0000001A, ApplicationData):	/home/dubt/.config
-		27(0x0000001B, PrinterShortcuts):	
-		28(0x0000001C, LocalApplicationData):	/home/dubt/.local/share
+		21(0x00000015, Templates):	/home/dfdr/模板
+		26(0x0000001A, ApplicationData):	/home/dfdr/.config
+		28(0x0000001C, LocalApplicationData):	/home/dfdr/.local/share
 		32(0x00000020, InternetCache):	
 		33(0x00000021, Cookies):	
 		34(0x00000022, History):	
 		35(0x00000023, CommonApplicationData):	/usr/share
-		36(0x00000024, Windows):	
 		37(0x00000025, System):	
 		38(0x00000026, ProgramFiles):	
-		39(0x00000027, MyPictures):	/home/dubt/图片
-		40(0x00000028, UserProfile):	
-		41(0x00000029, SystemX86):	
-		42(0x0000002A, ProgramFilesX86):	
+		39(0x00000027, MyPictures):	/home/dfdr/图片
 		43(0x0000002B, CommonProgramFiles):	
-		44(0x0000002C, CommonProgramFilesX86):	
-		45(0x0000002D, CommonTemplates):	/usr/share/templates
-		46(0x0000002E, CommonDocuments):	
-		47(0x0000002F, CommonAdminTools):	
-		48(0x00000030, AdminTools):	
-		53(0x00000035, CommonMusic):	
-		54(0x00000036, CommonPictures):	
-		55(0x00000037, CommonVideos):	
-		56(0x00000038, Resources):	
-		57(0x00000039, LocalizedResources):	
-		58(0x0000003A, CommonOemLinks):	
-		59(0x0000003B, CDBurning):	
-	GetLogicalDrives():	/	# Length=1 (0x1)
+	GetLogicalDrives():	/, /boot	# Length=8 (0x8)
 	CommandLine:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe	# Length=108 (0x6C)
 	CurrentDirectory:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug	# Length=87 (0x57)
 	ExitCode:	0	# 0x0
 	HasShutdownStarted:	False
-	MachineName:	dubt-VirtualBox	# Length=15 (0xF)
+	MachineName:	localhost.localdomain	# Length=21 (0x15)
 	NewLine:	"\n"	# Length=1 (0x1)
-	OSVersion:	Unix 3.2.0.54
+	OSVersion:	Unix 3.11.3.201
 		# <System.OperatingSystem>
 		Platform:	Unix	# 0x00000004, 4, PlatformID
-		Version:	3.2.0.54
+		Version:	3.11.3.201
 			# <System.Version>
-			Build:	0	# 0x0
+			Build:	3	# 0x3
 			Major:	3	# 0x3
-			Minor:	2	# 0x2
-			Revision:	54	# 0x36
+			Minor:	11	# 0xB
+			Revision:	201	# 0xC9
 			MajorRevision:	0	# 0x0
-			MinorRevision:	54	# 0x36
+			MinorRevision:	201	# 0xC9
 		ServicePack:		# Length=0 (0x0)
-		VersionString:	Unix 3.2.0.54	# Length=13 (0xD)
+		VersionString:	Unix 3.11.3.201	# Length=15 (0xF)
 	StackTrace:	"   at System.Environment.get_StackTrace()\n   at System.Reflection.MonoProperty.StaticGetterAdapterFrame(System.Reflection.StaticGetter`1 getter, System.Object obj)\n   at System.Reflection.MonoProperty.GetValue(System.Object obj, System.Object[] index)\n   at zyllibcs.text.IndentedWriterUtil.ForEachMember(IIndentedWriter iw, System.Object owner, System.Type tp, IndentedWriterMemberOptions options, System.EventHandler`1 handle, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_Environment(IIndentedWriter iw, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_main(IIndentedWriter iw)\n   at zinfoenvironment.Program.Main(System.String[] args)"	# Length=703 (0x2BF)
 	SystemDirectory:		# Length=0 (0x0)
-	TickCount:	257720	# 0x3EEB8
-	UserDomainName:	dubt-VirtualBox	# Length=15 (0xF)
+	TickCount:	277450	# 0x43BCA
+	UserDomainName:	localhost.localdomain	# Length=21 (0x15)
 	UserInteractive:	False
-	UserName:	dubt	# Length=4 (0x4)
-	Version:	4.0.30319.1
+	UserName:	dfdr	# Length=4 (0x4)
+	Version:	2.0.50727.1433
 		# <System.Version>
-		Build:	30319	# 0x766F
-		Major:	4	# 0x4
+		Build:	50727	# 0xC627
+		Major:	2	# 0x2
 		Minor:	0	# 0x0
-		Revision:	1	# 0x1
+		Revision:	1433	# 0x599
 		MajorRevision:	0	# 0x0
-		MinorRevision:	1	# 0x1
+		MinorRevision:	1433	# 0x599
 	WorkingSet:	0	# 0x0
-	Is64BitOperatingSystem:	True
-	Is64BitProcess:	True
-	SystemPageSize:	4096	# 0x1000
 	ProcessorCount:	2	# 0x2
 Application AssemblyName:
 	# <System.Reflection.AssemblyName>
@@ -384,17 +358,17 @@ Application AssemblyName:
 		EnglishName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
 		IsReadOnly:	False
 	Flags:	PublicKey	# 0x00000001, 1, AssemblyNameFlags
-	FullName:	zinfoenvironment, Version=1.0.5042.33873, Culture=neutral, PublicKeyToken=null	# Length=78 (0x4E)
+	FullName:	zinfoenvironment, Version=1.0.5042.34099, Culture=neutral, PublicKeyToken=null	# Length=78 (0x4E)
 	HashAlgorithm:	SHA1	# 0x00008004, 32772, AssemblyHashAlgorithm
 	KeyPair:	(null)
-	Version:	1.0.5042.33873
+	Version:	1.0.5042.34099
 		# <System.Version>
 		Build:	5042	# 0x13B2
 		Major:	1	# 0x1
 		Minor:	0	# 0x0
-		Revision:	33873	# 0x8451
+		Revision:	34099	# 0x8533
 		MajorRevision:	0	# 0x0
-		MinorRevision:	-31663	# 0x8451
+		MinorRevision:	-31437	# 0x8533
 	VersionCompatibility:	SameMachine	# 0x00000001, 1, AssemblyVersionCompatibility
 IntPtr:
 	# <System.IntPtr>
