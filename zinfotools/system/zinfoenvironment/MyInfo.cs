@@ -15,8 +15,10 @@ namespace zinfoenvironment {
 		/// 输出多行_环境.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		/// <param name="context">Context Object.</param>
-		public static bool outl_Environment(IIndentedWriter iw, IndentedWriterContext context) {
+		/// <param name="obj">object. Can be null.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool outl_Environment(IIndentedWriter iw, object obj, IndentedWriterContext context) {
 			if (null == iw) return false;
 			Type tp = typeof(System.Environment);
 			if (!iw.Indent(tp)) return false;
@@ -100,8 +102,10 @@ namespace zinfoenvironment {
 		/// 输出多行_IntPtr.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		/// <param name="context">Context Object.</param>
-		public static bool outl_static_IntPtr(IIndentedWriter iw, IndentedWriterContext context) {
+		/// <param name="obj">object. Can be null.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool outl_static_IntPtr(IIndentedWriter iw, object obj, IndentedWriterContext context) {
 			if (null == iw) return false;
 			Type tp = typeof(System.IntPtr);
 			if (!iw.Indent(tp)) return false;
@@ -120,7 +124,11 @@ namespace zinfoenvironment {
 		/// 输出多行_主函数.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
-		public static void outl_main(IIndentedWriter iw) {
+		/// <param name="obj">object. Can be null.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool outl_main(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+			if (null == iw) return false;
 			Assembly myAssembly;
 #if (NETFX_CORE)
 			Type tp = typeof(MyInfo);
@@ -162,18 +170,18 @@ namespace zinfoenvironment {
 			dict.Add("b", "base");
 			dict.Add("ver", myAssembly.GetName().Version);
 			iw.WriteLine("Test Dictionary:");
-			IndentedObjectFunctor.CommonProc(iw, dict, null);
+			IndentedObjectFunctor.CommonProc(iw, dict, context);
 			// show.
 			iw.WriteLine("Environment:");
-			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
-			//outl_Environment(iw);
-			outl_Environment(iw, null);
+			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, context);
+			outl_Environment(iw, null, context);
 			//iw.WriteLine("Application Assembly:");
-			//IndentedObjectFunctor.CommonProc(iw, Assembly.GetEntryAssembly(), null);
+			//IndentedObjectFunctor.CommonProc(iw, myAssembly, context);
 			iw.WriteLine("Application AssemblyName:");
-			IndentedObjectFunctor.CommonProc(iw, myAssembly.GetName(), null);
+			IndentedObjectFunctor.CommonProc(iw, myAssembly.GetName(), context);
 			iw.WriteLine("IntPtr:");
-			outl_static_IntPtr(iw, null);
+			outl_static_IntPtr(iw, null, context);
+			return true;
 		}
 
 	}

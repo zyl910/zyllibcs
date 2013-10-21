@@ -18,7 +18,7 @@ namespace zinfoenvironment {
 			//Console.WriteLine("Hello!");
 			IIndentedWriter iw = new TextIndentedWriter(Console.Out);
 			// main
-			MyInfo.outl_main(iw);
+			MyInfo.outl_main(iw, null, null);
 		}
 
 	}

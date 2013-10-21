@@ -33,7 +33,7 @@ namespace zinfoenvironment {
 		protected override void OnNavigatedTo(NavigationEventArgs e) {
 			StringBuilder sb = new StringBuilder();
 			IIndentedWriter iw = new TextIndentedWriter(new StringWriter(sb));
-			MyInfo.outl_main(iw);
+			MyInfo.outl_main(iw, null, null);
 			txtInfo.Text = sb.ToString();
 		}
 

@@ -10,7 +10,7 @@ namespace zyllibcs.text {
 	/// </summary>
 	/// <param name="iw">带缩进输出者.</param>
 	/// <param name="obj">object. If <paramref name="obj"/> is null, result alway is false.</param>
-	/// <param name="context">State Object. Can be NULL.</param>
+	/// <param name="context">State Object. Can be null.</param>
 	/// <returns>当<paramref name="iw"/>为null时, 返回是否支持输出. 其他情况则返回是否成功输出.</returns>
 	public delegate bool IndentedWriterObjectProc(IIndentedWriter iw, object obj, IndentedWriterContext context);
 
