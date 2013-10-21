@@ -34,6 +34,11 @@ namespace zyllibcs.text {
 		/// </summary>
 		private readonly List<KeyValuePair<Type, object>> m_TypeOwners = new List<KeyValuePair<Type, object>>();
 
+		/// <summary>
+		/// 相同类型的最大深度.
+		/// </summary>
+		private int m_SameTypeMax = 2;
+
 
 		/// <summary>
 		/// 用户自定义数据.
@@ -77,7 +82,15 @@ namespace zyllibcs.text {
 		/// </summary>
 		public List<KeyValuePair<Type, object>> TypeOwners {
 			get { return m_TypeOwners; }
-		} 
+		}
+
+		/// <summary>
+		/// 相同类型的最大深度.
+		/// </summary>
+		public int SameTypeMax {
+			get { return m_SameTypeMax; }
+			set { m_SameTypeMax = value; }
+		}
 
 		/// <summary>
 		/// 用户自定义数据.
@@ -106,6 +119,19 @@ namespace zyllibcs.text {
 		/// <returns>若在开始枚举成员之前, 返回值表示是否允许枚举. 其他时候忽略.</returns>
 		public bool NotifyForEachMemberBegin(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = true;
+			// check.
+			if (null != tp && !tp.IsArray && m_SameTypeMax > 0) {
+				int cnt = 0;
+				foreach (KeyValuePair<Type, object> pr in m_TypeOwners) {
+					if (tp.Equals(pr.Key)) {
+						++cnt;
+						if (cnt >= m_SameTypeMax) {
+							return false;
+						}
+					}
+				}
+			}
+			// notify.
 			m_TypeOwners.Add(new KeyValuePair<Type, object>(tp, owner));
 			IndentedWriterForEachMemberNotify p = ForEachMemberBegin;
 			if (null != p) rt = p(iw, owner, tp, options, handle, context);
