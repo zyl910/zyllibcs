@@ -143,6 +143,7 @@ namespace zyllibcs.text {
 		/// <param name="obj">新级别的相关对象. 可设为null.</param>
 		/// <returns>是否成功增加一级. 若之前级别存在 <paramref name="obj"/>, 便返回 false.</returns>
 		public virtual bool Indent(object obj) {
+			if (ExistIndentHistory(obj)) return false;
 			m_IndentHistory.Add(obj);
 			Interlocked.Increment(ref m_IndentLevel);
 			return true;

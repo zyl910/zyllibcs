@@ -49,15 +49,7 @@ namespace zyllibcs.text {
 		/// 不查找默认输出过程.
 		/// </summary>
 		NoCommonProcs = 1,
-		//TODO: 是否将遍历数组整合到IndentedObjectFunctor, 与集合一起处理?
-		///// <summary>
-		///// 不自动遍历数组.
-		///// </summary>
-		//NoForEachArray = 4,
-		///// <summary>
-		///// 遍历数组时, 不自动简化简单类型（基元类型或<see cref="String"/>等）的信息.
-		///// </summary>
-		//ForEachArrayNoSimple = 8,
+
         /// <summary>
         /// 仅枚举静态成员. 默认情况下仅枚举实例成员.
         /// </summary>

@@ -10,7 +10,10 @@ namespace zinfoenvironment {
 	/// System.Environment infos.
 	/// </summary>
 	class Program {
-
+		/// <summary>
+		/// Main.
+		/// </summary>
+		/// <param name="args">args.</param>
 		static void Main(string[] args) {
 			//Console.WriteLine("Hello!");
 			IIndentedWriter iw = new TextIndentedWriter(Console.Out);

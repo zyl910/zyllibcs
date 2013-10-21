@@ -67,6 +67,10 @@ namespace zyllibcs.text {
 		/// 返回值采用全限定名.
 		/// </summary>
 		FullNameResult = 0x1000,
+		/// <summary>
+		/// 所有.
+		/// </summary>
+		All = -1,
 	}
 
 	/// <summary>

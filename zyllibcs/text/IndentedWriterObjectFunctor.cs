@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -30,6 +31,18 @@ namespace zyllibcs.text {
 		/// 不输出.
 		/// </summary>
 		NotWrite = 8,
+		/// <summary>
+		/// 不枚举集合或数组的条目.
+		/// </summary>
+		NoEnumerate = 0x10,
+		/// <summary>
+		/// 集合类型不使用简单格式, 而是详细输出每一个成员. 无此标志时, 默认会隐藏 Keys、Values 属性.
+		/// </summary>
+		EnumerateNoSimple = 0x10,
+		/// <summary>
+		/// 显示数组成员. 默认情况下不显示数组的成员, 只显示条目.
+		/// </summary>
+ 		ArrayMember = 0x20,
 	}
 
 	/// <summary>
@@ -162,7 +175,7 @@ namespace zyllibcs.text {
 			if (!WriterObject_CheckObject(iw, obj, context, out tp, out showBaseName)) return false;
 			if (null == iw) return true;
 			// write.
-			return WriterObject_WriteObject(iw, obj, context, tp, showBaseName);
+			return WriterObject_Write(iw, obj, context, tp, showBaseName);
 		}
 
 		/// <summary>
@@ -213,40 +226,35 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// 输出对象_输出对象.
+		/// 输出对象_输出.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object.</param>
 		/// <param name="context">Context.</param>
-		/// <param name="tp">返回 类型.</param>
-		/// <param name="showBaseName">返回 是否显示基类类型的名称.</param>
+		/// <param name="tp">类型.</param>
+		/// <param name="showBaseName">是否显示基类类型的名称.</param>
 		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
-		public virtual bool WriterObject_WriteObject(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName) {
+		public virtual bool WriterObject_Write(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName) {
 			// write.
 			if ((m_Options & IndentedObjectFunctorOptions.NotWrite) != 0) return true;
 			if (!iw.Indent(obj)) return false;
-			if (null != context) {
-				foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
-					iw.Write(p.Key.FullName);
-					iw.Write('/');
-				}
-				iw.WriteLine();
-			}
+			//if (null != context) {
+			//    foreach (KeyValuePair<Type, object> p in context.TypeOwners) {
+			//        iw.Write(p.Key.FullName);
+			//        iw.Write('/');
+			//    }
+			//    iw.WriteLine();
+			//}
 			bool needtitle = true;
-			try {
-				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
-					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
-					if (needtitle && null != e && e.HasDefault) {
-						// 仅当至少有一个成员, 才输出标题.
-						needtitle = false;
-						WriterObject_WriteTitle(iw, obj, context, tp, showBaseName);
-					}
-					OnHandlerMember(this, e);
-				}, context);
+			bool showmember = true;	// 显示成员.
+			if (0 == (m_Options & IndentedObjectFunctorOptions.ArrayMember) && tp.IsArray) showmember = false;
+			if (showmember) {
+				WriterObject_WriteMember(iw, obj, context, tp, showBaseName, ref needtitle);
 			}
-			catch (Exception ex) {
-				System.Diagnostics.Debug.WriteLine(ex);
+			else {
+				WriterObject_WriteTitle(iw, obj, context, tp, showBaseName);
 			}
+			WriterObject_WriteEnumerate(iw, obj, context, tp);
 			iw.Unindent();
 			return !needtitle;
 		}
@@ -257,14 +265,93 @@ namespace zyllibcs.text {
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object.</param>
 		/// <param name="context">Context.</param>
-		/// <param name="tp">返回 类型.</param>
-		/// <param name="showBaseName">返回 是否显示基类类型的名称.</param>
-		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
+		/// <param name="tp">类型.</param>
+		/// <param name="showBaseName">是否显示基类类型的名称.</param>
 		public virtual void WriterObject_WriteTitle(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName) {
 			string title;
 			if (showBaseName) title = string.Format("# <{0}>\tBase: {1}", GetTypeName(tp), GetTypeName(m_BaseType));
 			else title = string.Format("# <{0}>", GetTypeName(tp));
 			iw.WriteLine(title);
+		}
+
+		/// <summary>
+		/// 非 <see cref="IndentedObjectFunctorOptions.EnumerateNoSimple"/> 模式下默认会隐藏的属性名.
+		/// </summary>
+		public static readonly string[] EnumerateSimpleNames = new string[] {
+			"Keys",
+			"Values",
+		};
+
+		/// <summary>
+		/// 输出对象_输出成员.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="obj">object.</param>
+		/// <param name="context">Context.</param>
+		/// <param name="tp">类型.</param>
+		/// <param name="showBaseName">是否显示基类类型的名称.</param>
+		/// <param name="needtitle">是否需要输出标题.</param>
+		public virtual void WriterObject_WriteMember(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp, bool showBaseName, ref bool needtitle) {
+			bool needtitle2 = needtitle;
+			try {
+				IndentedWriterUtil.ForEachMember(iw, obj, tp, m_WriterOptions, delegate(object sender, IndentedWriterMemberEventArgs e) {
+					//Debug.WriteLine(string.Format("{0}: {1}", mi.Name, mi.MemberType));
+					if (needtitle2 && null != e && e.HasDefault) {
+						// 仅当至少有一个成员, 才输出标题.
+						needtitle2 = false;
+						WriterObject_WriteTitle(iw, obj, context, tp, showBaseName);
+					}
+					// EnumerateNoSimple.
+					if (0 == (m_Options & IndentedObjectFunctorOptions.EnumerateNoSimple) && null!=e.MemberInfo) {
+						PropertyInfo pi = e.MemberInfo as PropertyInfo;
+						if (null != pi) {
+							string name = pi.Name;
+							foreach (string s in EnumerateSimpleNames) {
+								if (IndentedWriterUtil.StringComparer.Equals(s, name)) {
+									e.IsCancel = true;
+									break;
+								}
+							}
+						}
+					}
+					//
+					OnHandlerMember(this, e);
+				}, context);
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine(ex);
+			}
+			needtitle = needtitle2;
+		}
+
+		/// <summary>
+		/// 输出对象_枚举条目.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="obj">object.</param>
+		/// <param name="context">Context.</param>
+		/// <param name="tp">类型.</param>
+		public virtual void WriterObject_WriteEnumerate(IIndentedWriter iw, object obj, IndentedWriterContext context, Type tp) {
+			if (0 != (m_Options & IndentedObjectFunctorOptions.NoEnumerate)) return;
+			IEnumerable lst = obj as IEnumerable;
+			if (null == lst) return;
+			int i = 0;
+			foreach (object p in lst) {
+				string name = string.Format("[{0}]", i);
+				IndentedWriterObjectProc proc = null;
+				if (null != context) {
+					proc = IndentedWriterUtil.LookupWriteProcAt(p, context, context.Procs);
+				}
+				if (null == proc && (m_WriterOptions & IndentedWriterMemberOptions.NoCommonProcs) == 0) {
+					if (IndentedObjectFunctor.CommonProc(null, p, context)) proc = IndentedObjectFunctor.CommonProc;
+				}
+				IndentedWriterUtil.WriteLineValue(iw, name, p, IndentedWriterValueOptions.Default, null);
+				if (null != proc) {
+					proc(iw, p, context);
+				}
+				// next.
+				++i;
+			}
 		}
 
 		/// <summary>

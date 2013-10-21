@@ -121,6 +121,15 @@ namespace zinfoenvironment {
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		public static void outl_main(IIndentedWriter iw) {
+			Assembly myAssembly;
+#if (NETFX_CORE)
+			Type tp = typeof(MyInfo);
+			TypeInfo ti = tp.GetTypeInfo();
+			myAssembly = ti.Assembly;
+#else
+			myAssembly = Assembly.GetEntryAssembly();
+#endif
+			iw.WriteLine("# zinfoenvironment");
 			// test.
 			//iw.WriteLine("Hello!");
 			//for (int i = 0; i < 3; ++i) {
@@ -136,22 +145,33 @@ namespace zinfoenvironment {
 			//}
 			//lwo(iw, "");
 			//lwo.Invoke(iw, "");
+			//decimal? dec = new decimal(1);
+			//IndentedWriterUtil.WriteLineValue(iw, "dec", dec, IndentedWriterValueOptions.Default);
+			//IndentedObjectFunctor.CommonProc(iw, dec);
 			//IndentedWriterUtil.WriteLineValue(iw, "enum", IndentedWriterValueOptions.ExistName, IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "char", 'A', IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "int", 255, IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "string", Environment.NewLine, IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "char(2)", '\t', IndentedWriterValueOptions.Default, null);
 			//IndentedWriterUtil.WriteLineValue(iw, "string(2)", "\\\'\"", IndentedWriterValueOptions.Default, null);
-			// root.
-			iw.WriteLine("# zinfoenvironment");
+			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(KeyValuePair<int, object>), MemberNameOptions.All));
+			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(KeyValuePair<int, object>[]), MemberNameOptions.All));
+			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(List<KeyValuePair<int, object>>), MemberNameOptions.All));
+			Dictionary<string, object> dict = new Dictionary<string, object>();
+			dict.Add("a", "abc");
+			dict.Add("b", "base");
+			dict.Add("ver", myAssembly.GetName().Version);
+			iw.WriteLine("Test Dictionary:");
+			IndentedObjectFunctor.CommonProc(iw, dict, null);
+			// show.
 			iw.WriteLine("Environment:");
-			//decimal? dec = new decimal(1);
-			//IndentedWriterUtil.WriteLineValue(iw, "dec", dec, IndentedWriterValueOptions.Default);
-			//IndentedObjectFunctor.CommonProc(iw, dec);
-			// Environment.
 			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, null);
 			//outl_Environment(iw);
 			outl_Environment(iw, null);
+			//iw.WriteLine("Application Assembly:");
+			//IndentedObjectFunctor.CommonProc(iw, Assembly.GetEntryAssembly(), null);
+			iw.WriteLine("Application AssemblyName:");
+			IndentedObjectFunctor.CommonProc(iw, myAssembly.GetName(), null);
 			iw.WriteLine("IntPtr:");
 			outl_static_IntPtr(iw, null);
 		}
