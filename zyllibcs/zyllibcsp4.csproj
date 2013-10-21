@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\binp4_Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DOTNET2;DOTNET3;DOTNET4;DN_PORTABLE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DOTNET2;DOTNET3;DOTNET4;NETFX_PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\binp4_Debug\zyllibcs.XML</DocumentationFile>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\binp4\</OutputPath>
-    <DefineConstants>TRACE;DOTNET2;DOTNET3;DOTNET4;DN_PORTABLE</DefineConstants>
+    <DefineConstants>TRACE;DOTNET2;DOTNET3;DOTNET4;NETFX_PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\binp4\zyllibcs.XML</DocumentationFile>
