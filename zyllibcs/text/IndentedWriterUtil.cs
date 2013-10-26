@@ -60,22 +60,6 @@ namespace zyllibcs.text {
 		AllowMethod = 0x200,
 	}
 
-	///// <summary>
-	///// 输出成员信息时的处理过程.
-	///// </summary>
-	///// <param name="userdata">用户自定义数据.</param>
-	///// <param name="mi">成员信息.</param>
-	///// <param name="value">值.</param>
-	///// <param name="writeproc">匹配的输出过程.</param>
-	///// <param name="iwvo">输出数值的选项. 注意但不是字段或属性时, 其初始值不同.</param>
-	///// <param name="isdefault">是否进行默认处理. 若不需要进行默认处理, 便返回false. 注意但不是字段或属性时, 其初始值不同.</param>
-	///// <remarks>
-	///// 若 <paramref name="isdefault"/> 为 true, 则默认会调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 输出值的信息行, 再使用 <paramref name="writeproc"/> 输出值的详细内容 .
-	///// 如果你想定制输出信息, 请将 <paramref name="isdefault"/> 设为 false, 并自行调用 <see cref="IndentedWriterUtil.WriteLineValue"/> 与 <see cref="IndentedWriterObjectProc"/> .
-	///// 注意默认操作仅支持字段与(非索引化的)属性.
-	///// </remarks>
-	//public delegate void IndentedWriterHandleMemberProc(object userdata, MemberInfo mi, object value, ref IndentedWriterObjectProc writeproc, ref IndentedWriterValueOptions iwvo, ref bool isdefault);
-
 	/// <summary>
 	/// 输出对象成员的通知.
 	/// </summary>
@@ -450,6 +434,23 @@ namespace zyllibcs.text {
 			}
 			rt = true;
 			return rt;
+		}
+
+		/// <summary>
+		/// 输出类型的静态成员.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="tp">type.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool WriteTypeStatic(IIndentedWriter iw, Type tp, IndentedWriterContext context) {
+			if (null == iw) return false;
+			if (null == tp) return false;
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterMemberOptions.OnlyStatic, null, context);
+			iw.Unindent();
+			return true;
 		}
 
 	}
