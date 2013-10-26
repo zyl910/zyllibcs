@@ -35,9 +35,14 @@ namespace zyllibcs.text {
 		private readonly List<KeyValuePair<Type, object>> m_TypeOwners = new List<KeyValuePair<Type, object>>();
 
 		/// <summary>
-		/// 相同类型的最大深度.
+		/// 相同类型的最大数量.
 		/// </summary>
-		private int m_SameTypeMax = 2;
+		private int m_SameTypeMax = 10;
+
+		/// <summary>
+		/// 连续相同类型对象的最大数量.
+		/// </summary>
+		private int m_SameTypeGroupMax = 1;
 
 
 		/// <summary>
@@ -85,11 +90,19 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// 相同类型的最大深度.
+		/// 相同类型的最大数量.
 		/// </summary>
 		public int SameTypeMax {
 			get { return m_SameTypeMax; }
 			set { m_SameTypeMax = value; }
+		}
+
+		/// <summary>
+		/// 连续相同类型对象的最大数量.
+		/// </summary>
+		public int SameTypeGroupMax {
+			get { return m_SameTypeGroupMax; }
+			set { m_SameTypeGroupMax = value; }
 		}
 
 		/// <summary>
@@ -120,13 +133,33 @@ namespace zyllibcs.text {
 		public bool NotifyForEachMemberBegin(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = true;
 			// check.
-			if (null != tp && !tp.IsArray && m_SameTypeMax > 0) {
-				int cnt = 0;
-				foreach (KeyValuePair<Type, object> pr in m_TypeOwners) {
-					if (tp.Equals(pr.Key)) {
-						++cnt;
-						if (cnt >= m_SameTypeMax) {
-							return false;
+			if (null != tp && !tp.IsArray) {
+				// 连续相同类型对象的最大数量.
+				if (m_SameTypeGroupMax > 0 && null != owner) {
+					int cnt = 0;
+					for (int i = m_TypeOwners.Count - 1; i >= 0; --i) {
+						KeyValuePair<Type, object> pr = m_TypeOwners[i];
+						if (null == pr.Value) break;
+						if (tp.Equals(pr.Key)) {
+							++cnt;
+							if (cnt >= m_SameTypeGroupMax) {
+								return false;
+							}
+						}
+						else {
+							break;
+						}
+					}
+				}
+				// 相同类型的最大数量.
+				if (m_SameTypeMax > 0) {
+					int cnt = 0;
+					foreach (KeyValuePair<Type, object> pr in m_TypeOwners) {
+						if (tp.Equals(pr.Key)) {
+							++cnt;
+							if (cnt >= m_SameTypeMax) {
+								return false;
+							}
 						}
 					}
 				}

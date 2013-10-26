@@ -205,7 +205,7 @@ namespace zyllibcs.text {
 			if (false) {
 			}
 			else if (value is Enum) {
-				return string.Format("0x{0:X}, {0:d}, {1}", value, tp.Name);
+				return string.Format("0x{0:X}, {0:d}, <{1}>", value, tp.Name);
 			}
 			else if (value is char) {
 				return string.Format("0x{0:X}, {0:d}", (int)(char)value);
@@ -229,6 +229,9 @@ namespace zyllibcs.text {
 			}
 			else if (tp.IsArray) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as Array).Length);
+			}
+			else {
+				rt = string.Format("<{0}>", tp.Name);
 			}
 			return rt;
 		}
