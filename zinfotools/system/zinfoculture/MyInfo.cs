@@ -13,49 +13,22 @@ namespace zinfoculture {
 		public static bool ShowDetail = false;
 
 		/// <summary>
-		/// 输出多行_日历_列表.
+		/// 输出多行_编码信息_数组.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="obj">object. Can be null.</param>
 		/// <param name="context">State Object. Can be null.</param>
 		/// <returns>返回是否成功输出.</returns>
-		public static bool outl_static_Calendar_List(IIndentedWriter iw, object obj, IndentedWriterContext context) {
-			if (null == iw) return false;
-			Type typeCalendar = typeof(Calendar);
-#if (NETFX_CORE)
-			TypeInfo tiCalendar = typeCalendar.GetTypeInfo();
-#endif
-			Assembly assemblyCalendar = typeCalendar.Assembly;
-			if (!iw.Indent(typeCalendar)) return false;
-			int cnt = 0;
-			IEnumerable<Type> lst = null;
-#if (NETFX_CORE)
-			lst = assemblyCalendar.ExportedTypes;
-#else
-			lst = assemblyCalendar.GetExportedTypes();
-#endif
-			foreach (Type tp in assemblyCalendar.GetTypes()) {
-				// check.
-#if (NETFX_CORE)
-				TypeInfo ti = tp.GetTypeInfo();
-				if (!ti.IsAssignableFrom(tiCalendar)) continue;
-#else
-				if (tp.IsAbstract) continue;
-				if (!tp.IsSubclassOf(typeCalendar)) continue;
-#endif
-				// new.
-				object ob = null;
-				try {
-					ob = Activator.CreateInstance(tp);
-				}
-				catch {
-					// 忽略.
-				}
-				if (null == ob) continue;
-				// write.
-				iw.WriteLine("[{0}]:\t# <{1}>", cnt, tp.Name);
-				IndentedObjectFunctor.CommonProc(iw, ob, context);
-				++cnt;
+		public static bool outl_EncodingInfo_Array(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+			if (null == obj) return false;
+			IEnumerable<EncodingInfo> lst = obj as IEnumerable<EncodingInfo>;
+			if (null == lst) return false;
+			if (null == iw) return true;
+			Type tp = obj.GetType();
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+			foreach (EncodingInfo p in lst) {
+				iw.WriteLine("{1}:\t{0}\t# 0x{0:X}, {2}", p.CodePage, p.Name, p.DisplayName);
 			}
 			iw.Unindent();
 			return true;
@@ -129,6 +102,53 @@ namespace zinfoculture {
 		}
 
 		/// <summary>
+		/// 输出多行_编码.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="obj">object. Can be null.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool outl_static_Encoding(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+			if (null == iw) return false;
+			Type tp = typeof(Encoding);
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+			IndentedWriterMemberOptions options = IndentedWriterMemberOptions.AllowMethod | IndentedWriterMemberOptions.OnlyStatic;
+			IndentedWriterUtil.ForEachMember(iw, null, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
+				MethodInfo memberinfo = e.MemberInfo as MethodInfo;
+				if (null != memberinfo) {
+					//if (!memberinfo.IsSpecialName) {
+					//    e.HasDefault = true;
+					//}
+					string name = memberinfo.Name;
+					int cntparam = memberinfo.GetParameters().Length;
+					if (false) {
+					}
+					else if (IndentedWriterUtil.StringComparer.Equals(name, "GetEncodings")) {
+						if (cntparam == 0) {
+							e.IsCancel = true;
+							IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
+							object lst = null;
+							try {
+								lst = memberinfo.Invoke(null, null);
+							}
+							catch {
+								// 忽略.
+							}
+							finally {
+							}
+							if (null != lst) {
+								outl_EncodingInfo_Array(iw, lst, context);
+							}
+						}
+					}
+				}
+			}, context);
+			iw.Unindent();
+			return true;
+		}
+
+		/// <summary>
 		/// 输出多行_主函数.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
@@ -152,7 +172,10 @@ namespace zinfoculture {
 			// TextElementEnumerator: 不适合输出.
 			// TextInfo: 不适合输出.
 			// Calendar: 各种日历.
-			iw.WriteLine("Calendar:"); outl_static_Calendar_List(iw, null, context);
+			iw.WriteLine("Calendar:"); IndentedWriterUtil.WriteDerivedClass(iw, typeof(Calendar), null, context);
+			// Encoding:
+			iw.WriteLine("Encoding:"); outl_static_Encoding(iw, null, context);
+			//IndentedWriterUtil.WriteTypeStatic(iw, typeof(Encoding), context);
 			return true;
 		}
 	}

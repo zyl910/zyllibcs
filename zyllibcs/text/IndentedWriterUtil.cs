@@ -453,5 +453,65 @@ namespace zyllibcs.text {
 			return true;
 		}
 
+		/// <summary>
+		/// 输出派生类及成员.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="basetype">Base Class type.</param>
+		/// <param name="assembly">Assembly.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool WriteDerivedClass(IIndentedWriter iw, Type basetype, Assembly assembly, IndentedWriterContext context) {
+			if (null == iw) return false;
+			if (null == basetype) return false;
+			//Type basetype = typeof(Calendar);
+#if (NETFX_CORE)
+			TypeInfo tiBase = typeCalendar.GetTypeInfo();
+#endif
+			//Assembly assembly = basetype.Assembly;
+			if (null == assembly) {
+#if (NETFX_CORE)
+				assembly = tiBase.Assembly;
+#else
+				assembly = basetype.Assembly;
+#endif
+			}
+			if (!iw.Indent(basetype)) return false;
+			iw.WriteLine("# DerivedClass of <{0}>:", basetype.FullName);
+			int cnt = 0;
+			IEnumerable<Type> lst = null;
+#if (NETFX_CORE)
+			lst = assembly.ExportedTypes;
+#else
+			lst = assembly.GetExportedTypes();
+#endif
+			foreach (Type tp in assembly.GetTypes()) {
+				// check.
+#if (NETFX_CORE)
+				TypeInfo ti = tp.GetTypeInfo();
+				if (!ti.IsAssignableFrom(tiBase)) continue;
+#else
+				if (tp.IsAbstract) continue;
+				if (!tp.IsSubclassOf(basetype)) continue;
+#endif
+				// new.
+				object ob = null;
+				try {
+					ob = Activator.CreateInstance(tp);
+				}
+				catch {
+					// 忽略.
+				}
+				if (null == ob) continue;
+				// write.
+				iw.WriteLine("DerivedClass[{0}]:\t# <{1}>", cnt, tp.Name);
+				WriteTypeStatic(iw, tp, context);
+				IndentedObjectFunctor.CommonProc(iw, ob, context);
+				++cnt;
+			}
+			iw.Unindent();
+			return true;
+		}
+
 	}
 }
