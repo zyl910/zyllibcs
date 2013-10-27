@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace zyllibcs.text {
+namespace zyllibcs.system {
 
 	/// <summary>
 	/// 成员名称选项.
@@ -74,9 +74,9 @@ namespace zyllibcs.text {
 	}
 
 	/// <summary>
-	/// 成员信息格式化.
+	/// 反射类型时的辅助类.
 	/// </summary>
-	public static class MemberInfoFormat {
+	public static class TypeUtil {
 		/// <summary>
 		/// 规范化成员名称选项.
 		/// </summary>

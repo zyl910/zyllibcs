@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Reflection;
+using zyllibcs.system;
 
 namespace zyllibcs.text {
 	/// <summary>
@@ -158,7 +159,7 @@ namespace zyllibcs.text {
 		/// <returns>返回名称.</returns>
 		/// <remarks>默认返回 <c>MemberInfoFormat.GetMemberName(tp, IndentedWriterUtil.DefaultTypeNameOption)</c>. </remarks>
 		public static string GetTypeName(Type tp) {
-			return MemberInfoFormat.GetMemberName(tp, IndentedWriterUtil.DefaultTypeNameOption);
+			return TypeUtil.GetMemberName(tp, IndentedWriterUtil.DefaultTypeNameOption);
 		}
 
 		/// <summary>

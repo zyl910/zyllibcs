@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
+using zyllibcs.system;
 
 namespace zyllibcs.text {
 	/// <summary>
@@ -348,7 +349,7 @@ namespace zyllibcs.text {
 				args.IsCancel = true;
 				args.HasDefault = false;
 				args.MemberInfo = mi;
-				args.MemberName = MemberInfoFormat.GetMemberNameAuto(mi, DefaultMemberNameOption);//mi.Name;
+				args.MemberName = TypeUtil.GetMemberNameAuto(mi, DefaultMemberNameOption);//mi.Name;
 				args.Value = null;
 				args.ValueOptions = IndentedWriterValueOptions.ExistValue;
 				args.AppendComment = null;
