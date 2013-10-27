@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using zyllibcs.text;
+
+namespace zinfodata {
+	/// <summary>
+	/// 信息数据. 是一个静态工具类.
+	/// </summary>
+	public static class InfoData {
+		/// <summary>
+		/// 名称与过程数组.
+		/// </summary>
+		public static readonly KeyValuePair<string, IndentedWriterObjectProc>[] NameProcs = new KeyValuePair<string, IndentedWriterObjectProc>[] {
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoculture", zinfoculture.MyInfo.outl_main),
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoenvironment", zinfoenvironment.MyInfo.outl_main),
+		};
+
+		/// <summary>
+		/// 默认名称.
+		/// </summary>
+		public const string DefaultName = "system/zinfoenvironment";
+
+		/// <summary>
+		/// 默认名称在 <see cref="NameProcs"/> 中的索引.
+		/// </summary>
+		public static readonly int DefaultNameIndex = 1;
+
+	}
+}

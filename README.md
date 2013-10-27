@@ -19,6 +19,8 @@
 * docs/: Documents.
 * examples/: Examples.
 * zinfotools/: zyl910's info tools.
+* zinfotools/zinfodata.csproj: zinfotools's data (.Net 2.0 Library).
+* zinfotools/zinfotoolsf.sln: zinfotools WinForm (.Net 2.0).
 * zyllibcs/: zyllibcs's source code.
 * zyllibcs.sln: zyllibcs's .Net 2.0 Library Solution File.
 * zyllibcs4.sln: zyllibcs's .Net 4.0 Library Solution File.
