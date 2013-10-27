@@ -1,0 +1,1965 @@
+﻿# Linux localhost.localdomain 3.11.3-201.fc19.x86_64 #1 SMP Thu Oct 3 00:47:03 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+
+# zinfoenvironment
+CultureInfo:
+	# <System.Globalization.CultureInfo>
+	GetCultures():
+		:	0x7F	# Invariant Language (Invariant Country), Invariant Language (Invariant Country)
+		ar:	0x1	# Arabic, العربية
+		bg:	0x2	# Bulgarian, Български
+		ca:	0x3	# Catalan, català
+		zh-CHS:	0x4	# Chinese, 中文
+		cs:	0x5	# Czech, Čeština
+		da:	0x6	# Danish, Dansk
+		de:	0x7	# German, Deutsch
+		el:	0x8	# Greek, Ελληνικά
+		en:	0x9	# English, English
+		es:	0xA	# Spanish, español
+		fi:	0xB	# Finnish, suomi
+		fr:	0xC	# French, français
+		he:	0xD	# Hebrew, עברית
+		hu:	0xE	# Hungarian, magyar
+		is:	0xF	# Icelandic, íslenska
+		it:	0x10	# Italian, italiano
+		ja:	0x11	# Japanese, 日本語
+		ko:	0x12	# Korean, 한국어
+		nl:	0x13	# Dutch, Nederlands
+		no:	0x14	# Norwegian, norsk
+		pl:	0x15	# Polish, polski
+		pt:	0x16	# Portuguese, português
+		ro:	0x18	# Romanian, Română
+		ru:	0x19	# Russian, Русский
+		hr:	0x1A	# Croatian, hrvatski
+		sk:	0x1B	# Slovak, slovenský
+		sq:	0x1C	# Albanian, shqipe
+		sv:	0x1D	# Swedish, svenska
+		th:	0x1E	# Thai, ไทย
+		tr:	0x1F	# Turkish, Türkçe
+		id:	0x21	# Indonesian, Bahasa Indonesia
+		uk:	0x22	# Ukrainian, Українська
+		be:	0x23	# Belarusian, Беларускі
+		sl:	0x24	# Slovenian, Slovenščina
+		et:	0x25	# Estonian, Eesti
+		lv:	0x26	# Latvian, latviešu
+		lt:	0x27	# Lithuanian, Lietuvių
+		fa:	0x29	# Persian, فارسی
+		vi:	0x2A	# Vietnamese, Tiếng Việt
+		hy:	0x2B	# Armenian, Հայերէն
+		eu:	0x2D	# Basque, euskara
+		mk:	0x2F	# Macedonian, македонски
+		af:	0x36	# Afrikaans, Afrikaanse
+		ka:	0x37	# Georgian, ქართული
+		fo:	0x38	# Faroese, føroyskt
+		hi:	0x39	# Hindi, हिंदी
+		sw:	0x41	# Swahili, Kiswahili
+		gu:	0x47	# Gujarati, ગુજરાતી
+		ta:	0x49	# Tamil, தமிழ்
+		te:	0x4A	# Telugu, తెలుగు
+		kn:	0x4B	# Kannada, ಕನ್ನಡ
+		mr:	0x4E	# Marathi, मराठी
+		gl:	0x56	# Gallegan, galego
+		kok:	0x57	# Konkani, कोंकणी
+		ar-SA:	0x401	# Arabic (Saudi Arabia), العربية (العربية السعودية)
+		bg-BG:	0x402	# Bulgarian (Bulgaria), Български (България)
+		ca-ES:	0x403	# Catalan (Spain), català (Espanya)
+		zh-TW:	0x404	# Chinese (Taiwan), 中文 (台湾)
+		cs-CZ:	0x405	# Czech (Czech Republic), Čeština (Česká republika)
+		da-DK:	0x406	# Danish (Denmark), Dansk (Danmark)
+		de-DE:	0x407	# German (Germany), Deutsch (Deutschland)
+		el-GR:	0x408	# Greek (Greece), Ελληνικά (Ελλάδα)
+		en-US:	0x409	# English (United States), English (United States)
+		fi-FI:	0x40B	# Finnish (Finland), suomi (Suomi)
+		fr-FR:	0x40C	# French (France), français (France)
+		he-IL:	0x40D	# Hebrew (Israel), עברית (ישראל)
+		hu-HU:	0x40E	# Hungarian (Hungary), magyar (Magyarország)
+		is-IS:	0x40F	# Icelandic (Iceland), íslenska (Ísland)
+		it-IT:	0x410	# Italian (Italy), italiano (Italia)
+		ja-JP:	0x411	# Japanese (Japan), 日本語 (日本)
+		ko-KR:	0x412	# Korean (South Korea), 한국어 (대한민국)
+		nl-NL:	0x413	# Dutch (Netherlands), Nederlands (Nederland)
+		nb-NO:	0x414	# Norwegian Bokmål (Norway), norsk bokmål (Norge)
+		pl-PL:	0x415	# Polish (Poland), polski (Polska)
+		pt-BR:	0x416	# Portuguese (Brazil), português (Brasil)
+		ro-RO:	0x418	# Romanian (Romania), Română (România)
+		ru-RU:	0x419	# Russian (Russia), Русский (Россия)
+		hr-HR:	0x41A	# Croatian (Croatia), hrvatski (Hrvatska)
+		sk-SK:	0x41B	# Slovak (Slovakia), slovenský (Slovenská republika)
+		sq-AL:	0x41C	# Albanian (Albania), shqipe (Shqipëria)
+		sv-SE:	0x41D	# Swedish (Sweden), svenska (Sverige)
+		th-TH:	0x41E	# Thai (Thailand), ไทย (ประเทศไทย)
+		tr-TR:	0x41F	# Turkish (Turkey), Türkçe (Türkiye)
+		id-ID:	0x421	# Indonesian (Indonesia), Bahasa Indonesia (Indonesia)
+		uk-UA:	0x422	# Ukrainian (Ukraine), Українська (Україна)
+		be-BY:	0x423	# Belarusian (Belarus), Беларускі (Беларусь)
+		sl-SI:	0x424	# Slovenian (Slovenia), Slovenščina (Slovenija)
+		et-EE:	0x425	# Estonian (Estonia), Eesti (Eesti)
+		lv-LV:	0x426	# Latvian (Latvia), latviešu (Latvija)
+		lt-LT:	0x427	# Lithuanian (Lithuania), Lietuvių (Lietuva)
+		fa-IR:	0x429	# Persian (Iran), فارسی (ایران)
+		vi-VN:	0x42A	# Vietnamese (Vietnam), Tiếng Việt (Việt Nam)
+		hy-AM:	0x42B	# Armenian (Armenia), Հայերէն (Հայաստանի Հանրապետութիւն)
+		eu-ES:	0x42D	# Basque (Spain), euskara (Espainia)
+		mk-MK:	0x42F	# Macedonian (Macedonia), македонски (Македонија)
+		af-ZA:	0x436	# Afrikaans (South Africa), Afrikaanse (Suid-Afrika)
+		ka-GE:	0x437	# Georgian (Georgia), ქართული (საქართველო)
+		fo-FO:	0x438	# Faroese (Faroe Islands), føroyskt (Føroyar)
+		hi-IN:	0x439	# Hindi (India), हिंदी (भारत)
+		sw-KE:	0x441	# Swahili (Kenya), Kiswahili (Kenya)
+		gu-IN:	0x447	# Gujarati (India), ગુજરાતી (ભારત)
+		ta-IN:	0x449	# Tamil (India), தமிழ் (இந்தியா)
+		te-IN:	0x44A	# Telugu (India), తెలుగు (భారత దేళ౦)
+		kn-IN:	0x44B	# Kannada (India), ಕನ್ನಡ (ಭಾರತ)
+		mr-IN:	0x44E	# Marathi (India), मराठी (भारत)
+		gl-ES:	0x456	# Gallegan (Spain), galego (España)
+		kok-IN:	0x457	# Konkani (India), कोंकणी (भारत)
+		ar-IQ:	0x801	# Arabic (Iraq), العربية (العراق)
+		zh-CN:	0x804	# Chinese (China), 中文 (中国)
+		de-CH:	0x807	# German (Switzerland), Deutsch (Schweiz)
+		en-GB:	0x809	# English (United Kingdom), English (United Kingdom)
+		es-MX:	0x80A	# Spanish (Mexico), español (México)
+		fr-BE:	0x80C	# French (Belgium), français (Belgique)
+		it-CH:	0x810	# Italian (Switzerland), italiano (Svizzera)
+		nl-BE:	0x813	# Dutch (Belgium), Nederlands (België)
+		nn-NO:	0x814	# Norwegian Nynorsk (Norway), norsk nynorsk (Noreg)
+		pt-PT:	0x816	# Portuguese (Portugal), português (Portugal)
+		sv-FI:	0x81D	# Swedish (Finland), svenska (Finland)
+		ar-EG:	0xC01	# Arabic (Egypt), العربية (مصر)
+		zh-HK:	0xC04	# Chinese (Hong Kong S.A.R., China), 中文 (中国香港特别行政区)
+		de-AT:	0xC07	# German (Austria), Deutsch (Österreich)
+		en-AU:	0xC09	# English (Australia), English (Australia)
+		es-ES:	0xC0A	# Spanish (Spain), español (España)
+		fr-CA:	0xC0C	# French (Canada), français (Canada)
+		ar-LY:	0x1001	# Arabic (Libya), العربية (ليبيا)
+		zh-SG:	0x1004	# Chinese (Singapore), 中文 (新加坡)
+		de-LU:	0x1007	# German (Luxembourg), Deutsch (Luxemburg)
+		en-CA:	0x1009	# English (Canada), English (Canada)
+		es-GT:	0x100A	# Spanish (Guatemala), español (Guatemala)
+		fr-CH:	0x100C	# French (Switzerland), français (Suisse)
+		ar-DZ:	0x1401	# Arabic (Algeria), العربية (الجزائر)
+		zh-MO:	0x1404	# Chinese (Macao S.A.R. China), 中文 (中国澳门特别行政区)
+		en-NZ:	0x1409	# English (New Zealand), English (New Zealand)
+		es-CR:	0x140A	# Spanish (Costa Rica), español (Costa Rica)
+		fr-LU:	0x140C	# French (Luxembourg), français (Luxembourg)
+		ar-MA:	0x1801	# Arabic (Morocco), العربية (المغرب)
+		en-IE:	0x1809	# English (Ireland), English (Ireland)
+		es-PA:	0x180A	# Spanish (Panama), español (Panamá)
+		ar-TN:	0x1C01	# Arabic (Tunisia), العربية (تونس)
+		en-ZA:	0x1C09	# English (South Africa), English (South Africa)
+		es-DO:	0x1C0A	# Spanish (Dominican Republic), español (República Dominicana)
+		ar-OM:	0x2001	# Arabic (Oman), العربية (عمان)
+		es-VE:	0x200A	# Spanish (Venezuela), español (Venezuela)
+		ar-YE:	0x2401	# Arabic (Yemen), العربية (اليمن)
+		es-CO:	0x240A	# Spanish (Colombia), español (Colombia)
+		ar-SY:	0x2801	# Arabic (Syria), العربية (سورية)
+		es-PE:	0x280A	# Spanish (Peru), español (Perú)
+		ar-JO:	0x2C01	# Arabic (Jordan), العربية (الاردن)
+		en-TT:	0x2C09	# English (Trinidad and Tobago), English (Trinidad and Tobago)
+		es-AR:	0x2C0A	# Spanish (Argentina), español (Argentina)
+		ar-LB:	0x3001	# Arabic (Lebanon), العربية (لبنان)
+		en-ZW:	0x3009	# English (Zimbabwe), English (Zimbabwe)
+		es-EC:	0x300A	# Spanish (Ecuador), español (Ecuador)
+		ar-KW:	0x3401	# Arabic (Kuwait), العربية (الكويت)
+		en-PH:	0x3409	# English (Philippines), English (Philippines)
+		es-CL:	0x340A	# Spanish (Chile), español (Chile)
+		ar-AE:	0x3801	# Arabic (United Arab Emirates), العربية (الامارات العربية المتحدة)
+		es-UY:	0x380A	# Spanish (Uruguay), español (Uruguay)
+		ar-BH:	0x3C01	# Arabic (Bahrain), العربية (البحرين)
+		es-PY:	0x3C0A	# Spanish (Paraguay), español (Paraguay)
+		ar-QA:	0x4001	# Arabic (Qatar), العربية (قطر)
+		es-BO:	0x400A	# Spanish (Bolivia), español (Bolivia)
+		es-SV:	0x440A	# Spanish (El Salvador), español (El Salvador)
+		es-HN:	0x480A	# Spanish (Honduras), español (Honduras)
+		es-NI:	0x4C0A	# Spanish (Nicaragua), español (Nicaragua)
+		es-PR:	0x500A	# Spanish (Puerto Rico), español (Puerto Rico)
+		zh-CHT:	0x7C04	# Chinese, 中文
+	InvariantCulture:		# <CultureInfo>
+		# <System.Globalization.CultureInfo>
+		CultureTypes:	AllCultures	# 0x00000007, 7, <CultureTypes>
+		IetfLanguageTag:		# Length=0 (0x0)
+		KeyboardLayoutId:	1151	# 0x47F
+		LCID:	127	# 0x7F
+		Name:		# Length=0 (0x0)
+		NativeName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		OptionalCalendars:	System.Globalization.Calendar[]	# Length=1 (0x1)
+			# <System.Globalization.Calendar[]>
+			[0]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+		Parent:		# <CultureInfo>
+		TextInfo:	TextInfo - 127	# <TextInfo>
+			# <System.Globalization.TextInfo>
+			ANSICodePage:	0	# 0x0
+			EBCDICCodePage:	0	# 0x0
+			LCID:	127	# 0x7F
+			ListSeparator:	,	# Length=1 (0x1)
+			MacCodePage:	0	# 0x0
+			OEMCodePage:	0	# 0x0
+			CultureName:		# Length=0 (0x0)
+			IsReadOnly:	True	# <Boolean>
+			IsRightToLeft:	False	# <Boolean>
+		ThreeLetterISOLanguageName:	IVL	# Length=3 (0x3)
+		ThreeLetterWindowsLanguageName:	IVL	# Length=3 (0x3)
+		TwoLetterISOLanguageName:	iv	# Length=2 (0x2)
+		UseUserOverride:	False	# <Boolean>
+		CompareInfo:	CompareInfo - 127	# <CompareInfo>
+			# <System.Globalization.CompareInfo>
+			LCID:	127	# 0x7F
+			Name:	(null)
+		IsNeutralCulture:	False	# <Boolean>
+		NumberFormat:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+			# <System.Globalization.NumberFormatInfo>
+			CurrencyDecimalDigits:	2	# 0x2
+			CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+			CurrencyGroupSeparator:	,	# Length=1 (0x1)
+			CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			CurrencyNegativePattern:	0	# 0x0
+			CurrencyPositivePattern:	0	# 0x0
+			CurrencySymbol:	¤	# Length=1 (0x1)
+			IsReadOnly:	True	# <Boolean>
+			NaNSymbol:	NaN	# Length=3 (0x3)
+			NativeDigits:	System.String[]	# Length=10 (0xA)
+				# <System.String[]>
+				[0]:	0	# Length=1 (0x1)
+				[1]:	1	# Length=1 (0x1)
+				[2]:	2	# Length=1 (0x1)
+				[3]:	3	# Length=1 (0x1)
+				[4]:	4	# Length=1 (0x1)
+				[5]:	5	# Length=1 (0x1)
+				[6]:	6	# Length=1 (0x1)
+				[7]:	7	# Length=1 (0x1)
+				[8]:	8	# Length=1 (0x1)
+				[9]:	9	# Length=1 (0x1)
+			DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+			NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+			NegativeSign:	-	# Length=1 (0x1)
+			NumberDecimalDigits:	2	# 0x2
+			NumberDecimalSeparator:	.	# Length=1 (0x1)
+			NumberGroupSeparator:	,	# Length=1 (0x1)
+			NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			NumberNegativePattern:	1	# 0x1
+			PercentDecimalDigits:	2	# 0x2
+			PercentDecimalSeparator:	.	# Length=1 (0x1)
+			PercentGroupSeparator:	,	# Length=1 (0x1)
+			PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			PercentNegativePattern:	0	# 0x0
+			PercentPositivePattern:	0	# 0x0
+			PercentSymbol:	%	# Length=1 (0x1)
+			PerMilleSymbol:	‰	# Length=1 (0x1)
+			PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+			PositiveSign:	+	# Length=1 (0x1)
+		DateTimeFormat:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+			# <System.Globalization.DateTimeFormatInfo>
+			IsReadOnly:	True	# <Boolean>
+			AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Sun	# Length=3 (0x3)
+				[1]:	Mon	# Length=3 (0x3)
+				[2]:	Tue	# Length=3 (0x3)
+				[3]:	Wed	# Length=3 (0x3)
+				[4]:	Thu	# Length=3 (0x3)
+				[5]:	Fri	# Length=3 (0x3)
+				[6]:	Sat	# Length=3 (0x3)
+			AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	Jan	# Length=3 (0x3)
+				[1]:	Feb	# Length=3 (0x3)
+				[2]:	Mar	# Length=3 (0x3)
+				[3]:	Apr	# Length=3 (0x3)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	Jun	# Length=3 (0x3)
+				[6]:	Jul	# Length=3 (0x3)
+				[7]:	Aug	# Length=3 (0x3)
+				[8]:	Sep	# Length=3 (0x3)
+				[9]:	Oct	# Length=3 (0x3)
+				[10]:	Nov	# Length=3 (0x3)
+				[11]:	Dec	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			DayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Sunday	# Length=6 (0x6)
+				[1]:	Monday	# Length=6 (0x6)
+				[2]:	Tuesday	# Length=7 (0x7)
+				[3]:	Wednesday	# Length=9 (0x9)
+				[4]:	Thursday	# Length=8 (0x8)
+				[5]:	Friday	# Length=6 (0x6)
+				[6]:	Saturday	# Length=8 (0x8)
+			MonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	January	# Length=7 (0x7)
+				[1]:	February	# Length=8 (0x8)
+				[2]:	March	# Length=5 (0x5)
+				[3]:	April	# Length=5 (0x5)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	June	# Length=4 (0x4)
+				[6]:	July	# Length=4 (0x4)
+				[7]:	August	# Length=6 (0x6)
+				[8]:	September	# Length=9 (0x9)
+				[9]:	October	# Length=7 (0x7)
+				[10]:	November	# Length=8 (0x8)
+				[11]:	December	# Length=8 (0x8)
+				[12]:		# Length=0 (0x0)
+			AMDesignator:	AM	# Length=2 (0x2)
+			PMDesignator:	PM	# Length=2 (0x2)
+			DateSeparator:	/	# Length=1 (0x1)
+			TimeSeparator:	:	# Length=1 (0x1)
+			LongDatePattern:	dddd, dd MMMM yyyy	# Length=18 (0x12)
+			ShortDatePattern:	MM/dd/yyyy	# Length=10 (0xA)
+			ShortTimePattern:	HH:mm	# Length=5 (0x5)
+			LongTimePattern:	HH:mm:ss	# Length=8 (0x8)
+			MonthDayPattern:	MMMM dd	# Length=7 (0x7)
+			YearMonthPattern:	yyyy MMMM	# Length=9 (0x9)
+			FullDateTimePattern:	dddd, dd MMMM yyyy HH:mm:ss	# Length=27 (0x1B)
+			FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+			Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+			RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+			SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+			UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+			AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	Jan	# Length=3 (0x3)
+				[1]:	Feb	# Length=3 (0x3)
+				[2]:	Mar	# Length=3 (0x3)
+				[3]:	Apr	# Length=3 (0x3)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	Jun	# Length=3 (0x3)
+				[6]:	Jul	# Length=3 (0x3)
+				[7]:	Aug	# Length=3 (0x3)
+				[8]:	Sep	# Length=3 (0x3)
+				[9]:	Oct	# Length=3 (0x3)
+				[10]:	Nov	# Length=3 (0x3)
+				[11]:	Dec	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	January	# Length=7 (0x7)
+				[1]:	February	# Length=8 (0x8)
+				[2]:	March	# Length=5 (0x5)
+				[3]:	April	# Length=5 (0x5)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	June	# Length=4 (0x4)
+				[6]:	July	# Length=4 (0x4)
+				[7]:	August	# Length=6 (0x6)
+				[8]:	September	# Length=9 (0x9)
+				[9]:	October	# Length=7 (0x7)
+				[10]:	November	# Length=8 (0x8)
+				[11]:	December	# Length=8 (0x8)
+				[12]:		# Length=0 (0x0)
+			NativeCalendarName:		# Length=0 (0x0)
+			ShortestDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Su	# Length=2 (0x2)
+				[1]:	Mo	# Length=2 (0x2)
+				[2]:	Tu	# Length=2 (0x2)
+				[3]:	We	# Length=2 (0x2)
+				[4]:	Th	# Length=2 (0x2)
+				[5]:	Fr	# Length=2 (0x2)
+				[6]:	Sa	# Length=2 (0x2)
+		DisplayName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
+		EnglishName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
+		IsReadOnly:	True	# <Boolean>
+	CurrentCulture:	zh-CN	# <CultureInfo>
+		# <System.Globalization.CultureInfo>
+		CultureTypes:	AllCultures	# 0x00000007, 7, <CultureTypes>
+		IetfLanguageTag:	zh-CN	# Length=5 (0x5)
+		KeyboardLayoutId:	2052	# 0x804
+		LCID:	2052	# 0x804
+		Name:	zh-CN	# Length=5 (0x5)
+		NativeName:	中文 (中国)	# Length=7 (0x7)
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		OptionalCalendars:	System.Globalization.Calendar[]	# Length=5 (0x5)
+			# <System.Globalization.Calendar[]>
+			[0]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[1]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[2]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[3]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[4]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+		Parent:	zh-CHS	# <CultureInfo>
+		TextInfo:	TextInfo - 2052	# <TextInfo>
+			# <System.Globalization.TextInfo>
+			ANSICodePage:	936	# 0x3A8
+			EBCDICCodePage:	500	# 0x1F4
+			LCID:	2052	# 0x804
+			ListSeparator:	,	# Length=1 (0x1)
+			MacCodePage:	10008	# 0x2718
+			OEMCodePage:	936	# 0x3A8
+			CultureName:	zh-CN	# Length=5 (0x5)
+			IsReadOnly:	True	# <Boolean>
+			IsRightToLeft:	False	# <Boolean>
+		ThreeLetterISOLanguageName:	zho	# Length=3 (0x3)
+		ThreeLetterWindowsLanguageName:	CHS	# Length=3 (0x3)
+		TwoLetterISOLanguageName:	zh	# Length=2 (0x2)
+		UseUserOverride:	True	# <Boolean>
+		CompareInfo:	CompareInfo - 2052	# <CompareInfo>
+			# <System.Globalization.CompareInfo>
+			LCID:	2052	# 0x804
+			Name:	(null)
+		IsNeutralCulture:	False	# <Boolean>
+		NumberFormat:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+			# <System.Globalization.NumberFormatInfo>
+			CurrencyDecimalDigits:	2	# 0x2
+			CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+			CurrencyGroupSeparator:	,	# Length=1 (0x1)
+			CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			CurrencyNegativePattern:	1	# 0x1
+			CurrencyPositivePattern:	0	# 0x0
+			CurrencySymbol:	￥	# Length=1 (0x1)
+			IsReadOnly:	True	# <Boolean>
+			NaNSymbol:	NaN	# Length=3 (0x3)
+			NativeDigits:	System.String[]	# Length=10 (0xA)
+				# <System.String[]>
+				[0]:	0	# Length=1 (0x1)
+				[1]:	1	# Length=1 (0x1)
+				[2]:	2	# Length=1 (0x1)
+				[3]:	3	# Length=1 (0x1)
+				[4]:	4	# Length=1 (0x1)
+				[5]:	5	# Length=1 (0x1)
+				[6]:	6	# Length=1 (0x1)
+				[7]:	7	# Length=1 (0x1)
+				[8]:	8	# Length=1 (0x1)
+				[9]:	9	# Length=1 (0x1)
+			DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+			NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+			NegativeSign:	-	# Length=1 (0x1)
+			NumberDecimalDigits:	2	# 0x2
+			NumberDecimalSeparator:	.	# Length=1 (0x1)
+			NumberGroupSeparator:	,	# Length=1 (0x1)
+			NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			NumberNegativePattern:	1	# 0x1
+			PercentDecimalDigits:	2	# 0x2
+			PercentDecimalSeparator:	.	# Length=1 (0x1)
+			PercentGroupSeparator:	,	# Length=1 (0x1)
+			PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			PercentNegativePattern:	1	# 0x1
+			PercentPositivePattern:	1	# 0x1
+			PercentSymbol:	%	# Length=1 (0x1)
+			PerMilleSymbol:	‰	# Length=1 (0x1)
+			PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+			PositiveSign:	+	# Length=1 (0x1)
+		DateTimeFormat:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+			# <System.Globalization.DateTimeFormatInfo>
+			IsReadOnly:	True	# <Boolean>
+			AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	日	# Length=1 (0x1)
+				[1]:	一	# Length=1 (0x1)
+				[2]:	二	# Length=1 (0x1)
+				[3]:	三	# Length=1 (0x1)
+				[4]:	四	# Length=1 (0x1)
+				[5]:	五	# Length=1 (0x1)
+				[6]:	六	# Length=1 (0x1)
+			AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			DayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	星期日	# Length=3 (0x3)
+				[1]:	星期一	# Length=3 (0x3)
+				[2]:	星期二	# Length=3 (0x3)
+				[3]:	星期三	# Length=3 (0x3)
+				[4]:	星期四	# Length=3 (0x3)
+				[5]:	星期五	# Length=3 (0x3)
+				[6]:	星期六	# Length=3 (0x3)
+			MonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			AMDesignator:	上午	# Length=2 (0x2)
+			PMDesignator:	下午	# Length=2 (0x2)
+			DateSeparator:	/	# Length=1 (0x1)
+			TimeSeparator:	:	# Length=1 (0x1)
+			LongDatePattern:	"yyyy\'年\'M\'月\'d\'日\'"	# Length=15 (0xF)
+			ShortDatePattern:	yy-M-d	# Length=6 (0x6)
+			ShortTimePattern:	th:mm	# Length=5 (0x5)
+			LongTimePattern:	"thh\'时\'mm\'分\'ss\'秒\'"	# Length=16 (0x10)
+			MonthDayPattern:	"M\'月\'d\'日\'"	# Length=8 (0x8)
+			YearMonthPattern:	"yyyy\'年\'M\'月\'"	# Length=11 (0xB)
+			FullDateTimePattern:	"yyyy\'年\'M\'月\'d\'日\' thh\'时\'mm\'分\'ss\'秒\'"	# Length=32 (0x20)
+			FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+			Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+			RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+			SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+			UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+			AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	Jan	# Length=3 (0x3)
+				[1]:	Feb	# Length=3 (0x3)
+				[2]:	Mar	# Length=3 (0x3)
+				[3]:	Apr	# Length=3 (0x3)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	Jun	# Length=3 (0x3)
+				[6]:	Jul	# Length=3 (0x3)
+				[7]:	Aug	# Length=3 (0x3)
+				[8]:	Sep	# Length=3 (0x3)
+				[9]:	Oct	# Length=3 (0x3)
+				[10]:	Nov	# Length=3 (0x3)
+				[11]:	Dec	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	January	# Length=7 (0x7)
+				[1]:	February	# Length=8 (0x8)
+				[2]:	March	# Length=5 (0x5)
+				[3]:	April	# Length=5 (0x5)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	June	# Length=4 (0x4)
+				[6]:	July	# Length=4 (0x4)
+				[7]:	August	# Length=6 (0x6)
+				[8]:	September	# Length=9 (0x9)
+				[9]:	October	# Length=7 (0x7)
+				[10]:	November	# Length=8 (0x8)
+				[11]:	December	# Length=8 (0x8)
+				[12]:		# Length=0 (0x0)
+			NativeCalendarName:		# Length=0 (0x0)
+			ShortestDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Su	# Length=2 (0x2)
+				[1]:	Mo	# Length=2 (0x2)
+				[2]:	Tu	# Length=2 (0x2)
+				[3]:	We	# Length=2 (0x2)
+				[4]:	Th	# Length=2 (0x2)
+				[5]:	Fr	# Length=2 (0x2)
+				[6]:	Sa	# Length=2 (0x2)
+		DisplayName:	Chinese (China)	# Length=15 (0xF)
+		EnglishName:	Chinese (China)	# Length=15 (0xF)
+		IsReadOnly:	True	# <Boolean>
+	CurrentUICulture:	zh-CN	# <CultureInfo>
+		# <System.Globalization.CultureInfo>
+		CultureTypes:	AllCultures	# 0x00000007, 7, <CultureTypes>
+		IetfLanguageTag:	zh-CN	# Length=5 (0x5)
+		KeyboardLayoutId:	2052	# 0x804
+		LCID:	2052	# 0x804
+		Name:	zh-CN	# Length=5 (0x5)
+		NativeName:	中文 (中国)	# Length=7 (0x7)
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		OptionalCalendars:	System.Globalization.Calendar[]	# Length=5 (0x5)
+			# <System.Globalization.Calendar[]>
+			[0]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[1]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[2]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[3]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[4]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+		Parent:	zh-CHS	# <CultureInfo>
+		TextInfo:	TextInfo - 2052	# <TextInfo>
+			# <System.Globalization.TextInfo>
+			ANSICodePage:	936	# 0x3A8
+			EBCDICCodePage:	500	# 0x1F4
+			LCID:	2052	# 0x804
+			ListSeparator:	,	# Length=1 (0x1)
+			MacCodePage:	10008	# 0x2718
+			OEMCodePage:	936	# 0x3A8
+			CultureName:	zh-CN	# Length=5 (0x5)
+			IsReadOnly:	True	# <Boolean>
+			IsRightToLeft:	False	# <Boolean>
+		ThreeLetterISOLanguageName:	zho	# Length=3 (0x3)
+		ThreeLetterWindowsLanguageName:	CHS	# Length=3 (0x3)
+		TwoLetterISOLanguageName:	zh	# Length=2 (0x2)
+		UseUserOverride:	True	# <Boolean>
+		CompareInfo:	CompareInfo - 2052	# <CompareInfo>
+			# <System.Globalization.CompareInfo>
+			LCID:	2052	# 0x804
+			Name:	(null)
+		IsNeutralCulture:	False	# <Boolean>
+		NumberFormat:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+			# <System.Globalization.NumberFormatInfo>
+			CurrencyDecimalDigits:	2	# 0x2
+			CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+			CurrencyGroupSeparator:	,	# Length=1 (0x1)
+			CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			CurrencyNegativePattern:	1	# 0x1
+			CurrencyPositivePattern:	0	# 0x0
+			CurrencySymbol:	￥	# Length=1 (0x1)
+			IsReadOnly:	True	# <Boolean>
+			NaNSymbol:	NaN	# Length=3 (0x3)
+			NativeDigits:	System.String[]	# Length=10 (0xA)
+				# <System.String[]>
+				[0]:	0	# Length=1 (0x1)
+				[1]:	1	# Length=1 (0x1)
+				[2]:	2	# Length=1 (0x1)
+				[3]:	3	# Length=1 (0x1)
+				[4]:	4	# Length=1 (0x1)
+				[5]:	5	# Length=1 (0x1)
+				[6]:	6	# Length=1 (0x1)
+				[7]:	7	# Length=1 (0x1)
+				[8]:	8	# Length=1 (0x1)
+				[9]:	9	# Length=1 (0x1)
+			DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+			NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+			NegativeSign:	-	# Length=1 (0x1)
+			NumberDecimalDigits:	2	# 0x2
+			NumberDecimalSeparator:	.	# Length=1 (0x1)
+			NumberGroupSeparator:	,	# Length=1 (0x1)
+			NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			NumberNegativePattern:	1	# 0x1
+			PercentDecimalDigits:	2	# 0x2
+			PercentDecimalSeparator:	.	# Length=1 (0x1)
+			PercentGroupSeparator:	,	# Length=1 (0x1)
+			PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			PercentNegativePattern:	1	# 0x1
+			PercentPositivePattern:	1	# 0x1
+			PercentSymbol:	%	# Length=1 (0x1)
+			PerMilleSymbol:	‰	# Length=1 (0x1)
+			PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+			PositiveSign:	+	# Length=1 (0x1)
+		DateTimeFormat:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+			# <System.Globalization.DateTimeFormatInfo>
+			IsReadOnly:	True	# <Boolean>
+			AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	日	# Length=1 (0x1)
+				[1]:	一	# Length=1 (0x1)
+				[2]:	二	# Length=1 (0x1)
+				[3]:	三	# Length=1 (0x1)
+				[4]:	四	# Length=1 (0x1)
+				[5]:	五	# Length=1 (0x1)
+				[6]:	六	# Length=1 (0x1)
+			AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			DayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	星期日	# Length=3 (0x3)
+				[1]:	星期一	# Length=3 (0x3)
+				[2]:	星期二	# Length=3 (0x3)
+				[3]:	星期三	# Length=3 (0x3)
+				[4]:	星期四	# Length=3 (0x3)
+				[5]:	星期五	# Length=3 (0x3)
+				[6]:	星期六	# Length=3 (0x3)
+			MonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			AMDesignator:	上午	# Length=2 (0x2)
+			PMDesignator:	下午	# Length=2 (0x2)
+			DateSeparator:	/	# Length=1 (0x1)
+			TimeSeparator:	:	# Length=1 (0x1)
+			LongDatePattern:	"yyyy\'年\'M\'月\'d\'日\'"	# Length=15 (0xF)
+			ShortDatePattern:	yy-M-d	# Length=6 (0x6)
+			ShortTimePattern:	th:mm	# Length=5 (0x5)
+			LongTimePattern:	"thh\'时\'mm\'分\'ss\'秒\'"	# Length=16 (0x10)
+			MonthDayPattern:	"M\'月\'d\'日\'"	# Length=8 (0x8)
+			YearMonthPattern:	"yyyy\'年\'M\'月\'"	# Length=11 (0xB)
+			FullDateTimePattern:	"yyyy\'年\'M\'月\'d\'日\' thh\'时\'mm\'分\'ss\'秒\'"	# Length=32 (0x20)
+			FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+			Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+			RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+			SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+			UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+			AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	Jan	# Length=3 (0x3)
+				[1]:	Feb	# Length=3 (0x3)
+				[2]:	Mar	# Length=3 (0x3)
+				[3]:	Apr	# Length=3 (0x3)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	Jun	# Length=3 (0x3)
+				[6]:	Jul	# Length=3 (0x3)
+				[7]:	Aug	# Length=3 (0x3)
+				[8]:	Sep	# Length=3 (0x3)
+				[9]:	Oct	# Length=3 (0x3)
+				[10]:	Nov	# Length=3 (0x3)
+				[11]:	Dec	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	January	# Length=7 (0x7)
+				[1]:	February	# Length=8 (0x8)
+				[2]:	March	# Length=5 (0x5)
+				[3]:	April	# Length=5 (0x5)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	June	# Length=4 (0x4)
+				[6]:	July	# Length=4 (0x4)
+				[7]:	August	# Length=6 (0x6)
+				[8]:	September	# Length=9 (0x9)
+				[9]:	October	# Length=7 (0x7)
+				[10]:	November	# Length=8 (0x8)
+				[11]:	December	# Length=8 (0x8)
+				[12]:		# Length=0 (0x0)
+			NativeCalendarName:		# Length=0 (0x0)
+			ShortestDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Su	# Length=2 (0x2)
+				[1]:	Mo	# Length=2 (0x2)
+				[2]:	Tu	# Length=2 (0x2)
+				[3]:	We	# Length=2 (0x2)
+				[4]:	Th	# Length=2 (0x2)
+				[5]:	Fr	# Length=2 (0x2)
+				[6]:	Sa	# Length=2 (0x2)
+		DisplayName:	Chinese (China)	# Length=15 (0xF)
+		EnglishName:	Chinese (China)	# Length=15 (0xF)
+		IsReadOnly:	True	# <Boolean>
+	InstalledUICulture:	zh-CN	# <CultureInfo>
+		# <System.Globalization.CultureInfo>
+		CultureTypes:	AllCultures	# 0x00000007, 7, <CultureTypes>
+		IetfLanguageTag:	zh-CN	# Length=5 (0x5)
+		KeyboardLayoutId:	2052	# 0x804
+		LCID:	2052	# 0x804
+		Name:	zh-CN	# Length=5 (0x5)
+		NativeName:	中文 (中国)	# Length=7 (0x7)
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		OptionalCalendars:	System.Globalization.Calendar[]	# Length=5 (0x5)
+			# <System.Globalization.Calendar[]>
+			[0]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[1]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[2]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[3]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			[4]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	0	# 0x00000000, 0, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+		Parent:	zh-CHS	# <CultureInfo>
+		TextInfo:	TextInfo - 2052	# <TextInfo>
+			# <System.Globalization.TextInfo>
+			ANSICodePage:	936	# 0x3A8
+			EBCDICCodePage:	500	# 0x1F4
+			LCID:	2052	# 0x804
+			ListSeparator:	,	# Length=1 (0x1)
+			MacCodePage:	10008	# 0x2718
+			OEMCodePage:	936	# 0x3A8
+			CultureName:	zh-CN	# Length=5 (0x5)
+			IsReadOnly:	True	# <Boolean>
+			IsRightToLeft:	False	# <Boolean>
+		ThreeLetterISOLanguageName:	zho	# Length=3 (0x3)
+		ThreeLetterWindowsLanguageName:	CHS	# Length=3 (0x3)
+		TwoLetterISOLanguageName:	zh	# Length=2 (0x2)
+		UseUserOverride:	False	# <Boolean>
+		CompareInfo:	CompareInfo - 2052	# <CompareInfo>
+			# <System.Globalization.CompareInfo>
+			LCID:	2052	# 0x804
+			Name:	(null)
+		IsNeutralCulture:	False	# <Boolean>
+		NumberFormat:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+			# <System.Globalization.NumberFormatInfo>
+			CurrencyDecimalDigits:	2	# 0x2
+			CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+			CurrencyGroupSeparator:	,	# Length=1 (0x1)
+			CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			CurrencyNegativePattern:	1	# 0x1
+			CurrencyPositivePattern:	0	# 0x0
+			CurrencySymbol:	￥	# Length=1 (0x1)
+			IsReadOnly:	True	# <Boolean>
+			NaNSymbol:	NaN	# Length=3 (0x3)
+			NativeDigits:	System.String[]	# Length=10 (0xA)
+				# <System.String[]>
+				[0]:	0	# Length=1 (0x1)
+				[1]:	1	# Length=1 (0x1)
+				[2]:	2	# Length=1 (0x1)
+				[3]:	3	# Length=1 (0x1)
+				[4]:	4	# Length=1 (0x1)
+				[5]:	5	# Length=1 (0x1)
+				[6]:	6	# Length=1 (0x1)
+				[7]:	7	# Length=1 (0x1)
+				[8]:	8	# Length=1 (0x1)
+				[9]:	9	# Length=1 (0x1)
+			DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+			NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+			NegativeSign:	-	# Length=1 (0x1)
+			NumberDecimalDigits:	2	# 0x2
+			NumberDecimalSeparator:	.	# Length=1 (0x1)
+			NumberGroupSeparator:	,	# Length=1 (0x1)
+			NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			NumberNegativePattern:	1	# 0x1
+			PercentDecimalDigits:	2	# 0x2
+			PercentDecimalSeparator:	.	# Length=1 (0x1)
+			PercentGroupSeparator:	,	# Length=1 (0x1)
+			PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	3	# 0x3
+			PercentNegativePattern:	1	# 0x1
+			PercentPositivePattern:	1	# 0x1
+			PercentSymbol:	%	# Length=1 (0x1)
+			PerMilleSymbol:	‰	# Length=1 (0x1)
+			PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+			PositiveSign:	+	# Length=1 (0x1)
+		DateTimeFormat:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+			# <System.Globalization.DateTimeFormatInfo>
+			IsReadOnly:	True	# <Boolean>
+			AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	日	# Length=1 (0x1)
+				[1]:	一	# Length=1 (0x1)
+				[2]:	二	# Length=1 (0x1)
+				[3]:	三	# Length=1 (0x1)
+				[4]:	四	# Length=1 (0x1)
+				[5]:	五	# Length=1 (0x1)
+				[6]:	六	# Length=1 (0x1)
+			AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			DayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	星期日	# Length=3 (0x3)
+				[1]:	星期一	# Length=3 (0x3)
+				[2]:	星期二	# Length=3 (0x3)
+				[3]:	星期三	# Length=3 (0x3)
+				[4]:	星期四	# Length=3 (0x3)
+				[5]:	星期五	# Length=3 (0x3)
+				[6]:	星期六	# Length=3 (0x3)
+			MonthNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	一月	# Length=2 (0x2)
+				[1]:	二月	# Length=2 (0x2)
+				[2]:	三月	# Length=2 (0x2)
+				[3]:	四月	# Length=2 (0x2)
+				[4]:	五月	# Length=2 (0x2)
+				[5]:	六月	# Length=2 (0x2)
+				[6]:	七月	# Length=2 (0x2)
+				[7]:	八月	# Length=2 (0x2)
+				[8]:	九月	# Length=2 (0x2)
+				[9]:	十月	# Length=2 (0x2)
+				[10]:	十一月	# Length=3 (0x3)
+				[11]:	十二月	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			AMDesignator:	上午	# Length=2 (0x2)
+			PMDesignator:	下午	# Length=2 (0x2)
+			DateSeparator:	/	# Length=1 (0x1)
+			TimeSeparator:	:	# Length=1 (0x1)
+			LongDatePattern:	"yyyy\'年\'M\'月\'d\'日\'"	# Length=15 (0xF)
+			ShortDatePattern:	yy-M-d	# Length=6 (0x6)
+			ShortTimePattern:	th:mm	# Length=5 (0x5)
+			LongTimePattern:	"thh\'时\'mm\'分\'ss\'秒\'"	# Length=16 (0x10)
+			MonthDayPattern:	"M\'月\'d\'日\'"	# Length=8 (0x8)
+			YearMonthPattern:	"yyyy\'年\'M\'月\'"	# Length=11 (0xB)
+			FullDateTimePattern:	"yyyy\'年\'M\'月\'d\'日\' thh\'时\'mm\'分\'ss\'秒\'"	# Length=32 (0x20)
+			FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+			Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+				# <System.Globalization.GregorianCalendar>
+				Eras:	System.Int32[]	# Length=1 (0x1)
+					# <System.Int32[]>
+					[0]:	1	# 0x1
+				TwoDigitYearMax:	2029	# 0x7ED
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+			RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+			SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+			UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+			AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	Jan	# Length=3 (0x3)
+				[1]:	Feb	# Length=3 (0x3)
+				[2]:	Mar	# Length=3 (0x3)
+				[3]:	Apr	# Length=3 (0x3)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	Jun	# Length=3 (0x3)
+				[6]:	Jul	# Length=3 (0x3)
+				[7]:	Aug	# Length=3 (0x3)
+				[8]:	Sep	# Length=3 (0x3)
+				[9]:	Oct	# Length=3 (0x3)
+				[10]:	Nov	# Length=3 (0x3)
+				[11]:	Dec	# Length=3 (0x3)
+				[12]:		# Length=0 (0x0)
+			MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+				# <System.String[]>
+				[0]:	January	# Length=7 (0x7)
+				[1]:	February	# Length=8 (0x8)
+				[2]:	March	# Length=5 (0x5)
+				[3]:	April	# Length=5 (0x5)
+				[4]:	May	# Length=3 (0x3)
+				[5]:	June	# Length=4 (0x4)
+				[6]:	July	# Length=4 (0x4)
+				[7]:	August	# Length=6 (0x6)
+				[8]:	September	# Length=9 (0x9)
+				[9]:	October	# Length=7 (0x7)
+				[10]:	November	# Length=8 (0x8)
+				[11]:	December	# Length=8 (0x8)
+				[12]:		# Length=0 (0x0)
+			NativeCalendarName:		# Length=0 (0x0)
+			ShortestDayNames:	System.String[]	# Length=7 (0x7)
+				# <System.String[]>
+				[0]:	Su	# Length=2 (0x2)
+				[1]:	Mo	# Length=2 (0x2)
+				[2]:	Tu	# Length=2 (0x2)
+				[3]:	We	# Length=2 (0x2)
+				[4]:	Th	# Length=2 (0x2)
+				[5]:	Fr	# Length=2 (0x2)
+				[6]:	Sa	# Length=2 (0x2)
+		DisplayName:	Chinese (China)	# Length=15 (0xF)
+		EnglishName:	Chinese (China)	# Length=15 (0xF)
+		IsReadOnly:	True	# <Boolean>
+DateTimeFormatInfo:
+	# <System.Globalization.DateTimeFormatInfo>
+	CurrentInfo:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+		# <System.Globalization.DateTimeFormatInfo>
+		IsReadOnly:	True	# <Boolean>
+		AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	日	# Length=1 (0x1)
+			[1]:	一	# Length=1 (0x1)
+			[2]:	二	# Length=1 (0x1)
+			[3]:	三	# Length=1 (0x1)
+			[4]:	四	# Length=1 (0x1)
+			[5]:	五	# Length=1 (0x1)
+			[6]:	六	# Length=1 (0x1)
+		AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	一月	# Length=2 (0x2)
+			[1]:	二月	# Length=2 (0x2)
+			[2]:	三月	# Length=2 (0x2)
+			[3]:	四月	# Length=2 (0x2)
+			[4]:	五月	# Length=2 (0x2)
+			[5]:	六月	# Length=2 (0x2)
+			[6]:	七月	# Length=2 (0x2)
+			[7]:	八月	# Length=2 (0x2)
+			[8]:	九月	# Length=2 (0x2)
+			[9]:	十月	# Length=2 (0x2)
+			[10]:	十一月	# Length=3 (0x3)
+			[11]:	十二月	# Length=3 (0x3)
+			[12]:		# Length=0 (0x0)
+		DayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	星期日	# Length=3 (0x3)
+			[1]:	星期一	# Length=3 (0x3)
+			[2]:	星期二	# Length=3 (0x3)
+			[3]:	星期三	# Length=3 (0x3)
+			[4]:	星期四	# Length=3 (0x3)
+			[5]:	星期五	# Length=3 (0x3)
+			[6]:	星期六	# Length=3 (0x3)
+		MonthNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	一月	# Length=2 (0x2)
+			[1]:	二月	# Length=2 (0x2)
+			[2]:	三月	# Length=2 (0x2)
+			[3]:	四月	# Length=2 (0x2)
+			[4]:	五月	# Length=2 (0x2)
+			[5]:	六月	# Length=2 (0x2)
+			[6]:	七月	# Length=2 (0x2)
+			[7]:	八月	# Length=2 (0x2)
+			[8]:	九月	# Length=2 (0x2)
+			[9]:	十月	# Length=2 (0x2)
+			[10]:	十一月	# Length=3 (0x3)
+			[11]:	十二月	# Length=3 (0x3)
+			[12]:		# Length=0 (0x0)
+		AMDesignator:	上午	# Length=2 (0x2)
+		PMDesignator:	下午	# Length=2 (0x2)
+		DateSeparator:	/	# Length=1 (0x1)
+		TimeSeparator:	:	# Length=1 (0x1)
+		LongDatePattern:	"yyyy\'年\'M\'月\'d\'日\'"	# Length=15 (0xF)
+		ShortDatePattern:	yy-M-d	# Length=6 (0x6)
+		ShortTimePattern:	th:mm	# Length=5 (0x5)
+		LongTimePattern:	"thh\'时\'mm\'分\'ss\'秒\'"	# Length=16 (0x10)
+		MonthDayPattern:	"M\'月\'d\'日\'"	# Length=8 (0x8)
+		YearMonthPattern:	"yyyy\'年\'M\'月\'"	# Length=11 (0xB)
+		FullDateTimePattern:	"yyyy\'年\'M\'月\'d\'日\' thh\'时\'mm\'分\'ss\'秒\'"	# Length=32 (0x20)
+		FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+		RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+		SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+		UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+		AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	Jan	# Length=3 (0x3)
+			[1]:	Feb	# Length=3 (0x3)
+			[2]:	Mar	# Length=3 (0x3)
+			[3]:	Apr	# Length=3 (0x3)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	Jun	# Length=3 (0x3)
+			[6]:	Jul	# Length=3 (0x3)
+			[7]:	Aug	# Length=3 (0x3)
+			[8]:	Sep	# Length=3 (0x3)
+			[9]:	Oct	# Length=3 (0x3)
+			[10]:	Nov	# Length=3 (0x3)
+			[11]:	Dec	# Length=3 (0x3)
+			[12]:		# Length=0 (0x0)
+		MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	January	# Length=7 (0x7)
+			[1]:	February	# Length=8 (0x8)
+			[2]:	March	# Length=5 (0x5)
+			[3]:	April	# Length=5 (0x5)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	June	# Length=4 (0x4)
+			[6]:	July	# Length=4 (0x4)
+			[7]:	August	# Length=6 (0x6)
+			[8]:	September	# Length=9 (0x9)
+			[9]:	October	# Length=7 (0x7)
+			[10]:	November	# Length=8 (0x8)
+			[11]:	December	# Length=8 (0x8)
+			[12]:		# Length=0 (0x0)
+		NativeCalendarName:		# Length=0 (0x0)
+		ShortestDayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	Su	# Length=2 (0x2)
+			[1]:	Mo	# Length=2 (0x2)
+			[2]:	Tu	# Length=2 (0x2)
+			[3]:	We	# Length=2 (0x2)
+			[4]:	Th	# Length=2 (0x2)
+			[5]:	Fr	# Length=2 (0x2)
+			[6]:	Sa	# Length=2 (0x2)
+	InvariantInfo:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
+		# <System.Globalization.DateTimeFormatInfo>
+		IsReadOnly:	True	# <Boolean>
+		AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	Sun	# Length=3 (0x3)
+			[1]:	Mon	# Length=3 (0x3)
+			[2]:	Tue	# Length=3 (0x3)
+			[3]:	Wed	# Length=3 (0x3)
+			[4]:	Thu	# Length=3 (0x3)
+			[5]:	Fri	# Length=3 (0x3)
+			[6]:	Sat	# Length=3 (0x3)
+		AbbreviatedMonthNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	Jan	# Length=3 (0x3)
+			[1]:	Feb	# Length=3 (0x3)
+			[2]:	Mar	# Length=3 (0x3)
+			[3]:	Apr	# Length=3 (0x3)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	Jun	# Length=3 (0x3)
+			[6]:	Jul	# Length=3 (0x3)
+			[7]:	Aug	# Length=3 (0x3)
+			[8]:	Sep	# Length=3 (0x3)
+			[9]:	Oct	# Length=3 (0x3)
+			[10]:	Nov	# Length=3 (0x3)
+			[11]:	Dec	# Length=3 (0x3)
+			[12]:		# Length=0 (0x0)
+		DayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	Sunday	# Length=6 (0x6)
+			[1]:	Monday	# Length=6 (0x6)
+			[2]:	Tuesday	# Length=7 (0x7)
+			[3]:	Wednesday	# Length=9 (0x9)
+			[4]:	Thursday	# Length=8 (0x8)
+			[5]:	Friday	# Length=6 (0x6)
+			[6]:	Saturday	# Length=8 (0x8)
+		MonthNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	January	# Length=7 (0x7)
+			[1]:	February	# Length=8 (0x8)
+			[2]:	March	# Length=5 (0x5)
+			[3]:	April	# Length=5 (0x5)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	June	# Length=4 (0x4)
+			[6]:	July	# Length=4 (0x4)
+			[7]:	August	# Length=6 (0x6)
+			[8]:	September	# Length=9 (0x9)
+			[9]:	October	# Length=7 (0x7)
+			[10]:	November	# Length=8 (0x8)
+			[11]:	December	# Length=8 (0x8)
+			[12]:		# Length=0 (0x0)
+		AMDesignator:	AM	# Length=2 (0x2)
+		PMDesignator:	PM	# Length=2 (0x2)
+		DateSeparator:	/	# Length=1 (0x1)
+		TimeSeparator:	:	# Length=1 (0x1)
+		LongDatePattern:	dddd, dd MMMM yyyy	# Length=18 (0x12)
+		ShortDatePattern:	MM/dd/yyyy	# Length=10 (0xA)
+		ShortTimePattern:	HH:mm	# Length=5 (0x5)
+		LongTimePattern:	HH:mm:ss	# Length=8 (0x8)
+		MonthDayPattern:	MMMM dd	# Length=7 (0x7)
+		YearMonthPattern:	yyyy MMMM	# Length=9 (0x9)
+		FullDateTimePattern:	dddd, dd MMMM yyyy HH:mm:ss	# Length=27 (0x1B)
+		FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
+			# <System.Globalization.GregorianCalendar>
+			Eras:	System.Int32[]	# Length=1 (0x1)
+				# <System.Int32[]>
+				[0]:	1	# 0x1
+			TwoDigitYearMax:	2029	# 0x7ED
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
+		CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
+		RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
+		SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
+		UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
+		AbbreviatedMonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	Jan	# Length=3 (0x3)
+			[1]:	Feb	# Length=3 (0x3)
+			[2]:	Mar	# Length=3 (0x3)
+			[3]:	Apr	# Length=3 (0x3)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	Jun	# Length=3 (0x3)
+			[6]:	Jul	# Length=3 (0x3)
+			[7]:	Aug	# Length=3 (0x3)
+			[8]:	Sep	# Length=3 (0x3)
+			[9]:	Oct	# Length=3 (0x3)
+			[10]:	Nov	# Length=3 (0x3)
+			[11]:	Dec	# Length=3 (0x3)
+			[12]:		# Length=0 (0x0)
+		MonthGenitiveNames:	System.String[]	# Length=13 (0xD)
+			# <System.String[]>
+			[0]:	January	# Length=7 (0x7)
+			[1]:	February	# Length=8 (0x8)
+			[2]:	March	# Length=5 (0x5)
+			[3]:	April	# Length=5 (0x5)
+			[4]:	May	# Length=3 (0x3)
+			[5]:	June	# Length=4 (0x4)
+			[6]:	July	# Length=4 (0x4)
+			[7]:	August	# Length=6 (0x6)
+			[8]:	September	# Length=9 (0x9)
+			[9]:	October	# Length=7 (0x7)
+			[10]:	November	# Length=8 (0x8)
+			[11]:	December	# Length=8 (0x8)
+			[12]:		# Length=0 (0x0)
+		NativeCalendarName:		# Length=0 (0x0)
+		ShortestDayNames:	System.String[]	# Length=7 (0x7)
+			# <System.String[]>
+			[0]:	Su	# Length=2 (0x2)
+			[1]:	Mo	# Length=2 (0x2)
+			[2]:	Tu	# Length=2 (0x2)
+			[3]:	We	# Length=2 (0x2)
+			[4]:	Th	# Length=2 (0x2)
+			[5]:	Fr	# Length=2 (0x2)
+			[6]:	Sa	# Length=2 (0x2)
+NumberFormatInfo:
+	# <System.Globalization.NumberFormatInfo>
+	CurrentInfo:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+		# <System.Globalization.NumberFormatInfo>
+		CurrencyDecimalDigits:	2	# 0x2
+		CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+		CurrencyGroupSeparator:	,	# Length=1 (0x1)
+		CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		CurrencyNegativePattern:	1	# 0x1
+		CurrencyPositivePattern:	0	# 0x0
+		CurrencySymbol:	￥	# Length=1 (0x1)
+		IsReadOnly:	True	# <Boolean>
+		NaNSymbol:	NaN	# Length=3 (0x3)
+		NativeDigits:	System.String[]	# Length=10 (0xA)
+			# <System.String[]>
+			[0]:	0	# Length=1 (0x1)
+			[1]:	1	# Length=1 (0x1)
+			[2]:	2	# Length=1 (0x1)
+			[3]:	3	# Length=1 (0x1)
+			[4]:	4	# Length=1 (0x1)
+			[5]:	5	# Length=1 (0x1)
+			[6]:	6	# Length=1 (0x1)
+			[7]:	7	# Length=1 (0x1)
+			[8]:	8	# Length=1 (0x1)
+			[9]:	9	# Length=1 (0x1)
+		DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+		NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+		NegativeSign:	-	# Length=1 (0x1)
+		NumberDecimalDigits:	2	# 0x2
+		NumberDecimalSeparator:	.	# Length=1 (0x1)
+		NumberGroupSeparator:	,	# Length=1 (0x1)
+		NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		NumberNegativePattern:	1	# 0x1
+		PercentDecimalDigits:	2	# 0x2
+		PercentDecimalSeparator:	.	# Length=1 (0x1)
+		PercentGroupSeparator:	,	# Length=1 (0x1)
+		PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		PercentNegativePattern:	1	# 0x1
+		PercentPositivePattern:	1	# 0x1
+		PercentSymbol:	%	# Length=1 (0x1)
+		PerMilleSymbol:	‰	# Length=1 (0x1)
+		PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+		PositiveSign:	+	# Length=1 (0x1)
+	InvariantInfo:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
+		# <System.Globalization.NumberFormatInfo>
+		CurrencyDecimalDigits:	2	# 0x2
+		CurrencyDecimalSeparator:	.	# Length=1 (0x1)
+		CurrencyGroupSeparator:	,	# Length=1 (0x1)
+		CurrencyGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		CurrencyNegativePattern:	0	# 0x0
+		CurrencyPositivePattern:	0	# 0x0
+		CurrencySymbol:	¤	# Length=1 (0x1)
+		IsReadOnly:	True	# <Boolean>
+		NaNSymbol:	NaN	# Length=3 (0x3)
+		NativeDigits:	System.String[]	# Length=10 (0xA)
+			# <System.String[]>
+			[0]:	0	# Length=1 (0x1)
+			[1]:	1	# Length=1 (0x1)
+			[2]:	2	# Length=1 (0x1)
+			[3]:	3	# Length=1 (0x1)
+			[4]:	4	# Length=1 (0x1)
+			[5]:	5	# Length=1 (0x1)
+			[6]:	6	# Length=1 (0x1)
+			[7]:	7	# Length=1 (0x1)
+			[8]:	8	# Length=1 (0x1)
+			[9]:	9	# Length=1 (0x1)
+		DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
+		NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
+		NegativeSign:	-	# Length=1 (0x1)
+		NumberDecimalDigits:	2	# 0x2
+		NumberDecimalSeparator:	.	# Length=1 (0x1)
+		NumberGroupSeparator:	,	# Length=1 (0x1)
+		NumberGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		NumberNegativePattern:	1	# 0x1
+		PercentDecimalDigits:	2	# 0x2
+		PercentDecimalSeparator:	.	# Length=1 (0x1)
+		PercentGroupSeparator:	,	# Length=1 (0x1)
+		PercentGroupSizes:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+		PercentNegativePattern:	0	# 0x0
+		PercentPositivePattern:	0	# 0x0
+		PercentSymbol:	%	# Length=1 (0x1)
+		PerMilleSymbol:	‰	# Length=1 (0x1)
+		PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
+		PositiveSign:	+	# Length=1 (0x1)
+RegionInfo:
+	# <System.Globalization.RegionInfo>
+	CurrentRegion:	CN	# <RegionInfo>
+		# <System.Globalization.RegionInfo>
+		CurrencyEnglishName:	Chinese Yuan Renminbi	# Length=21 (0x15)
+		CurrencySymbol:		# Length=0 (0x0)
+		DisplayName:	China	# Length=5 (0x5)
+		EnglishName:	China	# Length=5 (0x5)
+		GeoId:	0	# 0x0
+		IsMetric:	True	# <Boolean>
+		ISOCurrencySymbol:	CNY	# Length=3 (0x3)
+		NativeName:	China	# Length=5 (0x5)
+		Name:	CN	# Length=2 (0x2)
+		ThreeLetterISORegionName:		# Length=0 (0x0)
+		ThreeLetterWindowsRegionName:		# Length=0 (0x0)
+		TwoLetterISORegionName:	CN	# Length=2 (0x2)
+Calendar:
+	# DerivedClass of <System.Globalization.Calendar>:
+	DerivedClass[0]:	# <ChineseLunisolarCalendar>
+		# <System.Globalization.ChineseLunisolarCalendar>
+		ChineseEra:	1	# 0x1
+		# <System.Globalization.ChineseLunisolarCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		MinSupportedDateTime:	01-2-19 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	01-1-28 下11时59分59秒	# <DateTime>
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	LunisolarCalendar	# 0x00000003, 3, <CalendarAlgorithmType>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[1]:	# <GregorianCalendar>
+		# <System.Globalization.GregorianCalendar>
+		ADEra:	1	# 0x1
+		# <System.Globalization.GregorianCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	2029	# 0x7ED
+		CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[2]:	# <HebrewCalendar>
+		# <System.Globalization.HebrewCalendar>
+		HebrewEra:	1	# 0x1
+		# <System.Globalization.HebrewCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	5790	# 0x169E
+		AlgorithmType:	LunisolarCalendar	# 0x00000003, 3, <CalendarAlgorithmType>
+		MinSupportedDateTime:	83-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	39-9-29 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[3]:	# <HijriCalendar>
+		# <System.Globalization.HijriCalendar>
+		HijriEra:	1	# 0x1
+		# <System.Globalization.HijriCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	1451	# 0x5AB
+		AlgorithmType:	LunarCalendar	# 0x00000002, 2, <CalendarAlgorithmType>
+		MinSupportedDateTime:	22-7-18 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[4]:	# <JapaneseCalendar>
+		# <System.Globalization.JapaneseCalendar>
+		# <System.Globalization.JapaneseCalendar>
+		Eras:	System.Int32[]	# Length=4 (0x4)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+			[1]:	2	# 0x2
+			[2]:	3	# 0x3
+			[3]:	4	# 0x4
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	68-9-8 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[5]:	# <JapaneseLunisolarCalendar>
+		# <System.Globalization.JapaneseLunisolarCalendar>
+		JapaneseEra:	1	# 0x1
+		# <System.Globalization.JapaneseLunisolarCalendar>
+		Eras:	System.Int32[]	# Length=2 (0x2)
+			# <System.Int32[]>
+			[0]:	3	# 0x3
+			[1]:	4	# 0x4
+		MinSupportedDateTime:	60-1-28 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	50-1-22 下11时59分59秒	# <DateTime>
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	LunisolarCalendar	# 0x00000003, 3, <CalendarAlgorithmType>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[6]:	# <JulianCalendar>
+		# <System.Globalization.JulianCalendar>
+		JulianEra:	1	# 0x1
+		# <System.Globalization.JulianCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	2029	# 0x7ED
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[7]:	# <KoreanCalendar>
+		# <System.Globalization.KoreanCalendar>
+		KoreanEra:	1	# 0x1
+		# <System.Globalization.KoreanCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	4362	# 0x110A
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[8]:	# <KoreanLunisolarCalendar>
+		# <System.Globalization.KoreanLunisolarCalendar>
+		GregorianEra:	1	# 0x1
+		# <System.Globalization.KoreanLunisolarCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		MinSupportedDateTime:	18-2-14 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	51-2-10 下11时59分59秒	# <DateTime>
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	LunisolarCalendar	# 0x00000003, 3, <CalendarAlgorithmType>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[9]:	# <PersianCalendar>
+		# <System.Globalization.PersianCalendar>
+		PersianEra:	1	# 0x1
+		# <System.Globalization.PersianCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	1410	# 0x582
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	22-3-21 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[10]:	# <TaiwanCalendar>
+		# <System.Globalization.TaiwanCalendar>
+		# <System.Globalization.TaiwanCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	12-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[11]:	# <TaiwanLunisolarCalendar>
+		# <System.Globalization.TaiwanLunisolarCalendar>
+		# <System.Globalization.TaiwanLunisolarCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		MinSupportedDateTime:	12-2-18 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	51-2-10 下11时59分59秒	# <DateTime>
+		TwoDigitYearMax:	99	# 0x63
+		AlgorithmType:	LunisolarCalendar	# 0x00000003, 3, <CalendarAlgorithmType>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[12]:	# <ThaiBuddhistCalendar>
+		# <System.Globalization.ThaiBuddhistCalendar>
+		ThaiBuddhistEra:	1	# 0x1
+		# <System.Globalization.ThaiBuddhistCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	2572	# 0xA0C
+		AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+		MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+	DerivedClass[13]:	# <UmAlQuraCalendar>
+		# <System.Globalization.UmAlQuraCalendar>
+		UmAlQuraEra:	1	# 0x1
+		# <System.Globalization.UmAlQuraCalendar>
+		Eras:	System.Int32[]	# Length=1 (0x1)
+			# <System.Int32[]>
+			[0]:	1	# 0x1
+		TwoDigitYearMax:	1451	# 0x5AB
+		AlgorithmType:	LunarCalendar	# 0x00000002, 2, <CalendarAlgorithmType>
+		MinSupportedDateTime:	22-7-18 上12时00分00秒	# <DateTime>
+		MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+		IsReadOnly:	False	# <Boolean>
+Encoding:
+	# <System.Text.Encoding>
+	GetEncodings():
+		# <System.Text.EncodingInfo[]>
+		IBM037:	37	# 0x25, IBM037
+		IBM437:	437	# 0x1B5, IBM437
+		IBM500:	500	# 0x1F4, IBM500
+		asmo-708:	708	# 0x2C4, asmo-708
+		ibm850:	850	# 0x352, ibm850
+		ibm852:	852	# 0x354, ibm852
+		ibm855:	855	# 0x357, ibm855
+		ibm857:	857	# 0x359, ibm857
+		IBM00858:	858	# 0x35A, IBM00858
+		ibm860:	860	# 0x35C, ibm860
+		ibm861:	861	# 0x35D, ibm861
+		ibm862:	862	# 0x35E, ibm862
+		IBM863:	863	# 0x35F, IBM863
+		ibm864:	864	# 0x360, ibm864
+		IBM865:	865	# 0x361, IBM865
+		ibm866:	866	# 0x362, ibm866
+		ibm869:	869	# 0x365, ibm869
+		ibm870:	870	# 0x366, ibm870
+		windows-874:	874	# 0x36A, windows-874
+		ibm875:	875	# 0x36B, ibm875
+		shift_jis:	932	# 0x3A4, shift_jis
+		gb2312:	936	# 0x3A8, gb2312
+		ks_c_5601-1987:	949	# 0x3B5, ks_c_5601-1987
+		big5:	950	# 0x3B6, big5
+		ibm1026:	1026	# 0x402, ibm1026
+		ibm1047:	1047	# 0x417, ibm1047
+		IBM01140:	1140	# 0x474, IBM01140
+		IBM01141:	1141	# 0x475, IBM01141
+		IBM01142:	1142	# 0x476, IBM01142
+		IBM01143:	1143	# 0x477, IBM01143
+		ibm1144:	1144	# 0x478, ibm1144
+		ibm1145:	1145	# 0x479, ibm1145
+		ibm1146:	1146	# 0x47A, ibm1146
+		ibm1147:	1147	# 0x47B, ibm1147
+		ibm1148:	1148	# 0x47C, ibm1148
+		ibm1149:	1149	# 0x47D, ibm1149
+		utf-16:	1200	# 0x4B0, utf-16
+		unicodeFFFE:	1201	# 0x4B1, unicodeFFFE
+		windows-1250:	1250	# 0x4E2, windows-1250
+		windows-1251:	1251	# 0x4E3, windows-1251
+		Windows-1252:	1252	# 0x4E4, Windows-1252
+		windows-1253:	1253	# 0x4E5, windows-1253
+		windows-1254:	1254	# 0x4E6, windows-1254
+		windows-1255:	1255	# 0x4E7, windows-1255
+		windows-1256:	1256	# 0x4E8, windows-1256
+		windows-1257:	1257	# 0x4E9, windows-1257
+		windows-1258:	1258	# 0x4EA, windows-1258
+		macintosh:	10000	# 0x2710, macintosh
+		x-mac-icelandic:	10079	# 0x275F, x-mac-icelandic
+		utf-32:	12000	# 0x2EE0, utf-32
+		utf-32BE:	12001	# 0x2EE1, utf-32BE
+		us-ascii:	20127	# 0x4E9F, us-ascii
+		IBM273:	20273	# 0x4F31, IBM273
+		IBM277:	20277	# 0x4F35, IBM277
+		IBM278:	20278	# 0x4F36, IBM278
+		IBM280:	20280	# 0x4F38, IBM280
+		IBM284:	20284	# 0x4F3C, IBM284
+		IBM285:	20285	# 0x4F3D, IBM285
+		IBM290:	20290	# 0x4F42, IBM290
+		IBM297:	20297	# 0x4F49, IBM297
+		IBM420:	20420	# 0x4FC4, IBM420
+		IBM424:	20424	# 0x4FC8, IBM424
+		koi8-r:	20866	# 0x5182, koi8-r
+		IBM871:	20871	# 0x5187, IBM871
+		IBM1025:	21025	# 0x5221, IBM1025
+		koi8-u:	21866	# 0x556A, koi8-u
+		iso-8859-1:	28591	# 0x6FAF, iso-8859-1
+		iso-8859-2:	28592	# 0x6FB0, iso-8859-2
+		iso-8859-3:	28593	# 0x6FB1, iso-8859-3
+		iso-8859-4:	28594	# 0x6FB2, iso-8859-4
+		iso-8859-5:	28595	# 0x6FB3, iso-8859-5
+		iso-8859-6:	28596	# 0x6FB4, iso-8859-6
+		iso-8859-7:	28597	# 0x6FB5, iso-8859-7
+		iso-8859-8:	28598	# 0x6FB6, iso-8859-8
+		iso-8859-9:	28599	# 0x6FB7, iso-8859-9
+		iso-8859-15:	28605	# 0x6FBD, iso-8859-15
+		windows-38598:	38598	# 0x96C6, windows-38598
+		csISO2022JP:	50220	# 0xC42C, csISO2022JP
+		csISO2022JP:	50221	# 0xC42D, csISO2022JP
+		csISO2022JP:	50222	# 0xC42E, csISO2022JP
+		euc-jp:	51932	# 0xCADC, euc-jp
+		euc-kr:	51949	# 0xCAED, euc-kr
+		GB18030:	54936	# 0xD698, GB18030
+		x-iscii-de:	57002	# 0xDEAA, x-iscii-de
+		x-iscii-be:	57003	# 0xDEAB, x-iscii-be
+		x-iscii-ta:	57004	# 0xDEAC, x-iscii-ta
+		x-iscii-te:	57005	# 0xDEAD, x-iscii-te
+		x-iscii-as:	57006	# 0xDEAE, x-iscii-as
+		x-iscii-or:	57007	# 0xDEAF, x-iscii-or
+		x-iscii-ka:	57008	# 0xDEB0, x-iscii-ka
+		x-iscii-ma:	57009	# 0xDEB1, x-iscii-ma
+		x-iscii-gu:	57010	# 0xDEB2, x-iscii-gu
+		x-iscii-pa:	57011	# 0xDEB3, x-iscii-pa
+		utf-7:	65000	# 0xFDE8, utf-7
+		utf-8:	65001	# 0xFDE9, utf-8
+	ASCII:	System.Text.ASCIIEncoding	# <ASCIIEncoding>
+		# <System.Text.ASCIIEncoding>
+		IsSingleByte:	True	# <Boolean>
+		IsReadOnly:	True	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	?	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	?	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	us-ascii	# Length=8 (0x8)
+		CodePage:	20127	# 0x4E9F
+		EncodingName:	US-ASCII	# Length=8 (0x8)
+		HeaderName:	us-ascii	# Length=8 (0x8)
+		IsBrowserDisplay:	False	# <Boolean>
+		IsBrowserSave:	False	# <Boolean>
+		IsMailNewsDisplay:	True	# <Boolean>
+		IsMailNewsSave:	True	# <Boolean>
+		WebName:	us-ascii	# Length=8 (0x8)
+		WindowsCodePage:	20127	# 0x4E9F
+	BigEndianUnicode:	System.Text.UnicodeEncoding	# <UnicodeEncoding>
+		# <System.Text.UnicodeEncoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	unicodeFFFE	# Length=11 (0xB)
+		CodePage:	1201	# 0x4B1
+		EncodingName:	Unicode (Big-Endian)	# Length=20 (0x14)
+		HeaderName:	unicodeFFFE	# Length=11 (0xB)
+		IsBrowserDisplay:	False	# <Boolean>
+		IsBrowserSave:	False	# <Boolean>
+		IsMailNewsDisplay:	False	# <Boolean>
+		IsMailNewsSave:	False	# <Boolean>
+		WebName:	unicodeFFFE	# Length=11 (0xB)
+		WindowsCodePage:	1200	# 0x4B0
+	Default:	System.Text.UTF8Encoding	# <UTF8Encoding>
+		# <System.Text.UTF8Encoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	utf-8	# Length=5 (0x5)
+		CodePage:	65001	# 0xFDE9
+		EncodingName:	Unicode (UTF-8)	# Length=15 (0xF)
+		HeaderName:	utf-8	# Length=5 (0x5)
+		IsBrowserDisplay:	True	# <Boolean>
+		IsBrowserSave:	True	# <Boolean>
+		IsMailNewsDisplay:	True	# <Boolean>
+		IsMailNewsSave:	True	# <Boolean>
+		WebName:	utf-8	# Length=5 (0x5)
+		WindowsCodePage:	1200	# 0x4B0
+	UTF7:	System.Text.UTF7Encoding	# <UTF7Encoding>
+		# <System.Text.UTF7Encoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	utf-7	# Length=5 (0x5)
+		CodePage:	65000	# 0xFDE8
+		EncodingName:	Unicode (UTF-7)	# Length=15 (0xF)
+		HeaderName:	utf-7	# Length=5 (0x5)
+		IsBrowserDisplay:	False	# <Boolean>
+		IsBrowserSave:	False	# <Boolean>
+		IsMailNewsDisplay:	True	# <Boolean>
+		IsMailNewsSave:	True	# <Boolean>
+		WebName:	utf-7	# Length=5 (0x5)
+		WindowsCodePage:	1200	# 0x4B0
+	UTF8:	System.Text.UTF8Encoding	# <UTF8Encoding>
+		# <System.Text.UTF8Encoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	utf-8	# Length=5 (0x5)
+		CodePage:	65001	# 0xFDE9
+		EncodingName:	Unicode (UTF-8)	# Length=15 (0xF)
+		HeaderName:	utf-8	# Length=5 (0x5)
+		IsBrowserDisplay:	True	# <Boolean>
+		IsBrowserSave:	True	# <Boolean>
+		IsMailNewsDisplay:	True	# <Boolean>
+		IsMailNewsSave:	True	# <Boolean>
+		WebName:	utf-8	# Length=5 (0x5)
+		WindowsCodePage:	1200	# 0x4B0
+	Unicode:	System.Text.UnicodeEncoding	# <UnicodeEncoding>
+		# <System.Text.UnicodeEncoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	utf-16	# Length=6 (0x6)
+		CodePage:	1200	# 0x4B0
+		EncodingName:	Unicode	# Length=7 (0x7)
+		HeaderName:	utf-16	# Length=6 (0x6)
+		IsBrowserDisplay:	False	# <Boolean>
+		IsBrowserSave:	True	# <Boolean>
+		IsMailNewsDisplay:	False	# <Boolean>
+		IsMailNewsSave:	False	# <Boolean>
+		WebName:	utf-16	# Length=6 (0x6)
+		WindowsCodePage:	1200	# 0x4B0
+	UTF32:	System.Text.UTF32Encoding	# <UTF32Encoding>
+		# <System.Text.UTF32Encoding>
+		IsReadOnly:	True	# <Boolean>
+		IsSingleByte:	False	# <Boolean>
+		DecoderFallback:	System.Text.DecoderReplacementFallback	# <DecoderReplacementFallback>
+			# <System.Text.DecoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		EncoderFallback:	System.Text.EncoderReplacementFallback	# <EncoderReplacementFallback>
+			# <System.Text.EncoderReplacementFallback>
+			DefaultString:	�	# Length=1 (0x1)
+			MaxCharCount:	1	# 0x1
+		BodyName:	utf-32	# Length=6 (0x6)
+		CodePage:	12000	# 0x2EE0
+		EncodingName:	UTF-32	# Length=6 (0x6)
+		HeaderName:	utf-32	# Length=6 (0x6)
+		IsBrowserDisplay:	False	# <Boolean>
+		IsBrowserSave:	False	# <Boolean>
+		IsMailNewsDisplay:	False	# <Boolean>
+		IsMailNewsSave:	False	# <Boolean>
+		WebName:	utf-32	# Length=6 (0x6)
+		WindowsCodePage:	12000	# 0x2EE0

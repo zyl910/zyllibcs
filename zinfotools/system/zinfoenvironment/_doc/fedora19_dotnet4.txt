@@ -4,32 +4,32 @@
 Test Dictionary:
 	# <System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 	Count:	3	# 0x3
-	Comparer:	System.Collections.Generic.InternalStringComparer
-	[0]:	[a, abc]
+	Comparer:	System.Collections.Generic.InternalStringComparer	# <InternalStringComparer>
+	[0]:	[a, abc]	# <KeyValuePair`2>
 		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	a	# Length=1 (0x1)
 		Value:	abc	# Length=3 (0x3)
-	[1]:	[b, base]
+	[1]:	[b, base]	# <KeyValuePair`2>
 		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	b	# Length=1 (0x1)
 		Value:	base	# Length=4 (0x4)
-	[2]:	[ver, 1.0.5042.34099]
+	[2]:	[ver, 1.0.5048.37633]	# <KeyValuePair`2>
 		# <System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]>
 		Key:	ver	# Length=3 (0x3)
-		Value:	1.0.5042.34099
+		Value:	1.0.5048.37633	# <Version>
 			# <System.Version>
-			Build:	5042	# 0x13B2
+			Build:	5048	# 0x13B8
 			Major:	1	# 0x1
 			Minor:	0	# 0x0
-			Revision:	34099	# 0x8533
+			Revision:	37633	# 0x9301
 			MajorRevision:	0	# 0x0
-			MinorRevision:	-31437	# 0x8533
+			MinorRevision:	-27903	# 0x9301
 Environment:
 	# <System.Environment>
 	GetEnvironmentVariables():
 		_:	/usr/bin/mono
 		COLORTERM:	gnome-terminal
-		DBUS_SESSION_BUS_ADDRESS:	unix:abstract=/tmp/dbus-2IBwzehe0R,guid=eebdb3816430c0075624bb4952650767
+		DBUS_SESSION_BUS_ADDRESS:	unix:abstract=/tmp/dbus-nI2emBVJgq,guid=261ca72fcad16b75123087b0526d161c
 		DESKTOP_SESSION:	gnome
 		DISPLAY:	:0
 		GDM_LANG:	zh_CN.utf8
@@ -37,9 +37,9 @@ Environment:
 		GJS_DEBUG_OUTPUT:	stderr
 		GJS_DEBUG_TOPICS:	JS ERROR;JS LOG
 		GNOME_DESKTOP_SESSION_ID:	this-is-deprecated
-		GNOME_KEYRING_CONTROL:	/run/user/1000/keyring-SlMrSe
-		GNOME_KEYRING_PID:	1347
-		GPG_AGENT_INFO:	/run/user/1000/keyring-SlMrSe/gpg:0:1
+		GNOME_KEYRING_CONTROL:	/run/user/1000/keyring-6TjJrD
+		GNOME_KEYRING_PID:	1410
+		GPG_AGENT_INFO:	/run/user/1000/keyring-6TjJrD/gpg:0:1
 		HISTCONTROL:	ignoredups
 		HISTSIZE:	1000
 		HOME:	/home/dfdr
@@ -49,21 +49,20 @@ Environment:
 		LOGNAME:	dfdr
 		LS_COLORS:	rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
 		MAIL:	/var/spool/mail/dfdr
-		OLDPWD:	/home/dfdr
 		PATH:	/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/dfdr/.local/bin:/home/dfdr/bin
-		PWD:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug
+		PWD:	/home/dfdr
 		QT_IM_MODULE:	ibus
-		SESSION_MANAGER:	local/unix:@/tmp/.ICE-unix/1349,unix/unix:/tmp/.ICE-unix/1349
+		SESSION_MANAGER:	local/unix:@/tmp/.ICE-unix/1412,unix/unix:/tmp/.ICE-unix/1412
 		SHELL:	/bin/bash
 		SHLVL:	2
-		SSH_AUTH_SOCK:	/run/user/1000/keyring-SlMrSe/ssh
+		SSH_AUTH_SOCK:	/run/user/1000/keyring-6TjJrD/ssh
 		TERM:	xterm-256color
 		USER:	dfdr
 		USERNAME:	dfdr
 		VTE_VERSION:	3406
-		WINDOWID:	54525958
+		WINDOWID:	56623110
 		WINDOWPATH:	1
-		XAUTHORITY:	/run/gdm/auth-for-dfdr-ZsSRtR/database
+		XAUTHORITY:	/run/gdm/auth-for-dfdr-rH3zop/database
 		XDG_MENU_PREFIX:	gnome-
 		XDG_RUNTIME_DIR:	/run/user/1000
 		XDG_SEAT:	seat0
@@ -119,32 +118,32 @@ Environment:
 		58(0x0000003A, CommonOemLinks):	
 		59(0x0000003B, CDBurning):	
 	GetLogicalDrives():	/, /boot	# Length=8 (0x8)
-	CommandLine:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe	# Length=108 (0x6C)
-	CurrentDirectory:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug	# Length=87 (0x57)
+	CommandLine:	/media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/zinfotoolsf/bin/Debug/zinfotoolsf.exe	# Length=91 (0x5B)
+	CurrentDirectory:	/home/dfdr	# Length=10 (0xA)
 	ExitCode:	0	# 0x0
-	HasShutdownStarted:	False
+	HasShutdownStarted:	False	# <Boolean>
 	MachineName:	localhost.localdomain	# Length=21 (0x15)
 	NewLine:	"\n"	# Length=1 (0x1)
-	OSVersion:	Unix 3.11.3.201
+	OSVersion:	Unix 3.11.6.200	# <OperatingSystem>
 		# <System.OperatingSystem>
-		Platform:	Unix	# 0x00000004, 4, PlatformID
-		Version:	3.11.3.201
+		Platform:	Unix	# 0x00000004, 4, <PlatformID>
+		Version:	3.11.6.200	# <Version>
 			# <System.Version>
-			Build:	3	# 0x3
+			Build:	6	# 0x6
 			Major:	3	# 0x3
 			Minor:	11	# 0xB
-			Revision:	201	# 0xC9
+			Revision:	200	# 0xC8
 			MajorRevision:	0	# 0x0
-			MinorRevision:	201	# 0xC9
+			MinorRevision:	200	# 0xC8
 		ServicePack:		# Length=0 (0x0)
-		VersionString:	Unix 3.11.3.201	# Length=15 (0xF)
-	StackTrace:	"   at System.Environment.get_StackTrace()\n   at System.Reflection.MonoProperty.StaticGetterAdapterFrame(System.Reflection.StaticGetter`1 getter, System.Object obj)\n   at System.Reflection.MonoProperty.GetValue(System.Object obj, System.Object[] index)\n   at zyllibcs.text.IndentedWriterUtil.ForEachMember(IIndentedWriter iw, System.Object owner, System.Type tp, IndentedWriterMemberOptions options, System.EventHandler`1 handle, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_Environment(IIndentedWriter iw, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_main(IIndentedWriter iw)\n   at zinfoenvironment.Program.Main(System.String[] args)"	# Length=703 (0x2BF)
+		VersionString:	Unix 3.11.6.200	# Length=15 (0xF)
+	StackTrace:	"   at System.Environment.get_StackTrace()\n   at System.Reflection.MonoProperty.StaticGetterAdapterFrame(System.Reflection.StaticGetter`1 getter, System.Object obj)\n   at System.Reflection.MonoProperty.GetValue(System.Object obj, System.Object[] index)\n   at zyllibcs.text.IndentedWriterUtil.ForEachMember(IIndentedWriter iw, System.Object owner, System.Type tp, IndentedWriterMemberOptions options, System.EventHandler`1 handle, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_Environment(IIndentedWriter iw, System.Object obj, zyllibcs.text.IndentedWriterContext context)\n   at zinfoenvironment.MyInfo.outl_main(IIndentedWriter iw, System.Object obj, zyllibcs.text.IndentedWriterContext context)\n   at zinfotoolsf.FrmZInfo.cboMode_SelectedIndexChanged(System.Object sender, System.EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(System.EventArgs e)\n   at System.Windows.Forms.ComboBox.SetSelectedIndex(Int32 value, Boolean supressAutoScroll)\n   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)\n   at zinfotoolsf.FrmZInfo.FrmZInfo_Load(System.Object sender, System.EventArgs e)\n   at System.Windows.Forms.Form.OnLoad(System.EventArgs e)\n   at System.Windows.Forms.Form.OnLoadInternal(System.EventArgs e)\n   at System.Windows.Forms.Form.OnCreateControl()\n   at System.Windows.Forms.Control.CreateControl()\n   at System.Windows.Forms.Control.WmShowWindow(Message ByRef m)\n   at System.Windows.Forms.Control.WndProc(Message ByRef m)\n   at System.Windows.Forms.ScrollableControl.WndProc(Message ByRef m)\n   at System.Windows.Forms.ContainerControl.WndProc(Message ByRef m)\n   at System.Windows.Forms.Form.WndProc(Message ByRef m)\n   at System.Windows.Forms.Control+ControlWindowTarget.OnMessage(Message ByRef m)\n   at System.Windows.Forms.Control+ControlNativeWindow.WndProc(Message ByRef m)\n   at System.Windows.Forms.NativeWindow.WndProc(IntPtr hWnd, Msg msg, IntPtr wParam, IntPtr lParam)\n   at System.Windows.Forms.XplatUIX11.SendMessage(IntPtr hwnd, Msg message, IntPtr wParam, IntPtr lParam)\n   at System.Windows.Forms.XplatUIX11.MapWindow(System.Windows.Forms.Hwnd hwnd, WindowType windows)\n   at System.Windows.Forms.XplatUIX11.CreateWindow(System.Windows.Forms.CreateParams cp)\n   at System.Windows.Forms.XplatUI.CreateWindow(System.Windows.Forms.CreateParams cp)\n   at System.Windows.Forms.NativeWindow.CreateHandle(System.Windows.Forms.CreateParams cp)\n   at System.Windows.Forms.Control.CreateHandle()\n   at System.Windows.Forms.Form.CreateHandle()\n   at System.Windows.Forms.Control.CreateControl()\n   at System.Windows.Forms.Control.SetVisibleCore(Boolean value)\n   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)\n   at System.Windows.Forms.Control.set_Visible(Boolean value)\n   at System.Windows.Forms.Application.RunLoop(Boolean Modal, System.Windows.Forms.ApplicationContext context)\n   at System.Windows.Forms.Application.Run(System.Windows.Forms.ApplicationContext context)\n   at System.Windows.Forms.Application.Run(System.Windows.Forms.Form mainForm)\n   at zinfotoolsf.Program.Main()"	# Length=3082 (0xC0A)
 	SystemDirectory:		# Length=0 (0x0)
-	TickCount:	594160	# 0x910F0
+	TickCount:	255094	# 0x3E476
 	UserDomainName:	localhost.localdomain	# Length=21 (0x15)
-	UserInteractive:	False
+	UserInteractive:	False	# <Boolean>
 	UserName:	dfdr	# Length=4 (0x4)
-	Version:	4.0.30319.1
+	Version:	4.0.30319.1	# <Version>
 		# <System.Version>
 		Build:	30319	# 0x766F
 		Major:	4	# 0x4
@@ -153,50 +152,50 @@ Environment:
 		MajorRevision:	0	# 0x0
 		MinorRevision:	1	# 0x1
 	WorkingSet:	0	# 0x0
-	Is64BitOperatingSystem:	True
-	Is64BitProcess:	True
+	Is64BitOperatingSystem:	True	# <Boolean>
+	Is64BitProcess:	True	# <Boolean>
 	SystemPageSize:	4096	# 0x1000
 	ProcessorCount:	2	# 0x2
 Application AssemblyName:
 	# <System.Reflection.AssemblyName>
-	ProcessorArchitecture:	None	# 0x00000000, 0, ProcessorArchitecture
-	Name:	zinfoenvironment	# Length=16 (0x10)
-	CodeBase:	file:///media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe	# Length=115 (0x73)
-	EscapedCodeBase:	file:///media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/system/zinfoenvironment/bin/Debug/zinfoenvironment.exe	# Length=115 (0x73)
-	CultureInfo:	
+	ProcessorArchitecture:	None	# 0x00000000, 0, <ProcessorArchitecture>
+	Name:	zinfotoolsf	# Length=11 (0xB)
+	CodeBase:	file:///media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/zinfotoolsf/bin/Debug/zinfotoolsf.exe	# Length=98 (0x62)
+	EscapedCodeBase:	file:///media/sf_he/zylKanbox/MyCode/lib/zyllibcs/zinfotools/zinfotoolsf/bin/Debug/zinfotoolsf.exe	# Length=98 (0x62)
+	CultureInfo:		# <CultureInfo>
 		# <System.Globalization.CultureInfo>
-		CultureTypes:	AllCultures	# 0x00000007, 7, CultureTypes
+		CultureTypes:	AllCultures	# 0x00000007, 7, <CultureTypes>
 		IetfLanguageTag:		# Length=0 (0x0)
 		KeyboardLayoutId:	1151	# 0x47F
 		LCID:	127	# 0x7F
 		Name:		# Length=0 (0x0)
 		NativeName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
-		Calendar:	System.Globalization.GregorianCalendar
+		Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
 			# <System.Globalization.GregorianCalendar>
 			Eras:	System.Int32[]	# Length=1 (0x1)
 				# <System.Int32[]>
 				[0]:	1	# 0x1
 			TwoDigitYearMax:	2029	# 0x7ED
-			CalendarType:	Localized	# 0x00000001, 1, GregorianCalendarTypes
-			AlgorithmType:	SolarCalendar	# 0x00000001, 1, CalendarAlgorithmType
-			MinSupportedDateTime:	01-1-1 上12时00分00秒
-			MaxSupportedDateTime:	99-12-31 上11时59分59秒
-			IsReadOnly:	False
+			CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+			AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+			MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+			MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+			IsReadOnly:	False	# <Boolean>
 		OptionalCalendars:	System.Globalization.Calendar[]	# Length=1 (0x1)
 			# <System.Globalization.Calendar[]>
-			[0]:	System.Globalization.GregorianCalendar
+			[0]:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
 				# <System.Globalization.GregorianCalendar>
 				Eras:	System.Int32[]	# Length=1 (0x1)
 					# <System.Int32[]>
 					[0]:	1	# 0x1
 				TwoDigitYearMax:	2029	# 0x7ED
-				CalendarType:	Localized	# 0x00000001, 1, GregorianCalendarTypes
-				AlgorithmType:	SolarCalendar	# 0x00000001, 1, CalendarAlgorithmType
-				MinSupportedDateTime:	01-1-1 上12时00分00秒
-				MaxSupportedDateTime:	99-12-31 上11时59分59秒
-				IsReadOnly:	False
-		Parent:	
-		TextInfo:	TextInfo - 127
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+		Parent:		# <CultureInfo>
+		TextInfo:	TextInfo - 127	# <TextInfo>
 			# <System.Globalization.TextInfo>
 			ANSICodePage:	0	# 0x0
 			EBCDICCodePage:	0	# 0x0
@@ -205,18 +204,18 @@ Application AssemblyName:
 			MacCodePage:	0	# 0x0
 			OEMCodePage:	0	# 0x0
 			CultureName:		# Length=0 (0x0)
-			IsReadOnly:	False
-			IsRightToLeft:	False
+			IsReadOnly:	False	# <Boolean>
+			IsRightToLeft:	False	# <Boolean>
 		ThreeLetterISOLanguageName:	IVL	# Length=3 (0x3)
 		ThreeLetterWindowsLanguageName:	IVL	# Length=3 (0x3)
 		TwoLetterISOLanguageName:	iv	# Length=2 (0x2)
-		UseUserOverride:	False
-		CompareInfo:	CompareInfo - 127
+		UseUserOverride:	False	# <Boolean>
+		CompareInfo:	CompareInfo - 127	# <CompareInfo>
 			# <System.Globalization.CompareInfo>
 			LCID:	127	# 0x7F
 			Name:	(null)
-		IsNeutralCulture:	False
-		NumberFormat:	System.Globalization.NumberFormatInfo
+		IsNeutralCulture:	False	# <Boolean>
+		NumberFormat:	System.Globalization.NumberFormatInfo	# <NumberFormatInfo>
 			# <System.Globalization.NumberFormatInfo>
 			CurrencyDecimalDigits:	2	# 0x2
 			CurrencyDecimalSeparator:	.	# Length=1 (0x1)
@@ -227,7 +226,7 @@ Application AssemblyName:
 			CurrencyNegativePattern:	0	# 0x0
 			CurrencyPositivePattern:	0	# 0x0
 			CurrencySymbol:	¤	# Length=1 (0x1)
-			IsReadOnly:	False
+			IsReadOnly:	False	# <Boolean>
 			NaNSymbol:	NaN	# Length=3 (0x3)
 			NativeDigits:	System.String[]	# Length=10 (0xA)
 				# <System.String[]>
@@ -241,7 +240,7 @@ Application AssemblyName:
 				[7]:	7	# Length=1 (0x1)
 				[8]:	8	# Length=1 (0x1)
 				[9]:	9	# Length=1 (0x1)
-			DigitSubstitution:	None	# 0x00000001, 1, DigitShapes
+			DigitSubstitution:	None	# 0x00000001, 1, <DigitShapes>
 			NegativeInfinitySymbol:	-Infinity	# Length=9 (0x9)
 			NegativeSign:	-	# Length=1 (0x1)
 			NumberDecimalDigits:	2	# 0x2
@@ -263,9 +262,9 @@ Application AssemblyName:
 			PerMilleSymbol:	‰	# Length=1 (0x1)
 			PositiveInfinitySymbol:	Infinity	# Length=8 (0x8)
 			PositiveSign:	+	# Length=1 (0x1)
-		DateTimeFormat:	System.Globalization.DateTimeFormatInfo
+		DateTimeFormat:	System.Globalization.DateTimeFormatInfo	# <DateTimeFormatInfo>
 			# <System.Globalization.DateTimeFormatInfo>
-			IsReadOnly:	False
+			IsReadOnly:	False	# <Boolean>
 			AbbreviatedDayNames:	System.String[]	# Length=7 (0x7)
 				# <System.String[]>
 				[0]:	Sun	# Length=3 (0x3)
@@ -325,19 +324,19 @@ Application AssemblyName:
 			MonthDayPattern:	MMMM dd	# Length=7 (0x7)
 			YearMonthPattern:	yyyy MMMM	# Length=9 (0x9)
 			FullDateTimePattern:	dddd, dd MMMM yyyy HH:mm:ss	# Length=27 (0x1B)
-			FirstDayOfWeek:	Sunday	# 0x00000000, 0, DayOfWeek
-			Calendar:	System.Globalization.GregorianCalendar
+			FirstDayOfWeek:	Sunday	# 0x00000000, 0, <DayOfWeek>
+			Calendar:	System.Globalization.GregorianCalendar	# <GregorianCalendar>
 				# <System.Globalization.GregorianCalendar>
 				Eras:	System.Int32[]	# Length=1 (0x1)
 					# <System.Int32[]>
 					[0]:	1	# 0x1
 				TwoDigitYearMax:	2029	# 0x7ED
-				CalendarType:	Localized	# 0x00000001, 1, GregorianCalendarTypes
-				AlgorithmType:	SolarCalendar	# 0x00000001, 1, CalendarAlgorithmType
-				MinSupportedDateTime:	01-1-1 上12时00分00秒
-				MaxSupportedDateTime:	99-12-31 上11时59分59秒
-				IsReadOnly:	False
-			CalendarWeekRule:	FirstDay	# 0x00000000, 0, CalendarWeekRule
+				CalendarType:	Localized	# 0x00000001, 1, <GregorianCalendarTypes>
+				AlgorithmType:	SolarCalendar	# 0x00000001, 1, <CalendarAlgorithmType>
+				MinSupportedDateTime:	01-1-1 上12时00分00秒	# <DateTime>
+				MaxSupportedDateTime:	99-12-31 上11时59分59秒	# <DateTime>
+				IsReadOnly:	False	# <Boolean>
+			CalendarWeekRule:	FirstDay	# 0x00000000, 0, <CalendarWeekRule>
 			RFC1123Pattern:	"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'"	# Length=35 (0x23)
 			SortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss"	# Length=29 (0x1D)
 			UniversalSortableDateTimePattern:	"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'"	# Length=30 (0x1E)
@@ -383,22 +382,22 @@ Application AssemblyName:
 				[6]:	Sa	# Length=2 (0x2)
 		DisplayName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
 		EnglishName:	Invariant Language (Invariant Country)	# Length=38 (0x26)
-		IsReadOnly:	False
-	Flags:	PublicKey	# 0x00000001, 1, AssemblyNameFlags
-	FullName:	zinfoenvironment, Version=1.0.5042.34099, Culture=neutral, PublicKeyToken=null	# Length=78 (0x4E)
-	HashAlgorithm:	SHA1	# 0x00008004, 32772, AssemblyHashAlgorithm
+		IsReadOnly:	False	# <Boolean>
+	Flags:	PublicKey	# 0x00000001, 1, <AssemblyNameFlags>
+	FullName:	zinfotoolsf, Version=1.0.5048.37633, Culture=neutral, PublicKeyToken=null	# Length=73 (0x49)
+	HashAlgorithm:	SHA1	# 0x00008004, 32772, <AssemblyHashAlgorithm>
 	KeyPair:	(null)
-	Version:	1.0.5042.34099
+	Version:	1.0.5048.37633	# <Version>
 		# <System.Version>
-		Build:	5042	# 0x13B2
+		Build:	5048	# 0x13B8
 		Major:	1	# 0x1
 		Minor:	0	# 0x0
-		Revision:	34099	# 0x8533
+		Revision:	37633	# 0x9301
 		MajorRevision:	0	# 0x0
-		MinorRevision:	-31437	# 0x8533
-	VersionCompatibility:	SameMachine	# 0x00000001, 1, AssemblyVersionCompatibility
+		MinorRevision:	-27903	# 0x9301
+	VersionCompatibility:	SameMachine	# 0x00000001, 1, <AssemblyVersionCompatibility>
 IntPtr:
 	# <System.IntPtr>
 	# sizeof:	8
 	Size:	8	# 0x8
-	Zero:	0
+	Zero:	0	# <IntPtr>
