@@ -24,20 +24,23 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.pnlTool = new System.Windows.Forms.Panel();
+			this.btnFind = new System.Windows.Forms.Button();
+			this.txtFind = new System.Windows.Forms.TextBox();
 			this.chkWordWrap = new System.Windows.Forms.CheckBox();
 			this.btnFont = new System.Windows.Forms.Button();
 			this.cboMode = new System.Windows.Forms.ComboBox();
 			this.pnlInfo = new System.Windows.Forms.Panel();
 			this.txtInfo = new System.Windows.Forms.RichTextBox();
 			this.dlgFont = new System.Windows.Forms.FontDialog();
-			this.txtFind = new System.Windows.Forms.TextBox();
-			this.btnFind = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.dlgSave = new System.Windows.Forms.SaveFileDialog();
 			this.pnlTool.SuspendLayout();
 			this.pnlInfo.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnlTool
 			// 
+			this.pnlTool.Controls.Add(this.btnSave);
 			this.pnlTool.Controls.Add(this.btnFind);
 			this.pnlTool.Controls.Add(this.txtFind);
 			this.pnlTool.Controls.Add(this.chkWordWrap);
@@ -48,6 +51,26 @@
 			this.pnlTool.Name = "pnlTool";
 			this.pnlTool.Size = new System.Drawing.Size(584, 24);
 			this.pnlTool.TabIndex = 0;
+			// 
+			// btnFind
+			// 
+			this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnFind.Location = new System.Drawing.Point(517, -1);
+			this.btnFind.Name = "btnFind";
+			this.btnFind.Size = new System.Drawing.Size(64, 24);
+			this.btnFind.TabIndex = 5;
+			this.btnFind.Text = "F&ind";
+			this.btnFind.UseVisualStyleBackColor = true;
+			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+			// 
+			// txtFind
+			// 
+			this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.txtFind.Location = new System.Drawing.Point(397, 2);
+			this.txtFind.Name = "txtFind";
+			this.txtFind.Size = new System.Drawing.Size(114, 21);
+			this.txtFind.TabIndex = 4;
 			// 
 			// chkWordWrap
 			// 
@@ -65,7 +88,7 @@
 			this.btnFont.Location = new System.Drawing.Point(327, 0);
 			this.btnFont.Name = "btnFont";
 			this.btnFont.Size = new System.Drawing.Size(64, 24);
-			this.btnFont.TabIndex = 1;
+			this.btnFont.TabIndex = 3;
 			this.btnFont.Text = "&Font";
 			this.btnFont.UseVisualStyleBackColor = true;
 			this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
@@ -74,10 +97,10 @@
 			// 
 			this.cboMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMode.FormattingEnabled = true;
-			this.cboMode.Location = new System.Drawing.Point(3, 3);
+			this.cboMode.Location = new System.Drawing.Point(70, 3);
 			this.cboMode.Name = "cboMode";
-			this.cboMode.Size = new System.Drawing.Size(240, 20);
-			this.cboMode.TabIndex = 0;
+			this.cboMode.Size = new System.Drawing.Size(173, 20);
+			this.cboMode.TabIndex = 1;
 			this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboMode_SelectedIndexChanged);
 			// 
 			// pnlInfo
@@ -101,25 +124,19 @@
 			this.txtInfo.Text = "";
 			this.txtInfo.WordWrap = false;
 			// 
-			// txtFind
+			// btnSave
 			// 
-			this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtFind.Location = new System.Drawing.Point(397, 2);
-			this.txtFind.Name = "txtFind";
-			this.txtFind.Size = new System.Drawing.Size(114, 21);
-			this.txtFind.TabIndex = 3;
+			this.btnSave.Location = new System.Drawing.Point(0, 1);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(64, 24);
+			this.btnSave.TabIndex = 0;
+			this.btnSave.Text = "&Save";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
-			// btnFind
+			// dlgSave
 			// 
-			this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnFind.Location = new System.Drawing.Point(517, -1);
-			this.btnFind.Name = "btnFind";
-			this.btnFind.Size = new System.Drawing.Size(64, 24);
-			this.btnFind.TabIndex = 4;
-			this.btnFind.Text = "F&ind";
-			this.btnFind.UseVisualStyleBackColor = true;
-			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+			this.dlgSave.Filter = "Text file(*.txt)|*.txt|All file(*.*)|*.*";
 			// 
 			// FrmZInfo
 			// 
@@ -151,6 +168,8 @@
 		private System.Windows.Forms.CheckBox chkWordWrap;
 		private System.Windows.Forms.TextBox txtFind;
 		private System.Windows.Forms.Button btnFind;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.SaveFileDialog dlgSave;
 	}
 }
 

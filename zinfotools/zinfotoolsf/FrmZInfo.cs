@@ -79,5 +79,16 @@ namespace zinfotoolsf {
 				}
 			}
 		}
+
+		private void btnSave_Click(object sender, EventArgs e) {
+			if (dlgSave.ShowDialog(this) == DialogResult.OK) {
+				try {
+					File.WriteAllText(dlgSave.FileName, txtInfo.Text, Encoding.UTF8);
+				}
+				catch (Exception ex) {
+					MessageBox.Show(this, ex.ToString(), "Save failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
 	}
 }
