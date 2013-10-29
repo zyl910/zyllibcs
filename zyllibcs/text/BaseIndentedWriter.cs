@@ -152,9 +152,12 @@ namespace zyllibcs.text {
 		/// <summary>
 		/// 将当前的 <see cref="IndentLevel"/> 减少 1。
 		/// </summary>
-		public virtual void Unindent() {
+		public virtual object Unindent() {
+			object rt = null;
 			int n = Interlocked.Decrement(ref m_IndentLevel);
+			if (n < m_IndentHistory.Count) rt = m_IndentHistory[n];
 			SetIndentHistoryCount(n);
+			return rt;
 		}
 
 		/// <summary>

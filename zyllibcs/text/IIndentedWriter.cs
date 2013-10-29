@@ -33,7 +33,8 @@ namespace zyllibcs.text {
 		/// <summary>
 		/// 将当前的 <see cref="IndentLevel"/> 减少 1。
 		/// </summary>
-		void Unindent();
+		/// <returns>返回 <see cref="Indent"/> 时的对象.</returns>
+		object Unindent();
 
 		/// <summary>
 		/// Write a char.
