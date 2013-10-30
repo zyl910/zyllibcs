@@ -4,32 +4,28 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{D040A185-F92C-487F-BCE6-1DF27F34C194}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>zyllibcs</RootNamespace>
-    <AssemblyName>zyllibcs</AssemblyName>
+    <RootNamespace>zinfodraw</RootNamespace>
+    <AssemblyName>zinfodraw</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin2_Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UNSAFE;DOTNET2</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin2_Debug\zyllibcs.XML</DocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin2\</OutputPath>
-    <DefineConstants>TRACE;UNSAFE;DOTNET2</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin2\zyllibcs.XML</DocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -38,16 +34,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyInfo.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="system\TypeUtil.cs" />
-    <Compile Include="text\BaseIndentedWriter.cs" />
-    <Compile Include="text\IIndentedWriter.cs" />
-    <Compile Include="text\IndentedWriterContext.cs" />
-    <Compile Include="text\IndentedWriterMemberEventArgs.cs" />
-    <Compile Include="text\IndentedWriterObjectFunctor.cs" />
-    <Compile Include="text\IndentedWriterUtil.cs" />
-    <Compile Include="text\TextIndentedWriter.cs" />
-    <Compile Include="text\StringEscapeC.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs.csproj">
+      <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
+      <Name>zyllibcs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

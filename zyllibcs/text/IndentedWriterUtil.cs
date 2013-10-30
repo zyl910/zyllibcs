@@ -138,6 +138,15 @@ namespace zyllibcs.text {
 			typeof(Decimal),
 			typeof(DateTime),
 			typeof(TimeSpan),
+#if (!NETFX_CORE && !NETFX_PORTABLE)
+			typeof(System.Drawing.Color),
+			typeof(System.Drawing.Point),
+			typeof(System.Drawing.PointF),
+			typeof(System.Drawing.Rectangle),
+			typeof(System.Drawing.RectangleF),
+			typeof(System.Drawing.Size),
+			typeof(System.Drawing.SizeF),
+#endif
 		};
 
 		/// <summary>
@@ -215,6 +224,12 @@ namespace zyllibcs.text {
 			else if (tp.IsArray) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as Array).Length);
 			}
+#if (!NETFX_CORE && !NETFX_PORTABLE)
+			else if (value is System.Drawing.Color) {
+				System.Drawing.Color cr = (System.Drawing.Color)value;
+				return string.Format("argb=({0},{1},{2},{3}), 0x{4:X}", cr.A, cr.R, cr.G, cr.B, cr.ToArgb(), tp.Name);
+			}
+#endif
 			else {
 				rt = string.Format("<{0}>", tp.Name);
 			}

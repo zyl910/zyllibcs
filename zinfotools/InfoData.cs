@@ -12,8 +12,12 @@ namespace zinfodata {
 		/// 名称与过程数组.
 		/// </summary>
 		public static readonly KeyValuePair<string, IndentedWriterObjectProc>[] NameProcs = new KeyValuePair<string, IndentedWriterObjectProc>[] {
-			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoculture", zinfoculture.MyInfo.outl_main),
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoenvironment", zinfoenvironment.MyInfo.outl_main),
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoculture", zinfoculture.MyInfo.outl_main),
+#if (!NETFX_CORE && !NETFX_PORTABLE)
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfodraw", zinfodraw.MyInfo.outl_main),
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfodraw_full", zinfodraw.MyInfo.outl_main_full),
+#endif
 		};
 
 		/// <summary>
@@ -24,7 +28,7 @@ namespace zinfodata {
 		/// <summary>
 		/// 默认名称在 <see cref="NameProcs"/> 中的索引.
 		/// </summary>
-		public static readonly int DefaultNameIndex = 1;
+		public static readonly int DefaultNameIndex = 0;
 
 	}
 }
