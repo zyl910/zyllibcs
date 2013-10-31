@@ -190,9 +190,10 @@ namespace zyllibcs.text {
 		/// <returns>检查是否支持此对象的输出, 支持的话返回true, 否则返回false.</returns>
 		public virtual bool WriterObject_CheckObject(IIndentedWriter iw, object obj, IndentedWriterContext context, out Type tp, out bool showBaseName) {
 			// check.
-			tp = obj.GetType();
+			tp = null;
 			showBaseName = false;	// 是否显示基类类型的名称.
 			if (null == obj) return false;
+			tp = obj.GetType();
 			if (null == m_BaseType) return false;
 #if NETFX_CORE
 			TypeInfo ti = tp.GetTypeInfo();

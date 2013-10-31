@@ -17,6 +17,7 @@ namespace zinfodata {
 #if (!NETFX_CORE && !NETFX_PORTABLE)
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfodraw", zinfodraw.MyInfo.outl_main),
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfodraw_full", zinfodraw.MyInfo.outl_main_full),
+			new KeyValuePair<string, IndentedWriterObjectProc>("winform/zinfowinform", zinfowinform.MyInfo.outl_main),
 #endif
 		};
 

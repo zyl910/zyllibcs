@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
@@ -213,13 +214,16 @@ namespace zyllibcs.text {
 				|| value is long
 				|| value is ulong
 				) {
-				return string.Format("0x{0:X}", value);
+				return string.Format("0x{0:X}, <{1}>", value, tp.Name);
+			}
+			else if (value is IntPtr) {
+				return string.Format("0x{0:X}, <{1}>", ((IntPtr)value).ToInt64(), tp.Name);
 			}
 			else if (value is string) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as string).Length);
 			}
 			else if (value is StringBuilder) {
-				return string.Format("Length={0:d} (0x{0:X})", (value as StringBuilder).Length);
+				return string.Format("Length={0:d} (0x{0:X}), <{1}>", (value as StringBuilder).Length, tp.Name);
 			}
 			else if (tp.IsArray) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as Array).Length);
@@ -267,7 +271,13 @@ namespace zyllibcs.text {
 					iw.Write(s);
 				}
 				else {
-					iw.Write(value);
+					if (null != value) {
+						s = EscapeCStringAuto(value.ToString());
+						iw.Write(s);
+					}
+					else {
+						iw.Write(value);
+					}
 				}
 			}
 			string defaultcomment = null;
@@ -361,6 +371,7 @@ namespace zyllibcs.text {
 			IndentedWriterMemberOptions realoptions = options;
 			if (null != context) realoptions |= context.MemberOptions;
 			foreach (MemberInfo mi in GetMembers(tp, realoptions)) {
+				string AppendComment2 = null;	// 备用的附加注释. 可能会在 args.AppendComment 为null时 使用.
 				args.IsCancel = true;
 				args.HasDefault = false;
 				args.MemberInfo = mi;
@@ -385,8 +396,9 @@ namespace zyllibcs.text {
 					if (true) {
 						try {
 							args.Value = fi.GetValue(owner);
-							args.ValueOptions = IndentedWriterValueOptions.Default; ;
+							args.ValueOptions = IndentedWriterValueOptions.Default;
 							args.HasDefault = true;
+							AppendComment2 = string.Format("<{0}>", fi.FieldType.Name);
 						}
 						catch (Exception ex) {
 							Debug.WriteLine(ex);
@@ -401,6 +413,7 @@ namespace zyllibcs.text {
 							args.Value = pi.GetValue(owner, null);
 							args.ValueOptions = IndentedWriterValueOptions.Default; ;
 							args.HasDefault = true;
+							AppendComment2 = string.Format("<{0}>", pi.PropertyType.Name);
 						}
 						catch (Exception ex) {
 							Debug.WriteLine(ex);
@@ -409,10 +422,11 @@ namespace zyllibcs.text {
 				}
 				else if (mi is MethodInfo) {
 					if ((realoptions & IndentedWriterMemberOptions.AllowMethod) != 0) {
-						//MethodInfo methodinfo = mi as MethodInfo;
+						MethodInfo methodinfo = mi as MethodInfo;
 						args.IsCancel = false;
 						args.ValueOptions = IndentedWriterValueOptions.AutoHideValue;
 						//args.MemberName = string.Format("{0}()", mi.Name);
+						AppendComment2 = string.Format("<{0}>", methodinfo.ReturnType.Name);
 					}
 				}
 				if (args.IsCancel) continue;
@@ -438,6 +452,7 @@ namespace zyllibcs.text {
 				if (args.IsCancel) continue;
 				// show.
 				if (args.HasDefault) {
+					if (null == args.Value && null == args.AppendComment) args.AppendComment = AppendComment2;
 					WriteLineValue(iw, args.MemberName, args.Value, args.ValueOptions, args.AppendComment);
 					if (null != args.WriteProc) {
 						args.WriteProc(iw, args.Value, context);
@@ -453,20 +468,150 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// 输出类型的静态成员.
+		/// <see cref="WriteSimpleMethod"/>的bool数组.
+		/// </summary>
+		private static readonly bool[] WriteSimpleMethod_List_bool = new bool[] { false, true };
+		
+		/// <summary>
+		/// 输出简单方法的信息.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="mi">方法信息.</param>
+		/// <param name="owner">所在对象.</param>
+		/// <param name="name">方法名称. 为null表示默认.</param>
+		/// <param name="options">选项.</param>
+		/// <param name="appendcomment">追加注释. 可为 null 或 <c>String.Empty</c>. </param>
+		/// <returns>若成功输出, 便返回true. 否则返回false.</returns>
+		/// <remarks>
+		/// 当 <paramref name="options"/> 具有 <see cref="IndentedWriterMemberOptions.AllowMethod"/> 标志时，还会显示方法信息. 方法必须有返回值, 且没有泛型参数, 其他情况有:
+		/// <para>(暂不支持: 参数数量为0个);</para>
+		/// <para>参数数量为1个, 且参数类型为枚举或bool.</para>
+		/// </remarks>
+		public static bool WriteSimpleMethod(IIndentedWriter iw, MethodInfo mi, object owner, string name, IndentedWriterValueOptions options, string appendcomment) {
+			if (null == iw) return false;
+			if (null == mi) return false;
+			if (mi.IsSpecialName) return false;
+			if (null == mi.ReturnType) return false;
+			if (mi.ReturnType.Equals(typeof(void))) return false;
+			ParameterInfo[] pis = mi.GetParameters();
+			if (false) {
+			}
+			else if (0 == pis.Length) {
+				// 暂不支持.
+				return false;
+			}
+			else if (1 == pis.Length && !pis[0].IsOut) {
+				Type argtype0 = pis[0].ParameterType;
+				IEnumerable lst = null;	// 参数可用值列表.
+				string nameformat = null;	// 标题的格式.
+				if (false) {
+				}
+				else if (argtype0.IsEnum) {
+					lst = Enum.GetValues(argtype0);
+					nameformat = "{0:d}(0x{0:X}, {0})";
+				}
+				else if (argtype0.Equals(typeof(bool))) {
+					lst = WriteSimpleMethod_List_bool;
+					nameformat = "{0}";
+				}
+				// show.
+				if (null != lst) {
+					object[] args = new object[1];
+					if (null == name) name = TypeUtil.GetMemberName(mi, DefaultMemberNameOption);
+					IndentedWriterUtil.WriteLineValue(iw, name, null, options, appendcomment);
+					iw.Indent(null);
+					foreach (object p in lst) {
+						string strname = string.Format(nameformat, p);
+						string strappend = null;
+						object v = null;
+						try {
+							args[0] = p;
+							v = mi.Invoke(owner, args);
+						}
+						catch {
+						}
+						if (null == v) strappend = string.Format("<{0}>", mi.ReturnType.Name);
+						IndentedWriterUtil.WriteLineValue(iw, strname, v, options, strappend);
+					}
+					iw.Unindent();
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// 输出类型的静态成员, 拥有选项参数.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="tp">type.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <param name="options">选项. 必须有 <see cref="IndentedWriterMemberOptions.OnlyStatic"/> 标志.</param>
+		/// <returns>返回是否成功输出.</returns>
+		/// <remarks>
+		/// 当 <paramref name="options"/> 具有 <see cref="IndentedWriterMemberOptions.AllowMethod"/> 标志时，还会显示方法信息. 方法必须有返回值, 且没有泛型参数, 其他情况有:
+		/// <para>参数数量为0个;</para>
+		/// <para>参数数量为1个, 且参数类型为枚举或bool.</para>
+		/// </remarks>
+		public static bool WriteTypeStatic(IIndentedWriter iw, Type tp, IndentedWriterContext context, IndentedWriterMemberOptions options) {
+			if (null == iw) return false;
+			if (null == tp) return false;
+			if (0 == (options & IndentedWriterMemberOptions.OnlyStatic)) return false;
+			if (!iw.Indent(tp)) return false;
+			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+			//IndentedWriterUtil.ForEachMember(iw, null, tp, options, null, context);
+			IndentedWriterUtil.ForEachMember(iw, null, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
+				MethodInfo memberinfo = e.MemberInfo as MethodInfo;
+				if (null != memberinfo) {
+					//string name = memberinfo.Name;
+					if (memberinfo.IsStatic
+							&& !memberinfo.IsSpecialName
+							&& null != memberinfo.ReturnType
+							&& !memberinfo.ReturnType.Equals(typeof(void))) {
+						ParameterInfo[] pis = memberinfo.GetParameters();
+						if (false) {
+						}
+						else if (0 == pis.Length) {
+							try {
+								e.Value = memberinfo.Invoke(null, null);
+								if (null == e.WriteProc) e.WriteProc = IndentedObjectFunctor.CommonProc;
+								if (null == e.Value && null == e.AppendComment) e.AppendComment = string.Format("<{0}>", memberinfo.ReturnType.Name);
+								e.HasDefault = true;
+							}
+							catch {
+								// 忽略.
+							}
+						}
+						else if (WriteSimpleMethod(iw, memberinfo, null, null, IndentedWriterValueOptions.Default, e.AppendComment)) {
+							e.IsCancel = true;
+						}
+					}
+				}
+			}, context);
+			iw.Unindent();
+			return true;
+		}
+
+		/// <summary>
+		/// 输出类型的静态成员, 默认输出字段与属性.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
 		/// <param name="tp">type.</param>
 		/// <param name="context">State Object. Can be null.</param>
 		/// <returns>返回是否成功输出.</returns>
 		public static bool WriteTypeStatic(IIndentedWriter iw, Type tp, IndentedWriterContext context) {
-			if (null == iw) return false;
-			if (null == tp) return false;
-			if (!iw.Indent(tp)) return false;
-			iw.WriteLine(string.Format("# <{0}>", tp.FullName));
-			IndentedWriterUtil.ForEachMember(iw, null, tp, IndentedWriterMemberOptions.OnlyStatic, null, context);
-			iw.Unindent();
-			return true;
+			return WriteTypeStatic(iw, tp, context, IndentedWriterMemberOptions.OnlyStatic);
+		}
+
+		/// <summary>
+		/// 输出类型的静态成员, 会输出字段,属性与方法.
+		/// </summary>
+		/// <param name="iw">带缩进输出者.</param>
+		/// <param name="tp">type.</param>
+		/// <param name="context">State Object. Can be null.</param>
+		/// <returns>返回是否成功输出.</returns>
+		public static bool WriteTypeStaticM(IIndentedWriter iw, Type tp, IndentedWriterContext context) {
+			return WriteTypeStatic(iw, tp, context, IndentedWriterMemberOptions.OnlyStatic | IndentedWriterMemberOptions.AllowMethod);
 		}
 
 		/// <summary>
