@@ -11,7 +11,7 @@ using System.Drawing.Text;
 
 namespace zinfodraw {
 	/// <summary>
-	/// My info: Culture(System.Globalization) infos.
+	/// My info: System.Drawing infos.
 	/// </summary>
 	public static class MyInfo {
 

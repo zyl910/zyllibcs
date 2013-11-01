@@ -36,6 +36,10 @@ namespace zyllibcs.text {
 		/// 不显示默认注释. 例如枚举的实际值、整数的十六进制、字符串的长度、数组或集合的长度.
 		/// </summary>
 		HideDefaultComment = 0x10,
+		/// <summary>
+		/// 不剪裁值. 没有此标志时, 输出时会剪裁值得前 <see cref="IndentedWriterUtil.WriterValueMaxLength"/> 个字符. 带了此标志后就不会剪裁.
+		/// </summary>
+		NoClipValue = 0x20,
 	}
 
 	/// <summary>
@@ -93,6 +97,11 @@ namespace zyllibcs.text {
 		/// 默认字符串比较器. 区分大小写.
 		/// </summary>
 		public static readonly StringComparer StringComparer = StringComparer.Ordinal;
+
+		/// <summary>
+		/// 输出值时的最大长度. 与 <see cref="IndentedWriterValueOptions.NoClipValue"/> 标志有关.
+		/// </summary>
+		public static readonly int WriterValueMaxLength = 1000;
 
 
 		/// <summary>
@@ -267,17 +276,25 @@ namespace zyllibcs.text {
 			if (showvalue) {
 				iw.Write('\t');
 				string s = GetSimpleValueText(value);
+				if (null == s && null != value) s = EscapeCStringAuto(value.ToString());
+				// clip.
+				if (null != s && 0 == (options & IndentedWriterValueOptions.NoClipValue)) {
+					Debug.Assert(WriterValueMaxLength > 0);
+					if (s.Length >= WriterValueMaxLength) {
+						string strmore = string.Format("... (Length={0})", s.Length);
+						s = s.Substring(0, WriterValueMaxLength);
+						if ('\"' == s[0]) {
+							s += "\"";
+						}
+						s += strmore;
+					}
+				}
+				// write.
 				if (null != s) {
 					iw.Write(s);
 				}
 				else {
-					if (null != value) {
-						s = EscapeCStringAuto(value.ToString());
-						iw.Write(s);
-					}
-					else {
-						iw.Write(value);
-					}
+					iw.Write(value);
 				}
 			}
 			string defaultcomment = null;
@@ -518,7 +535,7 @@ namespace zyllibcs.text {
 				if (null != lst) {
 					object[] args = new object[1];
 					if (null == name) name = TypeUtil.GetMemberName(mi, DefaultMemberNameOption);
-					IndentedWriterUtil.WriteLineValue(iw, name, null, options, appendcomment);
+					IndentedWriterUtil.WriteLineValue(iw, name, null, options | IndentedWriterValueOptions.AutoHideValue, appendcomment);
 					iw.Indent(null);
 					foreach (object p in lst) {
 						string strname = string.Format(nameformat, p);

@@ -172,6 +172,8 @@ namespace zinfoenvironment {
 			iw.WriteLine("Test Dictionary:");
 			IndentedObjectFunctor.CommonProc(iw, dict, context);
 			// show.
+			iw.WriteLine("IntPtr:");
+			outl_static_IntPtr(iw, null, context);
 			iw.WriteLine("Environment:");
 			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, context);
 			outl_Environment(iw, null, context);
@@ -179,8 +181,6 @@ namespace zinfoenvironment {
 			//IndentedObjectFunctor.CommonProc(iw, myAssembly, context);
 			iw.WriteLine("Application AssemblyName:");
 			IndentedObjectFunctor.CommonProc(iw, myAssembly.GetName(), context);
-			iw.WriteLine("IntPtr:");
-			outl_static_IntPtr(iw, null, context);
 			return true;
 		}
 

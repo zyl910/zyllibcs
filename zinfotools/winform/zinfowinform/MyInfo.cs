@@ -101,12 +101,6 @@ namespace zinfowinform {
 			iw.WriteLine("VisualStyleInformation:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(VisualStyleInformation), context);
 			iw.WriteLine("VisualStyleRenderer:"); IndentedWriterUtil.WriteTypeStaticM(iw, typeof(VisualStyleRenderer), context);
 			// TextRenderer: 无信息成员.
-			//if (isfull) {
-			//    iw.WriteLine("ProfessionalColors:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(ProfessionalColors), context);
-			//}
-			//iw.WriteLine("ImageCodecInfo:"); outl_static_ImageCodecInfo(iw, null, context);
-			//iw.WriteLine("ImageFormat:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(ImageFormat), context);
-			//iw.WriteLine("InstalledFontCollection:"); IndentedObjectFunctor.CommonProc(iw, new InstalledFontCollection(), context);	//IndentedWriterUtil.WriteTypeStatic(iw, typeof(InstalledFontCollection), context);
 			return true;
 		}
 

@@ -13,6 +13,7 @@ namespace zinfodata {
 		/// </summary>
 		public static readonly KeyValuePair<string, IndentedWriterObjectProc>[] NameProcs = new KeyValuePair<string, IndentedWriterObjectProc>[] {
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoenvironment", zinfoenvironment.MyInfo.outl_main),
+			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfobase", zinfobase.MyInfo.outl_main),
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfoculture", zinfoculture.MyInfo.outl_main),
 #if (!NETFX_CORE && !NETFX_PORTABLE)
 			new KeyValuePair<string, IndentedWriterObjectProc>("system/zinfodraw", zinfodraw.MyInfo.outl_main),
