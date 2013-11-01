@@ -77,6 +77,21 @@ namespace zyllibcs.system {
 	/// 反射类型时的辅助类.
 	/// </summary>
 	public static class TypeUtil {
+
+		/// <summary>
+		/// 获取程序集的导出类型.
+		/// </summary>
+		/// <param name="assembly"></param>
+		/// <returns></returns>
+		public static IEnumerable<Type> GetExportedTypes(Assembly assembly) {
+			if (null == assembly) return null;
+#if (NETFX_CORE)
+			return assembly.Exported();
+#else
+			return assembly.GetExportedTypes();
+#endif
+		}
+
 		/// <summary>
 		/// 规范化成员名称选项.
 		/// </summary>
