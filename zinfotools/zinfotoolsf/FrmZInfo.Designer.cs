@@ -24,6 +24,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.pnlTool = new System.Windows.Forms.Panel();
+			this.btnSave = new System.Windows.Forms.Button();
 			this.btnFind = new System.Windows.Forms.Button();
 			this.txtFind = new System.Windows.Forms.TextBox();
 			this.chkWordWrap = new System.Windows.Forms.CheckBox();
@@ -32,7 +33,6 @@
 			this.pnlInfo = new System.Windows.Forms.Panel();
 			this.txtInfo = new System.Windows.Forms.RichTextBox();
 			this.dlgFont = new System.Windows.Forms.FontDialog();
-			this.btnSave = new System.Windows.Forms.Button();
 			this.dlgSave = new System.Windows.Forms.SaveFileDialog();
 			this.pnlTool.SuspendLayout();
 			this.pnlInfo.SuspendLayout();
@@ -52,6 +52,16 @@
 			this.pnlTool.Size = new System.Drawing.Size(584, 24);
 			this.pnlTool.TabIndex = 0;
 			// 
+			// btnSave
+			// 
+			this.btnSave.Location = new System.Drawing.Point(0, 1);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(64, 24);
+			this.btnSave.TabIndex = 0;
+			this.btnSave.Text = "&Save";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
 			// btnFind
 			// 
 			this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -67,15 +77,15 @@
 			// 
 			this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtFind.Location = new System.Drawing.Point(397, 2);
+			this.txtFind.Location = new System.Drawing.Point(421, 2);
 			this.txtFind.Name = "txtFind";
-			this.txtFind.Size = new System.Drawing.Size(114, 21);
+			this.txtFind.Size = new System.Drawing.Size(90, 21);
 			this.txtFind.TabIndex = 4;
 			// 
 			// chkWordWrap
 			// 
 			this.chkWordWrap.AutoSize = true;
-			this.chkWordWrap.Location = new System.Drawing.Point(249, 5);
+			this.chkWordWrap.Location = new System.Drawing.Point(273, 5);
 			this.chkWordWrap.Name = "chkWordWrap";
 			this.chkWordWrap.Size = new System.Drawing.Size(72, 16);
 			this.chkWordWrap.TabIndex = 2;
@@ -85,7 +95,7 @@
 			// 
 			// btnFont
 			// 
-			this.btnFont.Location = new System.Drawing.Point(327, 0);
+			this.btnFont.Location = new System.Drawing.Point(351, 0);
 			this.btnFont.Name = "btnFont";
 			this.btnFont.Size = new System.Drawing.Size(64, 24);
 			this.btnFont.TabIndex = 3;
@@ -99,7 +109,7 @@
 			this.cboMode.FormattingEnabled = true;
 			this.cboMode.Location = new System.Drawing.Point(70, 3);
 			this.cboMode.Name = "cboMode";
-			this.cboMode.Size = new System.Drawing.Size(173, 20);
+			this.cboMode.Size = new System.Drawing.Size(197, 20);
 			this.cboMode.TabIndex = 1;
 			this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboMode_SelectedIndexChanged);
 			// 
@@ -123,16 +133,6 @@
 			this.txtInfo.TabIndex = 0;
 			this.txtInfo.Text = "";
 			this.txtInfo.WordWrap = false;
-			// 
-			// btnSave
-			// 
-			this.btnSave.Location = new System.Drawing.Point(0, 1);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(64, 24);
-			this.btnSave.TabIndex = 0;
-			this.btnSave.Text = "&Save";
-			this.btnSave.UseVisualStyleBackColor = true;
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// dlgSave
 			// 

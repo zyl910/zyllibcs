@@ -46,7 +46,12 @@ namespace zinfotoolsf {
 			IndentedWriterObjectProc proc = InfoData.NameProcs[idx].Value;
 			StringBuilder sb = new StringBuilder();
 			IIndentedWriter iw = new TextIndentedWriter(new StringWriter(sb));
-			proc(iw, null, null);
+			try {
+				proc(iw, null, null);
+			}
+			catch (Exception ex) {
+				sb.AppendLine(ex.ToString());
+			}
 			txtInfo.Text = sb.ToString();
 		}
 
