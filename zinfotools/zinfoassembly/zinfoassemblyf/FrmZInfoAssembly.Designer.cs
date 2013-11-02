@@ -31,21 +31,22 @@
 			this.txtFind = new System.Windows.Forms.TextBox();
 			this.chkWordWrap = new System.Windows.Forms.CheckBox();
 			this.pnlTool = new System.Windows.Forms.Panel();
+			this.lblMode = new System.Windows.Forms.Label();
+			this.cboAssembly = new System.Windows.Forms.ComboBox();
 			this.btnFont = new System.Windows.Forms.Button();
 			this.cboMode = new System.Windows.Forms.ComboBox();
 			this.dlgSave = new System.Windows.Forms.SaveFileDialog();
-			this.cboAssembly = new System.Windows.Forms.ComboBox();
-			this.lblMode = new System.Windows.Forms.Label();
+			this.chkSort = new System.Windows.Forms.CheckBox();
 			this.pnlInfo.SuspendLayout();
 			this.pnlTool.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(1, 29);
+			this.btnSave.Location = new System.Drawing.Point(91, 27);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(64, 24);
-			this.btnSave.TabIndex = 3;
+			this.btnSave.TabIndex = 4;
 			this.btnSave.Text = "&Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -68,7 +69,7 @@
 			this.btnFind.Location = new System.Drawing.Point(526, 27);
 			this.btnFind.Name = "btnFind";
 			this.btnFind.Size = new System.Drawing.Size(64, 24);
-			this.btnFind.TabIndex = 7;
+			this.btnFind.TabIndex = 8;
 			this.btnFind.Text = "F&ind";
 			this.btnFind.UseVisualStyleBackColor = true;
 			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -86,24 +87,25 @@
 			// 
 			this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtFind.Location = new System.Drawing.Point(220, 30);
+			this.txtFind.Location = new System.Drawing.Point(309, 30);
 			this.txtFind.Name = "txtFind";
-			this.txtFind.Size = new System.Drawing.Size(300, 21);
-			this.txtFind.TabIndex = 6;
+			this.txtFind.Size = new System.Drawing.Size(211, 21);
+			this.txtFind.TabIndex = 7;
 			// 
 			// chkWordWrap
 			// 
 			this.chkWordWrap.AutoSize = true;
-			this.chkWordWrap.Location = new System.Drawing.Point(72, 32);
+			this.chkWordWrap.Location = new System.Drawing.Point(161, 32);
 			this.chkWordWrap.Name = "chkWordWrap";
 			this.chkWordWrap.Size = new System.Drawing.Size(72, 16);
-			this.chkWordWrap.TabIndex = 4;
+			this.chkWordWrap.TabIndex = 5;
 			this.chkWordWrap.Text = "&WordWrap";
 			this.chkWordWrap.UseVisualStyleBackColor = true;
 			this.chkWordWrap.CheckedChanged += new System.EventHandler(this.chkWordWrap_CheckedChanged);
 			// 
 			// pnlTool
 			// 
+			this.pnlTool.Controls.Add(this.chkSort);
 			this.pnlTool.Controls.Add(this.lblMode);
 			this.pnlTool.Controls.Add(this.cboAssembly);
 			this.pnlTool.Controls.Add(this.btnSave);
@@ -118,12 +120,36 @@
 			this.pnlTool.Size = new System.Drawing.Size(592, 57);
 			this.pnlTool.TabIndex = 2;
 			// 
+			// lblMode
+			// 
+			this.lblMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblMode.AutoSize = true;
+			this.lblMode.Location = new System.Drawing.Point(395, 6);
+			this.lblMode.Name = "lblMode";
+			this.lblMode.Size = new System.Drawing.Size(35, 12);
+			this.lblMode.TabIndex = 1;
+			this.lblMode.Text = "&Mode:";
+			// 
+			// cboAssembly
+			// 
+			this.cboAssembly.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.cboAssembly.DropDownHeight = 480;
+			this.cboAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboAssembly.FormattingEnabled = true;
+			this.cboAssembly.IntegralHeight = false;
+			this.cboAssembly.Location = new System.Drawing.Point(1, 3);
+			this.cboAssembly.Name = "cboAssembly";
+			this.cboAssembly.Size = new System.Drawing.Size(388, 20);
+			this.cboAssembly.TabIndex = 0;
+			this.cboAssembly.SelectedIndexChanged += new System.EventHandler(this.cboAssembly_SelectedIndexChanged);
+			// 
 			// btnFont
 			// 
-			this.btnFont.Location = new System.Drawing.Point(150, 27);
+			this.btnFont.Location = new System.Drawing.Point(239, 27);
 			this.btnFont.Name = "btnFont";
 			this.btnFont.Size = new System.Drawing.Size(64, 24);
-			this.btnFont.TabIndex = 5;
+			this.btnFont.TabIndex = 6;
 			this.btnFont.Text = "&Font";
 			this.btnFont.UseVisualStyleBackColor = true;
 			this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
@@ -143,29 +169,16 @@
 			// 
 			this.dlgSave.Filter = "Text file(*.txt)|*.txt|All file(*.*)|*.*";
 			// 
-			// cboAssembly
+			// chkSort
 			// 
-			this.cboAssembly.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
-			this.cboAssembly.DropDownHeight = 480;
-			this.cboAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboAssembly.FormattingEnabled = true;
-			this.cboAssembly.IntegralHeight = false;
-			this.cboAssembly.Location = new System.Drawing.Point(1, 3);
-			this.cboAssembly.Name = "cboAssembly";
-			this.cboAssembly.Size = new System.Drawing.Size(388, 20);
-			this.cboAssembly.TabIndex = 0;
-			this.cboAssembly.SelectedIndexChanged += new System.EventHandler(this.cboAssembly_SelectedIndexChanged);
-			// 
-			// lblMode
-			// 
-			this.lblMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblMode.AutoSize = true;
-			this.lblMode.Location = new System.Drawing.Point(395, 6);
-			this.lblMode.Name = "lblMode";
-			this.lblMode.Size = new System.Drawing.Size(35, 12);
-			this.lblMode.TabIndex = 1;
-			this.lblMode.Text = "&Mode:";
+			this.chkSort.AutoSize = true;
+			this.chkSort.Location = new System.Drawing.Point(3, 32);
+			this.chkSort.Name = "chkSort";
+			this.chkSort.Size = new System.Drawing.Size(48, 16);
+			this.chkSort.TabIndex = 3;
+			this.chkSort.Text = "&Sort";
+			this.chkSort.UseVisualStyleBackColor = true;
+			this.chkSort.CheckedChanged += new System.EventHandler(this.chkSort_CheckedChanged);
 			// 
 			// FrmZInfoAssembly
 			// 
@@ -201,6 +214,7 @@
 		private System.Windows.Forms.SaveFileDialog dlgSave;
 		private System.Windows.Forms.Label lblMode;
 		private System.Windows.Forms.ComboBox cboAssembly;
+		private System.Windows.Forms.CheckBox chkSort;
 	}
 }
 

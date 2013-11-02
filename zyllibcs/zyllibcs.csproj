@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="system\GacUtil.cs" />
+    <Compile Include="system\TypeNameComparer.cs" />
     <Compile Include="system\TypeUtil.cs" />
     <Compile Include="text\BaseIndentedWriter.cs" />
     <Compile Include="text\IIndentedWriter.cs" />

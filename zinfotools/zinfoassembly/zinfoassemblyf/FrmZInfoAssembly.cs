@@ -141,5 +141,10 @@ namespace zinfoassemblyf {
 			RefreshInfo();
 		}
 
+		private void chkSort_CheckedChanged(object sender, EventArgs e) {
+			InfoAssembly.IsSort = chkSort.Checked;
+			RefreshInfo();
+		}
+
 	}
 }

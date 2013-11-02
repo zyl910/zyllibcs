@@ -19,9 +19,9 @@ namespace zinfoassemblydata {
 		/// </summary>
 		TypeName,
 		/// <summary>
-		/// 类型全名.
+		/// 类型的字符串
 		/// </summary>
-		TypeNameFull,
+		TypeString,
 		/// <summary>
 		/// 类型的静态属性.
 		/// </summary>
@@ -36,6 +36,26 @@ namespace zinfoassemblydata {
 	/// 程序集信息.
 	/// </summary>
 	public static class InfoAssembly {
+		/// <summary>
+		/// 默认字符串比较规则.
+		/// </summary>
+		public static readonly StringComparison DefaultStringComparison = StringComparison.OrdinalIgnoreCase;
+
+		/// <summary>
+		/// 默认字符串比较器.
+		/// </summary>
+		public static readonly StringComparer DefaultStringComparer = StringComparer.OrdinalIgnoreCase;
+
+		/// <summary>
+		/// 默认类型比较器.
+		/// </summary>
+		public static readonly TypeNameComparer DefaultTypeNameComparer = TypeNameComparer.Default;
+
+		/// <summary>
+		/// 是否排序.
+		/// </summary>
+		public static bool IsSort = false;
+
 		/// <summary>
 		/// 程序集列表.
 		/// </summary>
@@ -78,7 +98,7 @@ namespace zinfoassemblydata {
 				case InfoMode.TypeName:
 					rt = WriteInfo_TypeName(iw, context, assembly, false);
 					break;
-				case InfoMode.TypeNameFull:
+				case InfoMode.TypeString:
 					rt = WriteInfo_TypeName(iw, context, assembly, true);
 					break;
 				case InfoMode.TypeStaticProperty:
@@ -111,18 +131,22 @@ namespace zinfoassemblydata {
 		/// <param name="iw">输出者.</param>
 		/// <param name="context">输出时的环境.</param>
 		/// <param name="assembly">程序集.</param>
-		/// <param name="isfull">是否显示全名.</param>
+		/// <param name="istostring">是否使用 ToString 名称.</param>
 		/// <returns>是否成功.</returns>
-		private static bool WriteInfo_TypeName(IIndentedWriter iw, IndentedWriterContext context, Assembly assembly, bool isfull) {
+		private static bool WriteInfo_TypeName(IIndentedWriter iw, IndentedWriterContext context, Assembly assembly, bool istostring) {
 			bool rt = false;
 			if (null == iw) return false;
 			if (null == assembly) return false;
 			// 获取类型列表.
 			IEnumerable<Type> lst = TypeUtil.GetExportedTypes(assembly);
+			if (IsSort) {
+				List<Type> lst1 = new List<Type>(lst);
+				lst1.Sort(DefaultTypeNameComparer);
+				lst = lst1;
+			}
 			// 枚举类型.
 			foreach (Type tp in lst) {
-				string tpname = tp.Name;
-				if (isfull) tpname = tp.FullName;
+				string tpname = istostring ? tp.ToString() : tp.FullName;
 				iw.WriteLine(tpname);
 			}
 			return rt;
