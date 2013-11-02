@@ -108,6 +108,34 @@ namespace zyllibcs.system {
 		}
 
 		/// <summary>
+		/// 取得枚举值数组.
+		/// </summary>
+		/// <param name="enumType">枚举类型.</param>
+		/// <returns>返回枚举值数组.</returns>
+		/// <remarks>为了解决.Net4 Portable Library 中没有 <c>System.Enum.GetValues</c> 的问题. </remarks>
+		public static Array GetEnumValues(Type enumType) {
+#if (NETFX_PORTABLE && !DOTNET4A)
+			if (null == enumType) return null;
+			if (!enumType.IsEnum) return null;
+			List<object> lst = new List<object>();
+			foreach (FieldInfo fi in enumType.GetFields()) {
+				if (fi.IsStatic && enumType.Equals(fi.FieldType)) {
+					try {
+						object v = fi.GetValue(null);
+						lst.Add(v);
+					}
+					catch {
+					}
+				}
+			}
+			lst.Sort();
+			return lst.ToArray();
+#else
+			return Enum.GetValues(enumType);
+#endif
+		}
+
+		/// <summary>
 		/// 计算类型名称.
 		/// </summary>
 		/// <param name="mi">Type.</param>

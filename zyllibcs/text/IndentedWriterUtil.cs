@@ -524,7 +524,7 @@ namespace zyllibcs.text {
 				if (false) {
 				}
 				else if (argtype0.IsEnum) {
-					lst = Enum.GetValues(argtype0);
+					lst = TypeUtil.GetEnumValues(argtype0);
 					nameformat = "{0:d}(0x{0:X}, {0})";
 				}
 				else if (argtype0.Equals(typeof(bool))) {

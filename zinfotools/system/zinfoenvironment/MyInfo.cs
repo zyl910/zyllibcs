@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using zyllibcs.system;
 using zyllibcs.text;
 
 namespace zinfoenvironment {
@@ -41,7 +42,7 @@ namespace zinfoenvironment {
 						IndentedWriterUtil.WriteLineValue(iw, e.MemberName, e.Value, e.ValueOptions, e.AppendComment);
 						object[] args = new object[1];
 						iw.Indent(null);
-						foreach (Environment.SpecialFolder p in Enum.GetValues(typeof(Environment.SpecialFolder))) {
+						foreach (Environment.SpecialFolder p in TypeUtil.GetEnumValues(typeof(Environment.SpecialFolder))) {
 							iw.Write("{0:d}(0x{0:X}, {0}):\t", p);
 							try {
 								//string s = Environment.GetFolderPath(p);
@@ -165,6 +166,7 @@ namespace zinfoenvironment {
 			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(KeyValuePair<int, object>), MemberNameOptions.All));
 			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(KeyValuePair<int, object>[]), MemberNameOptions.All));
 			//iw.WriteLine(MemberInfoFormat.GetMemberName(typeof(List<KeyValuePair<int, object>>), MemberNameOptions.All));
+			//IndentedObjectFunctor.CommonProc(iw, TypeUtil.GetEnumValues(typeof(Environment.SpecialFolder)) ,null);
 			Dictionary<string, object> dict = new Dictionary<string, object>();
 			dict.Add("a", "abc");
 			dict.Add("b", "base");

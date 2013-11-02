@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8D4B6392-21A6-4E3F-B943-5DE367BD002C}</ProjectGuid>
+    <ProjectGuid>{159BD576-340C-4F7E-B06C-3EC736C510DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>zinfodata</RootNamespace>
-    <AssemblyName>zinfodata</AssemblyName>
+    <RootNamespace>zinfoassemblydata</RootNamespace>
+    <AssemblyName>zinfoassemblydata</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -36,39 +36,28 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
+    <OutputPath>zinfoassemblyf\ziadata4\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Release\</OutputPath>
-    <DefineConstants>TRACE;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
+    <OutputPath>zinfoassemblyf\ziadata4\bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InfoAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InfoData.cs" />
-    <Compile Include="system\zinfoassemblylist\MyInfo.cs" />
-    <Compile Include="system\zinfobase\MyInfo.cs" />
-    <Compile Include="system\zinfoculture\MyInfo.cs" />
-    <Compile Include="system\zinfodraw\MyInfo.cs" />
-    <Compile Include="system\zinfoenvironment\MyInfo.cs" />
-    <Compile Include="winform\zinfowinform\MyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -88,7 +77,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\zyllibcs\zyllibcs4.csproj">
+    <ProjectReference Include="..\..\zyllibcs\zyllibcs4.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs4</Name>
     </ProjectReference>

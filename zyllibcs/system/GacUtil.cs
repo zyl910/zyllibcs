@@ -1,3 +1,4 @@
+#if (!NETFX_PORTABLE)
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -326,3 +327,4 @@ namespace zyllibcs.system {
 	}
 
 }
+#endif

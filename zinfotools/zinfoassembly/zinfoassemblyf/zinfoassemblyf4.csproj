@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8D4B6392-21A6-4E3F-B943-5DE367BD002C}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4D9B7965-1F7B-4D52-97DB-7855E9CEFCFE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>zinfodata</RootNamespace>
-    <AssemblyName>zinfodata</AssemblyName>
+    <RootNamespace>zinfoassemblyf</RootNamespace>
+    <AssemblyName>zinfoassemblyf</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -36,39 +36,72 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Release\</OutputPath>
-    <DefineConstants>TRACE;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmZInfoAssembly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmZInfoAssembly.Designer.cs">
+      <DependentUpon>FrmZInfoAssembly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InfoData.cs" />
-    <Compile Include="system\zinfoassemblylist\MyInfo.cs" />
-    <Compile Include="system\zinfobase\MyInfo.cs" />
-    <Compile Include="system\zinfoculture\MyInfo.cs" />
-    <Compile Include="system\zinfodraw\MyInfo.cs" />
-    <Compile Include="system\zinfoenvironment\MyInfo.cs" />
-    <Compile Include="winform\zinfowinform\MyInfo.cs" />
+    <EmbeddedResource Include="FrmZInfoAssembly.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmZInfoAssembly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs4.csproj">
+      <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
+      <Name>zyllibcs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\zinfoassemblydata4.csproj">
+      <Project>{159BD576-340C-4F7E-B06C-3EC736C510DD}</Project>
+      <Name>zinfoassemblydata</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -86,12 +119,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\zyllibcs\zyllibcs4.csproj">
-      <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
-      <Name>zyllibcs4</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
