@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using zyllibcs.system;
 using zyllibcs.text;
 using zinfoassemblydata;
 
@@ -27,6 +29,47 @@ namespace zinfoassemblyf {
 		}
 
 		/// <summary>
+		/// 刷新模式列表.
+		/// </summary>
+		private void RefreshModeList() {
+			cboMode.Items.Clear();
+			// mode.
+			foreach (InfoMode p in Enum.GetValues(typeof(InfoMode))) {
+				cboMode.Items.Add(p);
+			}
+			// static type.
+			cboMode.Items.Add("---");
+			if (null != m_CurAssembly) {
+				IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic | IndentedWriterMemberOptions.AllowMethod;
+				try {
+					// 获取类型列表.
+					IEnumerable<Type> lst = TypeUtil.GetExportedTypes(m_CurAssembly);
+					if (true) {
+						List<Type> lst1 = new List<Type>(lst);
+						lst1.Sort(InfoAssembly.DefaultTypeNameComparer);
+						lst = lst1;
+					}
+					// 枚举类型.
+					foreach (Type tp in lst) {
+						if (IndentedWriterUtil.TypeHasStatic(tp, options)) {
+							cboMode.Items.Add(tp);
+						}
+					}
+				}
+				catch(Exception ex) {
+					Debug.WriteLine(ex);
+				}
+			}
+			// selectindex
+			try {
+				cboMode.SelectedIndex = 0;
+			}
+			catch {
+				// 忽略.
+			}
+		}
+
+		/// <summary>
 		/// 刷新信息.
 		/// </summary>
 		private void RefreshInfo() {
@@ -37,6 +80,7 @@ namespace zinfoassemblyf {
 				try {
 					m_CurAssembly = InfoAssembly.LoadAssembly(name);
 					m_OldAssemblyName = name;
+					RefreshModeList();
 				}
 				catch (Exception ex) {
 					m_OldAssemblyName = null;
@@ -44,14 +88,34 @@ namespace zinfoassemblyf {
 				}
 			}
 			if (null == m_CurAssembly) return;
+			// 计算显示方式.
+			InfoMode mode = 0;
+			Type tp = null;
+			bool isshow = false;
+			object obj = cboMode.SelectedItem;
+			if (obj is Type) {
+				tp = obj as Type;
+				isshow = true;
+			}
+			else if (obj is InfoMode) {
+				mode = (InfoMode)obj;
+				isshow = true;
+			}
+			if (!isshow) return;
 			// 显示信息.
-			InfoMode mode = (InfoMode)cboMode.SelectedItem;
 			StringBuilder sb = new StringBuilder();
 			IIndentedWriter iw = new TextIndentedWriter(new StringWriter(sb));
 			this.UseWaitCursor = true;
 			Application.DoEvents();
 			try {
-				InfoAssembly.WriteInfo(iw, null, m_CurAssembly, mode);
+				if (null != tp) {
+					IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
+					if (chkMethod.Checked) options |= IndentedWriterMemberOptions.AllowMethod;
+					InfoAssembly.WriteTypeStatic(iw, null, tp, options);
+				}
+				else {
+					InfoAssembly.WriteInfo(iw, null, m_CurAssembly, mode);
+				}
 			}
 			catch (Exception ex) {
 				sb.AppendLine(ex.ToString());
@@ -72,16 +136,7 @@ namespace zinfoassemblyf {
 			catch (Exception ex) {
 				txtInfo.Text = ex.ToString();
 			}
-			cboMode.Items.Clear();
-			try {
-				foreach (InfoMode p in Enum.GetValues(typeof(InfoMode))) {
-					cboMode.Items.Add(p);
-				}
-				cboMode.SelectedIndex = 0;
-			}
-			catch{
-				// 忽略.
-			}
+			RefreshModeList();
 		}
 
 		private void FrmZInfoAssembly_FormClosing(object sender, FormClosingEventArgs e) {
@@ -143,6 +198,10 @@ namespace zinfoassemblyf {
 
 		private void chkSort_CheckedChanged(object sender, EventArgs e) {
 			InfoAssembly.IsSort = chkSort.Checked;
+			RefreshInfo();
+		}
+
+		private void chkMethod_CheckedChanged(object sender, EventArgs e) {
 			RefreshInfo();
 		}
 

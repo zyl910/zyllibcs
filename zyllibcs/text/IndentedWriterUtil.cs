@@ -564,9 +564,9 @@ namespace zyllibcs.text {
 		/// <param name="options"></param>
 		/// <returns></returns>
 		public static bool TypeHasStatic(Type tp, IndentedWriterMemberOptions options) {
-			bool rt = false;
 			if (null == tp) return false;
 			if (0==(options & IndentedWriterMemberOptions.OnlyStatic)) return false;
+			if (tp.IsEnum) return false;
 			foreach (MemberInfo mi in GetMembers(tp, options)) {
 				FieldInfo fi = mi as FieldInfo;
 				if (null != fi) {
@@ -583,7 +583,7 @@ namespace zyllibcs.text {
 					}
 				}
 			}
-			return rt;
+			return false;
 		}
 
 		/// <summary>
