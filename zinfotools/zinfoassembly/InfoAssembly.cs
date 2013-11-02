@@ -23,6 +23,14 @@ namespace zinfoassemblydata {
 		/// </summary>
 		TypeString,
 		/// <summary>
+		/// 拥有静态属性的类型.
+		/// </summary>
+		TypeStaticHas,
+		/// <summary>
+		/// 拥有静态属性方法的类型.
+		/// </summary>
+		TypeStaticHasM,
+		/// <summary>
 		/// 类型的静态属性.
 		/// </summary>
 		TypeStaticProperty,
@@ -101,9 +109,17 @@ namespace zinfoassemblydata {
 				case InfoMode.TypeString:
 					rt = WriteInfo_TypeName(iw, context, assembly, true);
 					break;
+				case InfoMode.TypeStaticHas:
+					rt = WriteInfo_TypeStaticHas(iw, context, assembly, IndentedWriterMemberOptions.OnlyStatic);
+					break;
+				case InfoMode.TypeStaticHasM:
+					rt = WriteInfo_TypeStaticHas(iw, context, assembly, IndentedWriterMemberOptions.OnlyStatic | IndentedWriterMemberOptions.AllowMethod);
+					break;
 				case InfoMode.TypeStaticProperty:
+					rt = WriteInfo_TypeStatic(iw, context, assembly, IndentedWriterMemberOptions.OnlyStatic);
 					break;
 				case InfoMode.TypeStaticPropertyMethod:
+					rt = WriteInfo_TypeStatic(iw, context, assembly, IndentedWriterMemberOptions.OnlyStatic | IndentedWriterMemberOptions.AllowMethod);
 					break;
 			}
 			return rt;
@@ -148,6 +164,67 @@ namespace zinfoassemblydata {
 			foreach (Type tp in lst) {
 				string tpname = istostring ? tp.ToString() : tp.FullName;
 				iw.WriteLine(tpname);
+			}
+			return rt;
+		}
+
+		/// <summary>
+		/// 输出含有静态成员的类型.
+		/// </summary>
+		/// <param name="iw">输出者.</param>
+		/// <param name="context">输出时的环境.</param>
+		/// <param name="assembly">程序集.</param>
+		/// <param name="options"></param>
+		/// <returns>是否成功.</returns>
+		private static bool WriteInfo_TypeStaticHas(IIndentedWriter iw, IndentedWriterContext context, Assembly assembly, IndentedWriterMemberOptions options) {
+			bool rt = false;
+			if (null == iw) return false;
+			if (null == assembly) return false;
+			// 获取类型列表.
+			IEnumerable<Type> lst = TypeUtil.GetExportedTypes(assembly);
+			if (IsSort) {
+				List<Type> lst1 = new List<Type>(lst);
+				lst1.Sort(DefaultTypeNameComparer);
+				lst = lst1;
+			}
+			// 枚举类型.
+			foreach (Type tp in lst) {
+				//string tpname = istostring ? tp.ToString() : tp.FullName;
+				//iw.WriteLine(tpname);
+				if (IndentedWriterUtil.TypeHasStatic(tp, options)) {
+					iw.WriteLine(tp.FullName);
+				}
+			}
+			return rt;
+		}
+
+		/// <summary>
+		/// 输出类型的静态成员.
+		/// </summary>
+		/// <param name="iw">输出者.</param>
+		/// <param name="context">输出时的环境.</param>
+		/// <param name="assembly">程序集.</param>
+		/// <param name="options"></param>
+		/// <returns>是否成功.</returns>
+		private static bool WriteInfo_TypeStatic(IIndentedWriter iw, IndentedWriterContext context, Assembly assembly, IndentedWriterMemberOptions options) {
+			bool rt = false;
+			if (null == iw) return false;
+			if (null == assembly) return false;
+			// 获取类型列表.
+			IEnumerable<Type> lst = TypeUtil.GetExportedTypes(assembly);
+			if (IsSort) {
+				List<Type> lst1 = new List<Type>(lst);
+				lst1.Sort(DefaultTypeNameComparer);
+				lst = lst1;
+			}
+			// 枚举类型.
+			foreach (Type tp in lst) {
+				//string tpname = istostring ? tp.ToString() : tp.FullName;
+				//iw.WriteLine(tpname);
+				if (IndentedWriterUtil.TypeHasStatic(tp, options)) {
+					iw.WriteLine("{0}:", tp.FullName);
+					IndentedWriterUtil.WriteTypeStatic(iw, tp, context, options);
+				}
 			}
 			return rt;
 		}

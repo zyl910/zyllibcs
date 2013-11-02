@@ -558,6 +558,35 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
+		/// 检查类型是否存在可输出的静态成员.
+		/// </summary>
+		/// <param name="tp"></param>
+		/// <param name="options"></param>
+		/// <returns></returns>
+		public static bool TypeHasStatic(Type tp, IndentedWriterMemberOptions options) {
+			bool rt = false;
+			if (null == tp) return false;
+			if (0==(options & IndentedWriterMemberOptions.OnlyStatic)) return false;
+			foreach (MemberInfo mi in GetMembers(tp, options)) {
+				FieldInfo fi = mi as FieldInfo;
+				if (null != fi) {
+					if (fi.IsStatic) return true;
+				}
+				PropertyInfo pi = mi as PropertyInfo;
+				if (null != pi) {
+					if (pi.CanRead) return true;
+				}
+				if (0 != (options | IndentedWriterMemberOptions.AllowMethod)) {
+					MethodInfo mti = mi as MethodInfo;
+					if (null != mti) {
+						if (mti.IsStatic && !mti.IsSpecialName) return true;
+					}
+				}
+			}
+			return rt;
+		}
+
+		/// <summary>
 		/// 输出类型的静态成员, 拥有选项参数.
 		/// </summary>
 		/// <param name="iw">带缩进输出者.</param>
