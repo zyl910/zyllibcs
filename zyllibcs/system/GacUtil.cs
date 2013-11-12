@@ -1,10 +1,30 @@
-#if (!NETFX_PORTABLE)
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace zyllibcs.system {
+
+	/// <summary>
+	/// 取得Gac列表时的选项.
+	/// </summary>
+	[Flags]
+	public enum GacGetListOptions {
+		/// <summary>
+		/// 默认.
+		/// </summary>
+		Default = 0,
+		/// <summary>
+		/// 自动排序.
+		/// </summary>
+		AutoSort = 1,
+		/// <summary>
+		/// 失败时回退，不抛出异常。先枚举GAC，失败时枚举当前应用程序域中的程序集，再失败时返回自身程序集，最后仍失败时返回0个元素的列表.
+		/// </summary>
+		Fallback = 2,
+	}
+
 	/// <summary>
 	/// 指示由全局程序集缓存中的 IAssemblyCacheItem 表示的程序集的源。
 	/// </summary>
@@ -27,6 +47,7 @@ namespace zyllibcs.system {
 		ASM_CACHE_ROOT = 0x08
 	}
 
+#if (!NETFX_PORTABLE)
 	/// <summary>
 	/// 指示将通过 IAssemblyName::GetDisplayName 方法检索其显示名称的程序集的版本、内部版本、区域性、签名等。
 	/// </summary>
@@ -201,6 +222,7 @@ namespace zyllibcs.system {
 			/* [out] */out IAssemblyName pName);
 
 	}
+#endif
 
 	/// <summary>
 	/// GAC(Global Assembly Cache) 工具类.
@@ -211,6 +233,7 @@ namespace zyllibcs.system {
 		/// </summary>
 		public static readonly int DefaultStringBufferSize = 0x1000;
 
+#if (!NETFX_PORTABLE)
 		/// <summary>
 		/// 获取一个指针，该指针指向 IAssemblyEnum 实例，该实例可枚举具有指定 IAssemblyName 的程序集中的对象。
 		/// </summary>
@@ -293,6 +316,7 @@ namespace zyllibcs.system {
 		public static IEnumerable<String> GacEnumerateAssemblyName(ASM_DISPLAY_FLAGS dwDisplayFlags) {
 			return EnumerateAssemblyName(ASM_CACHE_FLAGS.ASM_CACHE_GAC, dwDisplayFlags);
 		}
+#endif
 
 		/// <summary>
 		/// 取得程序集名称列表.
@@ -301,13 +325,58 @@ namespace zyllibcs.system {
 		/// <param name="dwDisplayFlags">显示标志.</param>
 		/// <param name="issort">是否排序.</param>
 		/// <returns>返回程序集名称列表.</returns>
-		/// <exception cref="System.DllNotFoundException">在mono等环境下有可能找不到dll.</exception>
-		public static List<String> GetAssemblyNameList(ASM_CACHE_FLAGS dwCacheFlags, ASM_DISPLAY_FLAGS dwDisplayFlags, bool issort) {
+		/// <exception cref="System.DllNotFoundException">当 <paramref name="listoptions"/> 没有 <see cref="GacGetListOptions.Fallback"/> 标志时 , 在mono等环境下有可能找不到dll.</exception>
+		public static List<String> GetAssemblyNameList(ASM_CACHE_FLAGS dwCacheFlags, ASM_DISPLAY_FLAGS dwDisplayFlags, GacGetListOptions listoptions) {
 			List<String> lst = new List<string>();
-			foreach (string str in EnumerateAssemblyName(dwCacheFlags, dwDisplayFlags)) {
-				lst.Add(str);
+			// get list.
+			bool isok = false;
+#if (!NETFX_PORTABLE)
+			try {
+				foreach (string str in EnumerateAssemblyName(dwCacheFlags, dwDisplayFlags)) {
+					lst.Add(str);
+				}
+				isok = true;
 			}
-			if (issort) {
+			catch {
+				if (0==(listoptions & GacGetListOptions.Fallback)) {
+					// 没有标识, 重抛异常.
+					throw;
+				}
+				else {
+					// 忽略.
+				}
+			}
+#endif
+			if (0 != (listoptions & GacGetListOptions.Fallback) && dwCacheFlags == ASM_CACHE_FLAGS.ASM_CACHE_GAC) {
+				// 尝试枚举当前应用程序域.
+#if (!NETFX_CORE)
+				if (!isok && lst.Count == 0) {
+					try {
+						foreach (Assembly p in AppDomain.CurrentDomain.GetAssemblies()) {
+							lst.Add(p.FullName);
+						}
+						isok = true;
+					}
+					catch {
+						// 忽略.
+					}
+				}
+#endif
+				// 尝试所在程序集.
+				if (!isok && lst.Count == 0) {
+					Type tp = typeof(GacUtil);
+#if (NETFX_CORE)
+					TypeInfo ti = tp.GetTypeInfo();
+					lst.Add(ti.Assembly.FullName);
+					isok = true;
+#else
+					lst.Add(tp.Assembly.FullName);
+					isok = true;
+#endif
+				}
+			}
+			// sort.
+			if (0!=(listoptions & GacGetListOptions.AutoSort)) {
 				lst.Sort(StringComparer.OrdinalIgnoreCase);
 			}
 			return lst;
@@ -320,11 +389,10 @@ namespace zyllibcs.system {
 		/// <param name="issort">是否排序.</param>
 		/// <returns>返回程序集名称列表.</returns>
 		/// <exception cref="System.DllNotFoundException">在mono等环境下有可能找不到dll.</exception>
-		public static List<String> GacGetAssemblyNameList(ASM_DISPLAY_FLAGS dwDisplayFlags, bool issort) {
-			return GetAssemblyNameList(ASM_CACHE_FLAGS.ASM_CACHE_GAC, dwDisplayFlags, issort);
+		public static List<String> GacGetAssemblyNameList(ASM_DISPLAY_FLAGS dwDisplayFlags, GacGetListOptions listoptions) {
+			return GetAssemblyNameList(ASM_CACHE_FLAGS.ASM_CACHE_GAC, dwDisplayFlags, listoptions);
 		}
 
 	}
 
 }
-#endif

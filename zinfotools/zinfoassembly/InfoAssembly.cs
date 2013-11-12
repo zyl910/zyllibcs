@@ -74,7 +74,7 @@ namespace zinfoassemblydata {
 		/// </summary>
 		public static List<string> AssemblyList {
 			get {
-				if (null == m_AssemblyList) m_AssemblyList = GacUtil.GacGetAssemblyNameList(ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL, true);
+				if (null == m_AssemblyList) m_AssemblyList = GacUtil.GacGetAssemblyNameList(ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL, GacGetListOptions.AutoSort | GacGetListOptions.Fallback);
 				return m_AssemblyList;
 			}
 		}
