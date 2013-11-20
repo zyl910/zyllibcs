@@ -1,0 +1,38 @@
+﻿<Window x:Class="zinfoassemblyp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="zInfoAssembly(显示程序集信息)(WPF)" Height="400" Width="600" Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing" Closed="Window_Closed">
+	<DockPanel Name="pnlMain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		<StackPanel Name="pnlTop" DockPanel.Dock="Top">
+			<Grid Name="grdSrc">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<GridSplitter Grid.Column="1" HorizontalAlignment="Center" Name="sptSrc" VerticalAlignment="Stretch" Width="4" ShowsPreview="True" />
+				<ComboBox Name="cboAssembly" VerticalAlignment="Top" MaxDropDownHeight="600" SelectionChanged="cboAssembly_SelectionChanged" />
+				<ComboBox Grid.Column="2" Name="cboMode" VerticalAlignment="Top" MaxDropDownHeight="600" SelectionChanged="cboMode_SelectionChanged" />
+			</Grid>
+			<Grid Name="grdTool">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<StackPanel Name="pnlToolL" Orientation="Horizontal" VerticalAlignment="Center" Margin="1">
+					<CheckBox Content="_Method" Name="chkMethod" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" />
+					<CheckBox Content="S_ort" Name="chkSort" VerticalAlignment="Center" Checked="chkSort_Checked" Unchecked="chkSort_Checked" />
+					<Button Content="_Save" Name="btnSave" Click="btnSave_Click" />
+					<CheckBox Content="_WordWrap" Name="chkWordWrap" VerticalAlignment="Center" Checked="chkWordWrap_Checked" Unchecked="chkWordWrap_Checked" />
+					<Button Content="_Font" Name="btnFont" Click="btnFont_Click" IsEnabled="False" />
+				</StackPanel>
+				<TextBox Name="txtFind" Grid.Column="1" Margin="1" />
+				<StackPanel Grid.Column="2" Name="pnlToolR" Orientation="Horizontal" Margin="1">
+					<Button Content="F_ind" Name="btnFind" Click="btnFind_Click" />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+		<TextBox Name="txtInfo" IsReadOnly="False" HorizontalScrollBarVisibility="Auto" IsReadOnlyCaretVisible="True" IsUndoEnabled="False" VerticalScrollBarVisibility="Auto" />
+	</DockPanel>
+</Window>

@@ -39,6 +39,7 @@
 * DOTNET4A: .Net 4.5 .
 * NETFX_CORE: Windows Store Apps.
 * NETFX_PORTABLE: Portable Library.
+* SILVERLIGHT: Silverlight.
 * UNSAFE: Allow unsafe.
 * WINDOWS: Windows platform.
 * WINDOWS_PHONE: Windows phone platform.
