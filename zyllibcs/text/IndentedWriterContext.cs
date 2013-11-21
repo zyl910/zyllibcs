@@ -35,6 +35,16 @@ namespace zyllibcs.text {
 		private readonly List<KeyValuePair<Type, object>> m_TypeOwners = new List<KeyValuePair<Type, object>>();
 
 		/// <summary>
+		/// 访问过的对象的列表. 仅在有 <see cref="VisitOnce"/> 时才自动填充此列表. 注意需要手动清空此列表.
+		/// </summary>
+		private readonly List<object> m_VisitList = new List<object>();
+
+		/// <summary>
+		/// 是否仅访问一次. 即在NotifyForEachMemberBegin中检查该对象是否在 <see cref="VisitList"/> 列表中, 若已经存在便不再递归.
+		/// </summary>
+		private bool m_VisitOnce = false;
+
+		/// <summary>
 		/// 相同类型的最大数量.
 		/// </summary>
 		private int m_SameTypeMax = 10;
@@ -90,6 +100,21 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
+		/// 访问过的对象的列表. 仅在有 <see cref="VisitOnce"/> 时才自动填充此列表. 注意需要手动清空此列表.
+		/// </summary>
+		public List<object> VisitList {
+			get { return m_VisitList; }
+		}
+
+		/// <summary>
+		/// 是否仅访问一次. 即在NotifyForEachMemberBegin中检查该对象是否在 <see cref="VisitList"/> 列表中, 若已经存在便不再递归.
+		/// </summary>
+		public bool VisitOnce {
+			get { return m_VisitOnce; }
+			set { m_VisitOnce = value; }
+		}
+
+		/// <summary>
 		/// 相同类型的最大数量.
 		/// </summary>
 		public int SameTypeMax {
@@ -133,6 +158,13 @@ namespace zyllibcs.text {
 		public bool NotifyForEachMemberBegin(IIndentedWriter iw, object owner, Type tp, IndentedWriterMemberOptions options, EventHandler<IndentedWriterMemberEventArgs> handle, IndentedWriterContext context) {
 			bool rt = true;
 			// check.
+			if (null != owner && m_VisitOnce) {
+				// 检查访问.
+				if (m_VisitList.IndexOf(owner) >= 0) {
+					return false;
+				}
+				m_VisitList.Add(owner);
+			}
 			if (null != tp && !tp.IsArray) {
 				// 连续相同类型对象的最大数量.
 				if (m_SameTypeGroupMax > 0 && null != owner) {

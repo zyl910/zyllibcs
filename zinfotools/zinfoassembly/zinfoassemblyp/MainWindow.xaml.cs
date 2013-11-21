@@ -119,6 +119,8 @@ namespace zinfoassemblyp {
 			// 显示信息.
 			StringBuilder sb = new StringBuilder();
 			IIndentedWriter iw = new TextIndentedWriter(new StringWriter(sb));
+			IndentedWriterContext context = new IndentedWriterContext();
+			context.VisitOnce = (bool)chkVisitOnce.IsChecked;
 			//this.UseWaitCursor = true;
 			this.Cursor = Cursors.Wait;
 			//Application.DoEvents();
@@ -126,10 +128,10 @@ namespace zinfoassemblyp {
 				if (null != tp) {
 					IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
 					if (chkMethod.IsChecked!=false) options |= IndentedWriterMemberOptions.AllowMethod;
-					InfoAssembly.WriteTypeStatic(iw, null, tp, options);
+					InfoAssembly.WriteTypeStatic(iw, context, tp, options);
 				}
 				else {
-					InfoAssembly.WriteInfo(iw, null, m_CurAssembly, mode);
+					InfoAssembly.WriteInfo(iw, context, m_CurAssembly, mode);
 				}
 			}
 			catch (Exception ex) {

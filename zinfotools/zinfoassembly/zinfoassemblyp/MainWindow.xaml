@@ -21,15 +21,16 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<StackPanel Name="pnlToolL" Orientation="Horizontal" VerticalAlignment="Center" Margin="1">
-					<CheckBox Content="_Method" Name="chkMethod" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" />
-					<CheckBox Content="S_ort" Name="chkSort" VerticalAlignment="Center" Checked="chkSort_Checked" Unchecked="chkSort_Checked" />
-					<Button Content="_Save" Name="btnSave" Click="btnSave_Click" />
-					<CheckBox Content="_WordWrap" Name="chkWordWrap" VerticalAlignment="Center" Checked="chkWordWrap_Checked" Unchecked="chkWordWrap_Checked" />
-					<Button Content="_Font" Name="btnFont" Click="btnFont_Click" IsEnabled="False" />
+					<CheckBox Content="_Method" Name="chkMethod" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" ToolTip="是否显示简单方法的返回值?" />
+					<CheckBox Content="_Once" Name="chkVisitOnce" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" IsChecked="True" ToolTip="是否仅显示一次对象详情?" />
+					<CheckBox Content="Sor_t" Name="chkSort" VerticalAlignment="Center" Checked="chkSort_Checked" Unchecked="chkSort_Checked" ToolTip="显示类型列表时是否排序?" />
+					<Button Content="_Save" Name="btnSave" Click="btnSave_Click" ToolTip="将下面文本框的内容保存到文本文件." />
+					<CheckBox Content="_WordWrap" Name="chkWordWrap" VerticalAlignment="Center" Checked="chkWordWrap_Checked" Unchecked="chkWordWrap_Checked" ToolTip="下面的文本框是否自动换行?" />
+					<Button Content="_Font" Name="btnFont" Click="btnFont_Click" IsEnabled="False" ToolTip="设置下面文本框的字体." />
 				</StackPanel>
 				<TextBox Name="txtFind" Grid.Column="1" Margin="1" />
 				<StackPanel Grid.Column="2" Name="pnlToolR" Orientation="Horizontal" Margin="1">
-					<Button Content="F_ind" Name="btnFind" Click="btnFind_Click" />
+					<Button Content="F_ind" Name="btnFind" Click="btnFind_Click" ToolTip="在下面的文本框进行查找." />
 				</StackPanel>
 			</Grid>
 		</StackPanel>
