@@ -85,6 +85,7 @@ namespace zinfoassemblyf {
 				catch (Exception ex) {
 					m_OldAssemblyName = null;
 					txtInfo.Text = ex.ToString();
+					return;
 				}
 			}
 			if (null == m_CurAssembly) return;
@@ -105,16 +106,18 @@ namespace zinfoassemblyf {
 			// 显示信息.
 			StringBuilder sb = new StringBuilder();
 			IIndentedWriter iw = new TextIndentedWriter(new StringWriter(sb));
+			IndentedWriterContext context = new IndentedWriterContext();
+			context.VisitOnce = chkVisitOnce.Checked;
 			this.UseWaitCursor = true;
 			Application.DoEvents();
 			try {
 				if (null != tp) {
 					IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
 					if (chkMethod.Checked) options |= IndentedWriterMemberOptions.AllowMethod;
-					InfoAssembly.WriteTypeStatic(iw, null, tp, options);
+					InfoAssembly.WriteTypeStatic(iw, context, tp, options);
 				}
 				else {
-					InfoAssembly.WriteInfo(iw, null, m_CurAssembly, mode);
+					InfoAssembly.WriteInfo(iw, context, m_CurAssembly, mode);
 				}
 			}
 			catch (Exception ex) {
