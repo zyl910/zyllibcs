@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8D4B6392-21A6-4E3F-B943-5DE367BD002C}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{E1D2455B-A23A-4039-8B9B-7676C6C65B6B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>zinfodata</RootNamespace>
-    <AssemblyName>zinfodata</AssemblyName>
+    <RootNamespace>zinfotoolsf</RootNamespace>
+    <AssemblyName>zinfotoolsf</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -36,22 +36,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>zinfotoolsf\zinfodata4\bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;UNSAFE;DOTNET2;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,14 +61,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\system\zinfoassemblylist\MyInfo.cs">
+      <Link>system\zinfoassemblylist\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfobase\MyInfo.cs">
+      <Link>system\zinfobase\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfoculture\MyInfo.cs">
+      <Link>system\zinfoculture\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfodraw\MyInfo.cs">
+      <Link>system\zinfodraw\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfoenvironment\MyInfo.cs">
+      <Link>system\zinfoenvironment\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\winform\zinfowinform\MyInfo.cs">
+      <Link>winform\zinfowinform\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\InfoData.cs">
+      <Link>InfoData.cs</Link>
+    </Compile>
+    <Compile Include="FrmZInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmZInfo.Designer.cs">
+      <DependentUpon>FrmZInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InfoData.cs" />
-    <Compile Include="system\zinfoassemblylist\MyInfo.cs" />
-    <Compile Include="system\zinfobase\MyInfo.cs" />
-    <Compile Include="system\zinfoculture\MyInfo.cs" />
-    <Compile Include="system\zinfodraw\MyInfo.cs" />
-    <Compile Include="system\zinfoenvironment\MyInfo.cs" />
-    <Compile Include="winform\zinfowinform\MyInfo.cs" />
+    <EmbeddedResource Include="FrmZInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmZInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs4.csproj">
+      <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
+      <Name>zyllibcs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -88,10 +137,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\zyllibcs\zyllibcs4.csproj">
-      <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
-      <Name>zyllibcs4</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using zyllibcs.text;
-using zinfodata;
+using zinfotools;
 
 namespace zinfotoolsf {
 	/// <summary>

@@ -15,19 +15,19 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNSAFE;DOTNET2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;UNSAFE;DOTNET2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -38,6 +38,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\system\zinfoassemblylist\MyInfo.cs">
+      <Link>system\zinfoassemblylist\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfobase\MyInfo.cs">
+      <Link>system\zinfobase\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfoculture\MyInfo.cs">
+      <Link>system\zinfoculture\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfodraw\MyInfo.cs">
+      <Link>system\zinfodraw\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\system\zinfoenvironment\MyInfo.cs">
+      <Link>system\zinfoenvironment\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\winform\zinfowinform\MyInfo.cs">
+      <Link>winform\zinfowinform\MyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\InfoData.cs">
+      <Link>InfoData.cs</Link>
+    </Compile>
     <Compile Include="FrmZInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,13 +91,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\zyllibcs\zyllibcs.csproj">
+    <ProjectReference Include="..\..\..\zyllibcs\zyllibcs.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zinfodata.csproj">
-      <Project>{8D4B6392-21A6-4E3F-B943-5DE367BD002C}</Project>
-      <Name>zinfodata</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

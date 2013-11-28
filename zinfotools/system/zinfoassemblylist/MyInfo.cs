@@ -23,7 +23,7 @@ namespace zinfoassemblylist {
 			ASM_DISPLAY_FLAGS flags = isfull ? ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL : ASM_DISPLAY_FLAGS.ASM_DISPLAYF_RETARGET;
 			//flags = ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL;
 			iw.WriteLine("# zinfoassemblylist");
-			foreach (string str in GacUtil.GacGetAssemblyNameList(flags, true)) {
+			foreach (string str in GacUtil.GacGetAssemblyNameList(flags, GacGetListOptions.AutoSort | GacGetListOptions.Fallback )) {
 				iw.WriteLine(str);
 			}
 			return true;

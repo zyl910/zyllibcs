@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using zyllibcs.text;
 
-namespace zinfodata {
+namespace zinfotools {
 	/// <summary>
 	/// 信息数据. 是一个静态工具类.
 	/// </summary>

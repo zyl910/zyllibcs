@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zinfotoolsf", "zinfotoolsf\zinfotoolsf.csproj", "{E1D2455B-A23A-4039-8B9B-7676C6C65B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zyllibcs", "..\zyllibcs\zyllibcs.csproj", "{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zinfodata", "zinfodata.csproj", "{8D4B6392-21A6-4E3F-B943-5DE367BD002C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zyllibcs", "..\..\zyllibcs\zyllibcs.csproj", "{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D4B6392-21A6-4E3F-B943-5DE367BD002C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D4B6392-21A6-4E3F-B943-5DE367BD002C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D4B6392-21A6-4E3F-B943-5DE367BD002C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D4B6392-21A6-4E3F-B943-5DE367BD002C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
