@@ -17,7 +17,7 @@ using System.Reflection;
 //using System.Windows.Forms;
 using zyllibcs.system;
 using zyllibcs.text;
-using zinfoassemblydata;
+using zinfoassembly;
 
 namespace zinfoassemblyp {
 	/// <summary>

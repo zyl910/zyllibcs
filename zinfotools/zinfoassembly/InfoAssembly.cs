@@ -5,7 +5,7 @@ using System.Text;
 using zyllibcs.system;
 using zyllibcs.text;
 
-namespace zinfoassemblydata {
+namespace zinfoassembly {
 	/// <summary>
 	/// 信息模式.
 	/// </summary>

@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using zyllibcs.system;
 using zyllibcs.text;
-using zinfoassemblydata;
+using zinfoassembly;
 
 namespace zinfoassemblyf {
 	public partial class FrmZInfoAssembly : Form {
