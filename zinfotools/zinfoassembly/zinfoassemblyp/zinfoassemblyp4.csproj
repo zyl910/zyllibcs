@@ -91,6 +91,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="..\InfoAssembly.cs">
+      <Link>InfoAssembly.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -128,10 +131,6 @@
     <ProjectReference Include="..\..\..\zyllibcs\zyllibcs4.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zinfoassemblpdata4.csproj">
-      <Project>{159BD576-340C-4F7E-B06C-3EC736C510DD}</Project>
-      <Name>zinfoassemblpdata4</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

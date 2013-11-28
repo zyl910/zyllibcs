@@ -37,7 +37,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -46,7 +46,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;DOTNET3;DOTNET3A;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -60,6 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\InfoAssembly.cs">
+      <Link>InfoAssembly.cs</Link>
+    </Compile>
     <Compile Include="FrmZInfoAssembly.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,10 +100,6 @@
     <ProjectReference Include="..\..\..\zyllibcs\zyllibcs4.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zinfoassemblydata4.csproj">
-      <Project>{159BD576-340C-4F7E-B06C-3EC736C510DD}</Project>
-      <Name>zinfoassemblydata</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

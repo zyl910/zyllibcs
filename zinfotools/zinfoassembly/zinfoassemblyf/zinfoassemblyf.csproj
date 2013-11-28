@@ -36,6 +36,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\InfoAssembly.cs">
+      <Link>InfoAssembly.cs</Link>
+    </Compile>
     <Compile Include="FrmZInfoAssembly.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,10 +74,6 @@
     <ProjectReference Include="..\..\..\zyllibcs\zyllibcs.csproj">
       <Project>{B1E5DB93-5A0E-4D61-A69B-42786A0D259A}</Project>
       <Name>zyllibcs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zinfoassemblydata.csproj">
-      <Project>{159BD576-340C-4F7E-B06C-3EC736C510DD}</Project>
-      <Name>zinfoassemblydata</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
