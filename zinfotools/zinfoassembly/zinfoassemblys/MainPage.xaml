@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="zinfoassemblys.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:zinfoassemblys"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+	<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<StackPanel x:Name="pnlTop" Grid.RowSpan="2" VerticalAlignment="Top">
+			<Grid x:Name="grdSrc" Height="Auto">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Button x:Name="btnExit" Content="Exit" VerticalAlignment="Top" Click="btnExit_Click"/>
+				<ComboBox Grid.Column="1" Name="cboAssembly" VerticalAlignment="Top" SelectionChanged="cboAssembly_SelectionChanged" />
+				<ComboBox Grid.Column="2" Name="cboMode" VerticalAlignment="Top" SelectionChanged="cboMode_SelectionChanged" />
+			</Grid>
+			<Grid Name="grdTool">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<StackPanel Name="pnlToolL" Orientation="Horizontal" VerticalAlignment="Center" Margin="1">
+					<CheckBox Content="Method" Name="chkMethod" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" />
+					<CheckBox Content="Once" Name="chkVisitOnce" VerticalAlignment="Center" Checked="chkMethod_Checked" Unchecked="chkMethod_Checked" IsChecked="True" />
+					<CheckBox Content="Sort" Name="chkSort" VerticalAlignment="Center" Checked="chkSort_Checked" Unchecked="chkSort_Checked" />
+					<Button Content="Save" Name="btnSave" Click="btnSave_Click" />
+					<CheckBox Content="WordWrap" Name="chkWordWrap" VerticalAlignment="Center" Checked="chkWordWrap_Checked" Unchecked="chkWordWrap_Checked" />
+					<Button Content="Font" Name="btnFont" Click="btnFont_Click" IsEnabled="False" />
+				</StackPanel>
+				<TextBox Name="txtFind" Grid.Column="1" Margin="1" />
+				<StackPanel Grid.Column="2" Name="pnlToolR" Orientation="Horizontal" Margin="1">
+					<Button Content="Find" Name="btnFind" Click="btnFind_Click" />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+		<TextBox Name="txtInfo" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Grid.Row="1" />
+	</Grid>
+</Page>

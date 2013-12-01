@@ -328,16 +328,16 @@ namespace zyllibcs.text {
 			if (null == ti) return null;
 			List<MemberInfo> rt = new List<MemberInfo>();
 			foreach (FieldInfo p in ti.DeclaredFields) {
-				if (p.IsStatic == onlystatic) rt.Add(p);
+				if (p.IsStatic == onlystatic && p.IsPublic) rt.Add(p);
 			}
 			foreach (PropertyInfo p in ti.DeclaredProperties) {
 				//if (p.IsStatic == onlystatic) rt.Add(p);
 				// 不支持 IsStatic 与 GetGetMethod.
-				if (p.GetMethod.IsStatic == onlystatic) rt.Add(p);
+				if (p.GetMethod.IsStatic == onlystatic && p.CanRead) rt.Add(p);
 			}
 			if (allowmethod) {
 				foreach (MethodInfo p in ti.DeclaredMethods) {
-					if (p.IsStatic == onlystatic) rt.Add(p);
+					if (p.IsStatic == onlystatic && p.IsPublic) rt.Add(p);
 				}
 			}
 			return rt;
