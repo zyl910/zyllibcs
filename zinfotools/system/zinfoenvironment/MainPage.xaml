@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-	<Grid SizeChanged="Grid_SizeChanged">
-		<TextBox x:Name="txtInfo" HorizontalAlignment="Left" Text="TextBox" VerticalAlignment="Top" AcceptsReturn="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" RenderTransformOrigin="4.635,3.071" Height="768" Width="1366"/>
+	<Grid>
+		<TextBox x:Name="txtInfo" Text="TextBox" AcceptsReturn="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
 	</Grid>
 </Page>

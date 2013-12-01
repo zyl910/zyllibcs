@@ -36,11 +36,5 @@ namespace zinfoenvironment {
 			MyInfo.outl_main(iw, null, null);
 			txtInfo.Text = sb.ToString();
 		}
-
-		private void Grid_SizeChanged(object sender, SizeChangedEventArgs e) {
-			Grid g = sender as Grid;
-			txtInfo.Width = g.ActualWidth;
-			txtInfo.Height = g.ActualHeight;
-		}
 	}
 }

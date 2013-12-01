@@ -86,7 +86,7 @@ namespace zyllibcs.system {
 		public static IEnumerable<Type> GetExportedTypes(Assembly assembly) {
 			if (null == assembly) return null;
 #if (NETFX_CORE)
-			return assembly.Exported();
+			return assembly.ExportedTypes;
 #else
 			return assembly.GetExportedTypes();
 #endif

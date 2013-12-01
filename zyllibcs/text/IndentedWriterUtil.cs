@@ -519,11 +519,18 @@ namespace zyllibcs.text {
 			}
 			else if (1 == pis.Length && !pis[0].IsOut) {
 				Type argtype0 = pis[0].ParameterType;
+#if (NETFX_CORE)
+				TypeInfo argtype0info = argtype0.GetTypeInfo();
+#endif
 				IEnumerable lst = null;	// 参数可用值列表.
 				string nameformat = null;	// 标题的格式.
 				if (false) {
 				}
+#if (NETFX_CORE)
+				else if (argtype0info.IsEnum) {
+#else
 				else if (argtype0.IsEnum) {
+#endif
 					lst = TypeUtil.GetEnumValues(argtype0);
 					nameformat = "{0:d}(0x{0:X}, {0})";
 				}
@@ -566,7 +573,11 @@ namespace zyllibcs.text {
 		public static bool TypeHasStatic(Type tp, IndentedWriterMemberOptions options) {
 			if (null == tp) return false;
 			if (0==(options & IndentedWriterMemberOptions.OnlyStatic)) return false;
+#if (NETFX_CORE)
+			if (tp.GetTypeInfo().IsEnum) return false;
+#else
 			if (tp.IsEnum) return false;
+#endif
 			foreach (MemberInfo mi in GetMembers(tp, options)) {
 				FieldInfo fi = mi as FieldInfo;
 				if (null != fi) {
@@ -673,7 +684,7 @@ namespace zyllibcs.text {
 			if (null == basetype) return false;
 			//Type basetype = typeof(Calendar);
 #if (NETFX_CORE)
-			TypeInfo tiBase = typeCalendar.GetTypeInfo();
+			TypeInfo tiBase = basetype.GetTypeInfo();
 #endif
 			//Assembly assembly = basetype.Assembly;
 			if (null == assembly) {
@@ -692,7 +703,7 @@ namespace zyllibcs.text {
 #else
 			lst = assembly.GetExportedTypes();
 #endif
-			foreach (Type tp in assembly.GetTypes()) {
+			foreach (Type tp in lst) {
 				// check.
 #if (NETFX_CORE)
 				TypeInfo ti = tp.GetTypeInfo();

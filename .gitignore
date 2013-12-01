@@ -9,6 +9,8 @@ binp4/
 binp4_Debug/
 bin4a/
 bin4a_Debug/
+bins4a/
+bins4a_Debug/
 
 # mstest test results
 TestResults
