@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Text;
 using zyllibcs.system;
 using zyllibcs.text;
+#if (NETFX_CORE)
+#endif
 
 namespace zinfoassembly {
 	/// <summary>
@@ -78,6 +80,28 @@ namespace zinfoassembly {
 				return m_AssemblyList;
 			}
 		}
+
+#if (NETFX_CORE)
+		/// <summary>
+		/// 异步获取程序集名称列表.
+		/// </summary>
+		/// <returns>返回程序集列表.</returns>
+		public static async System.Threading.Tasks.Task<IEnumerable<string>> GetAssemblyNameListAsync() {
+			var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+
+			var rt = new List<string>();
+			foreach (Windows.Storage.StorageFile file in await folder.GetFilesAsync()) {
+				if (file.FileType == ".dll" || file.FileType == ".exe") {
+					rt.Add(file.Name);
+					//AssemblyName name = new AssemblyName() { Name = file.Name };
+					//Assembly asm = Assembly.Load(name);
+					//System.Diagnostics.Debug.WriteLine(asm.FullName);
+				}
+			}
+
+			return rt;
+		}
+#endif
 
 		/// <summary>
 		/// 根据名称加载程序集.

@@ -131,13 +131,33 @@ namespace zinfoassemblys
 			//this.Cursor = Cursors.Wait;
 			//Application.DoEvents();
 			try {
-				if (null != tp) {
-					IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
-					if (chkMethod.IsChecked != false) options |= IndentedWriterMemberOptions.AllowMethod;
-					InfoAssembly.WriteTypeStatic(iw, context, tp, options);
+				// test
+				if (true) {
+					sb.AppendFormat("{0}:\n", m_CurAssembly.FullName);
+					//IndentedObjectFunctor.CommonProc(iw, m_CurAssembly, null);
+					Type tp1 = m_CurAssembly.GetType();
+					foreach (PropertyInfo pi in tp1.GetRuntimeProperties()) {
+						if (pi.CanRead && pi.GetIndexParameters().Length <= 0) {
+							try {
+								object o = pi.GetValue(m_CurAssembly);
+								sb.AppendFormat("{0}:\t{1}\n", pi.Name, o);
+							}
+							catch (Exception ex) {
+								sb.AppendFormat("{0}\n", ex);
+							}
+						}
+					}
 				}
-				else {
-					InfoAssembly.WriteInfo(iw, context, m_CurAssembly, mode);
+				// show
+				if (false) {
+					if (null != tp) {
+						IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
+						if (chkMethod.IsChecked != false) options |= IndentedWriterMemberOptions.AllowMethod;
+						InfoAssembly.WriteTypeStatic(iw, context, tp, options);
+					}
+					else {
+						InfoAssembly.WriteInfo(iw, context, m_CurAssembly, mode);
+					}
 				}
 			}
 			catch (Exception ex) {
@@ -161,14 +181,21 @@ namespace zinfoassemblys
 			App.Current.Exit();
 		}
 
-		private void Page_Loaded(object sender, RoutedEventArgs e) {
+		private async void Page_Loaded(object sender, RoutedEventArgs e) {
 			// init.
 			//dlgFont.Font = txtInfo.Font;
 			cboAssembly.Items.Clear();
 			try {
+//#if (NETFX_CORE)
+//				// 该方法只能枚举自身程序集.
+//				foreach (string str in await InfoAssembly.GetAssemblyNameListAsync()) {
+//					cboAssembly.Items.Add(str);
+//				}
+//#else
 				foreach (string str in InfoAssembly.AssemblyList) {
 					cboAssembly.Items.Add(str);
 				}
+//#endif
 			}
 			catch (Exception ex) {
 				txtInfo.Text = ex.ToString();
