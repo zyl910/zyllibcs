@@ -140,24 +140,27 @@ namespace zyllibcs.text {
 		}
 
 		/// <summary>
-		/// 简单类型集.
+		/// 简单类型全名数组.
 		/// </summary>
-		private static readonly Type[] SimpleTypes = new Type[] {
-			typeof(string),
-			typeof(StringBuilder),
-			typeof(Decimal),
-			typeof(DateTime),
-			typeof(TimeSpan),
-#if (!NETFX_CORE && !NETFX_PORTABLE)
-			typeof(System.Drawing.Color),
-			typeof(System.Drawing.Point),
-			typeof(System.Drawing.PointF),
-			typeof(System.Drawing.Rectangle),
-			typeof(System.Drawing.RectangleF),
-			typeof(System.Drawing.Size),
-			typeof(System.Drawing.SizeF),
-#endif
+		private static readonly String[] SimpleTypeNames = new String[] {
+			"System.String",
+			"System.StringBuilder",
+			"System.Decimal",
+			"System.DateTime",
+			"System.TimeSpan",
+			//"System.Drawing.Color",
+			"System.Drawing.Point",
+			"System.Drawing.PointF",
+			"System.Drawing.Rectangle",
+			"System.Drawing.RectangleF",
+			"System.Drawing.Size",
+			"System.Drawing.SizeF",
 		};
+
+		/// <summary>
+		/// 简单类型全名集合.
+		/// </summary>
+		private static Dictionary<string, object> SimpleTypeNameSet = null;
 
 		/// <summary>
 		/// 判断简单类型. 如 <see cref="String"/>, <see cref="StringBuilder"/>, <see cref="Decimal"/>, <see cref="DateTime"/>, <see cref="TimeSpan"/> .
@@ -166,18 +169,24 @@ namespace zyllibcs.text {
 		/// <returns></returns>
 		public static bool IsSimpleType(Type tp) {
 			if (null == tp) return false;
-			foreach (Type p in SimpleTypes) {
-				if (tp.Equals(p)) return true;
-#if NETFX_CORE
-				TypeInfo ti = tp.GetTypeInfo();
-				if (null != ti) {
-					if (ti.IsSubclassOf(p)) return true;
+			// init.
+			if (null == SimpleTypeNameSet) {
+				Dictionary<string, object> dict = new Dictionary<string, object>(StringComparer);
+				foreach (string s in SimpleTypeNames) {
+					if (null == s) continue;
+					try {
+						dict.Add(s, null);
+					}
+					catch {
+					}
 				}
-#else
-				if (tp.IsSubclassOf(p)) return true;
-#endif
+				SimpleTypeNameSet = dict;
 			}
-			return false;
+			if (null == SimpleTypeNameSet) return false;
+			// check.
+			string name = tp.FullName;
+			if (null == name) return false;
+			return SimpleTypeNameSet.ContainsKey(name);
 		}
 
 		/// <summary>
@@ -237,12 +246,6 @@ namespace zyllibcs.text {
 			else if (tp.IsArray) {
 				return string.Format("Length={0:d} (0x{0:X})", (value as Array).Length);
 			}
-#if (!NETFX_CORE && !NETFX_PORTABLE)
-			else if (value is System.Drawing.Color) {
-				System.Drawing.Color cr = (System.Drawing.Color)value;
-				return string.Format("argb=({0},{1},{2},{3}), 0x{4:X}", cr.A, cr.R, cr.G, cr.B, cr.ToArgb(), tp.Name);
-			}
-#endif
 			else {
 				rt = string.Format("<{0}>", tp.Name);
 			}

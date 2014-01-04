@@ -47,7 +47,6 @@ namespace zyllibcs.system {
 		ASM_CACHE_ROOT = 0x08
 	}
 
-#if (!NETFX_PORTABLE)
 	/// <summary>
 	/// 指示将通过 IAssemblyName::GetDisplayName 方法检索其显示名称的程序集的版本、内部版本、区域性、签名等。
 	/// </summary>
@@ -103,6 +102,8 @@ namespace zyllibcs.system {
 						  ASM_DISPLAYF_RETARGET |
 						  ASM_DISPLAYF_PROCESSORARCHITECTURE
 	}
+
+#if (!NETFX_PORTABLE)
 
 	[ComImport]
 	[Guid("21b8916c-f28e-11d2-a473-00c04f8ef448")]
@@ -323,7 +324,7 @@ namespace zyllibcs.system {
 		/// </summary>
 		/// <param name="dwCacheFlags">缓存标志.</param>
 		/// <param name="dwDisplayFlags">显示标志.</param>
-		/// <param name="issort">是否排序.</param>
+		/// <param name="listoptions">列表选项.</param>
 		/// <returns>返回程序集名称列表.</returns>
 		/// <exception cref="System.DllNotFoundException">当 <paramref name="listoptions"/> 没有 <see cref="GacGetListOptions.Fallback"/> 标志时 , 在mono等环境下有可能找不到dll.</exception>
 		public static List<String> GetAssemblyNameList(ASM_CACHE_FLAGS dwCacheFlags, ASM_DISPLAY_FLAGS dwDisplayFlags, GacGetListOptions listoptions) {
@@ -349,7 +350,7 @@ namespace zyllibcs.system {
 #endif
 			if (0 != (listoptions & GacGetListOptions.Fallback) && dwCacheFlags == ASM_CACHE_FLAGS.ASM_CACHE_GAC) {
 				// 尝试枚举当前应用程序域.
-#if (!NETFX_CORE)
+#if (!NETFX_CORE && !NETFX_PORTABLE)
 				if (!isok && lst.Count == 0) {
 					try {
 						foreach (Assembly p in AppDomain.CurrentDomain.GetAssemblies()) {
@@ -386,7 +387,7 @@ namespace zyllibcs.system {
 		/// 在Gac中取得程序集名称列表.
 		/// </summary>
 		/// <param name="dwDisplayFlags">显示标志.</param>
-		/// <param name="issort">是否排序.</param>
+		/// <param name="listoptions">列表选项.</param>
 		/// <returns>返回程序集名称列表.</returns>
 		/// <exception cref="System.DllNotFoundException">在mono等环境下有可能找不到dll.</exception>
 		public static List<String> GacGetAssemblyNameList(ASM_DISPLAY_FLAGS dwDisplayFlags, GacGetListOptions listoptions) {
