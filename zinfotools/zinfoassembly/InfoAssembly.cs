@@ -72,36 +72,43 @@ namespace zinfoassembly {
 		private static List<string> m_AssemblyList = null;
 
 		/// <summary>
+		/// 程序集词典.
+		/// </summary>
+		private static Dictionary<string, Assembly> m_AssemblyDictionary = null;
+
+		/// <summary>
 		/// 程序集列表.
 		/// </summary>
 		public static List<string> AssemblyList {
 			get {
-				if (null == m_AssemblyList) m_AssemblyList = GacUtil.GacGetAssemblyNameList(ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL, GacGetListOptions.AutoSort | GacGetListOptions.Fallback);
+				if (null == m_AssemblyList) {
+					m_AssemblyList = GacUtil.GacGetAssemblyNameList(ASM_DISPLAY_FLAGS.ASM_DISPLAYF_FULL, GacGetListOptions.AutoSort | GacGetListOptions.Fallback);
+#if (NETFX_CORE)
+					// Windows Store App 下绝大多数GAC程序集无法反射. 于是手动追加程序集.
+					m_AssemblyDictionary = new Dictionary<string, Assembly>(StringComparer.OrdinalIgnoreCase);
+					AssemblyDictionaryAddByType(typeof(Windows.System.ProcessorArchitecture));
+					foreach (string s in m_AssemblyDictionary.Keys) {
+						m_AssemblyList.Add(s);
+					}
+					// 貌似不支持使用 Assembly.Load 加载 WinRT 的程序集, 于是改用上面的办法使用m_AssemblyDictionary记录程序集.
+					//m_AssemblyList.Add(typeof(string).GetTypeInfo().Assembly.FullName);
+					//m_AssemblyList.Add(typeof(Windows.System.ProcessorArchitecture).GetTypeInfo().Assembly.FullName);
+#endif
+				}
 				return m_AssemblyList;
 			}
 		}
 
-#if (NETFX_CORE)
 		/// <summary>
-		/// 异步获取程序集名称列表.
+		/// 在 m_AssemblyDictionary 中添加项目, 根据类型自动计算程序集.
 		/// </summary>
-		/// <returns>返回程序集列表.</returns>
-		public static async System.Threading.Tasks.Task<IEnumerable<string>> GetAssemblyNameListAsync() {
-			var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-
-			var rt = new List<string>();
-			foreach (Windows.Storage.StorageFile file in await folder.GetFilesAsync()) {
-				if (file.FileType == ".dll" || file.FileType == ".exe") {
-					rt.Add(file.Name);
-					//AssemblyName name = new AssemblyName() { Name = file.Name };
-					//Assembly asm = Assembly.Load(name);
-					//System.Diagnostics.Debug.WriteLine(asm.FullName);
-				}
-			}
-
-			return rt;
+		/// <param name="tp"></param>
+		private static void AssemblyDictionaryAddByType(Type tp) {
+			if (null == tp) return;
+			if (null == m_AssemblyDictionary) return;
+			Assembly ass = tp.GetTypeInfo().Assembly;
+			m_AssemblyDictionary.Add(ass.FullName, ass);
 		}
-#endif
 
 		/// <summary>
 		/// 根据名称加载程序集.
@@ -109,6 +116,8 @@ namespace zinfoassembly {
 		/// <param name="name">程序集全名.</param>
 		/// <returns>返回程序集.</returns>
 		public static Assembly LoadAssembly(string name) {
+			Assembly ass = null;
+			if (m_AssemblyDictionary.TryGetValue(name, out ass)) return ass;
 			AssemblyName an = new AssemblyName(name);
 			return Assembly.Load(an);
 		}
@@ -162,6 +171,22 @@ namespace zinfoassembly {
 			if (null == assembly) return false;
 			iw.WriteLine("Assembly:");
 			IndentedObjectFunctor.CommonProc(iw, assembly, context);
+#if (NETFX_CORE)
+			// Windows Store App 下反射获取Assembly的属性值时总是失败. 于是手动获取属性值.
+			iw.WriteLine("Assembly info 2:");
+			iw.Indent(assembly);
+			iw.WriteLine("# <System.Reflection.Assembly>");
+			iw.WriteLine("ToString():\t{0}", assembly.ToString());
+			iw.WriteLine("FullName:\t{0}", assembly.FullName);
+			iw.WriteLine("IsDynamic:\t{0}", assembly.IsDynamic);
+			iw.WriteLine("GetName():");
+			IndentedObjectFunctor.CommonProc(iw, assembly.GetName(), context);
+			iw.WriteLine("ManifestModule:");
+			IndentedObjectFunctor.CommonProc(iw, assembly.ManifestModule, context);
+			iw.WriteLine("Modules:");
+			IndentedObjectFunctor.CommonProc(iw, assembly.Modules, context);
+			iw.Unindent();
+#endif
 			return rt;
 		}
 

@@ -105,6 +105,7 @@ namespace zinfoassemblys
 				catch (Exception ex) {
 					m_OldAssemblyName = null;
 					txtInfo.Text = ex.ToString();
+					return;
 				}
 			}
 			if (null == m_CurAssembly) return;
@@ -132,24 +133,24 @@ namespace zinfoassemblys
 			//Application.DoEvents();
 			try {
 				// test
-				if (true) {
-					sb.AppendFormat("{0}:\n", m_CurAssembly.FullName);
-					//IndentedObjectFunctor.CommonProc(iw, m_CurAssembly, null);
-					Type tp1 = m_CurAssembly.GetType();
-					foreach (PropertyInfo pi in tp1.GetRuntimeProperties()) {
-						if (pi.CanRead && pi.GetIndexParameters().Length <= 0) {
-							try {
-								object o = pi.GetValue(m_CurAssembly);
-								sb.AppendFormat("{0}:\t{1}\n", pi.Name, o);
-							}
-							catch (Exception ex) {
-								sb.AppendFormat("{0}\n", ex);
-							}
-						}
-					}
-				}
+				//if (false) {
+				//	sb.AppendFormat("{0}:\n", m_CurAssembly.FullName);
+				//	//IndentedObjectFunctor.CommonProc(iw, m_CurAssembly, null);
+				//	Type tp1 = m_CurAssembly.GetType();
+				//	foreach (PropertyInfo pi in tp1.GetRuntimeProperties()) {
+				//		if (pi.CanRead && pi.GetIndexParameters().Length <= 0) {
+				//			try {
+				//				object o = pi.GetValue(m_CurAssembly);
+				//				sb.AppendFormat("{0}:\t{1}\n", pi.Name, o);
+				//			}
+				//			catch (Exception ex) {
+				//				sb.AppendFormat("{0}\n", ex);
+				//			}
+				//		}
+				//	}
+				//}
 				// show
-				if (false) {
+				if (true) {
 					if (null != tp) {
 						IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
 						if (chkMethod.IsChecked != false) options |= IndentedWriterMemberOptions.AllowMethod;
