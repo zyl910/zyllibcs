@@ -8,12 +8,65 @@ using zyllibcs.text;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.Diagnostics;
 
 namespace zinfodraw {
 	/// <summary>
 	/// My info: System.Drawing infos.
 	/// </summary>
 	public static class MyInfo {
+
+        /// <summary>
+        /// 输出多行_图像编码参数.
+        /// </summary>
+        /// <param name="iw">带缩进输出者.</param>
+        /// <param name="obj">object. Can be null.</param>
+        /// <param name="context">State Object. Can be null.</param>
+        /// <returns>返回是否成功输出.</returns>
+        public static bool outl_static_GetEncoderParameterList(IIndentedWriter iw, object obj, IndentedWriterContext context) {
+            if (null == iw) return false;
+            Type tp = typeof(Bitmap);
+            if (!iw.Indent(tp)) return false;
+            iw.WriteLine(string.Format("# <{0}>", "GetEncoderParameterList"));
+            Bitmap bm = new Bitmap(64, 64, PixelFormat.Format24bppRgb);
+            ImageCodecInfo[] arr = ImageCodecInfo.GetImageEncoders();
+            iw.WriteLine(string.Format("Count: {0}", arr.Length));
+            for (int i = 0; i < arr.Length; ++i) {
+                ImageCodecInfo cur = arr[i];
+                iw.WriteLine(string.Format("[{0}]:\t{1}\t # <{2}>", i, cur, cur.GetType().Name));
+                iw.Indent(cur);
+                iw.WriteLine(string.Format("Clsid:\t{0}", cur.Clsid));
+                iw.WriteLine(string.Format("CodecName:\t{0}", cur.CodecName));
+                iw.WriteLine(string.Format("DllName:\t{0}", cur.DllName));
+                iw.WriteLine(string.Format("FilenameExtension:\t{0}", cur.FilenameExtension));
+                iw.WriteLine(string.Format("FormatDescription:\t{0}", cur.FormatDescription));
+                iw.WriteLine(string.Format("FormatID:\t{0}", cur.FormatID));
+                iw.WriteLine(string.Format("MimeType:\t{0}", cur.MimeType));
+                iw.WriteLine(string.Format("Version:\t{0}", cur.Version));
+                // GetImageDecoders.
+                try {
+                    EncoderParameters encoderParameters = bm.GetEncoderParameterList(cur.Clsid);
+                    iw.WriteLine(string.Format("GetEncoderParameterList():\t{0}", encoderParameters));
+                    if (null != encoderParameters && null != encoderParameters.Param) {
+                        EncoderParameter[] list = encoderParameters.Param;
+                        iw.Indent(list);
+                        iw.WriteLine(string.Format("# Count: {0}", list.Length));
+                        //for (int j = 0; j < list.Length; ++j) {
+                        //}
+                        IndentedWriterUtil.WriteLineValue(iw, "Value:", list, 0, null);
+                        iw.Unindent();
+                    }
+                } catch (Exception ex) {
+                    Debug.WriteLine(cur.CodecName);
+                    Debug.WriteLine(ex);
+                    iw.WriteLine(string.Format("GetEncoderParameterList():\t#{0}", ex.Message));
+                }
+                // done.
+                iw.Unindent();
+            }
+            iw.Unindent();
+            return true;
+        }
 
 		/// <summary>
 		/// 输出多行_图像编码信息.
@@ -87,7 +140,10 @@ namespace zinfodraw {
 			iw.WriteLine("FrameDimension:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(FrameDimension), context);
 			iw.WriteLine("ImageCodecInfo:"); outl_static_ImageCodecInfo(iw, null, context);
 			iw.WriteLine("ImageFormat:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(ImageFormat), context);
-			iw.WriteLine("InstalledFontCollection:"); IndentedObjectFunctor.CommonProc(iw, new InstalledFontCollection(), context);	//IndentedWriterUtil.WriteTypeStatic(iw, typeof(InstalledFontCollection), context);
+            if (isfull) {
+                iw.WriteLine("InstalledFontCollection:"); IndentedObjectFunctor.CommonProc(iw, new InstalledFontCollection(), context);	//IndentedWriterUtil.WriteTypeStatic(iw, typeof(InstalledFontCollection), context);
+            }
+			iw.WriteLine("ImageCodecInfo:"); outl_static_GetEncoderParameterList(iw, null, context);
 			return true;
 		}
 
