@@ -148,7 +148,7 @@ namespace zyllibcs.text {
 			"System.Decimal",
 			"System.DateTime",
 			"System.TimeSpan",
-			//"System.Drawing.Color",
+			"System.Drawing.Color",
 			"System.Drawing.Point",
 			"System.Drawing.PointF",
 			"System.Drawing.Rectangle",
