@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Drawing;
 using zyllibcs.text;
 using System.Reflection;
@@ -105,6 +104,10 @@ namespace zinfoimage {
         /// <returns>返回是否成功输出.</returns>
         private static bool outl_main_core(IIndentedWriter iw, object obj, IndentedWriterContext context) {
             if (null == iw) return false;
+            IndentedWriterUtil.AddEnumType(typeof(System.Drawing.Imaging.Encoder));
+            IndentedWriterUtil.AddEnumType(typeof(System.Drawing.Imaging.FrameDimension));
+            IndentedWriterUtil.AddEnumType(typeof(System.Drawing.Imaging.ImageFormat));
+            // body.
             iw.WriteLine("# zinfoimage");
             iw.WriteLine("Syntax: zinfoimage <FilePath>");
             iw.WriteLine("---");
@@ -123,8 +126,12 @@ namespace zinfoimage {
             iw.WriteLine("Image.FromFile done.");
             iw.WriteLine("Image:");
             outl_Image(iw, image, context);
+            // GetImageEncoders.
             iw.WriteLine("ImageCodecInfo.GetImageEncoders():");
             outl_GetEncoderParameterList(iw, image, context);
+            // Others.
+            iw.WriteLine("Encoder:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(Encoder), context);
+            iw.WriteLine("FrameDimension:"); IndentedWriterUtil.WriteTypeStatic(iw, typeof(FrameDimension), context);
             return true;
         }
 

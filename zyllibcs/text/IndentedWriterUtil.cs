@@ -162,6 +162,11 @@ namespace zyllibcs.text {
 		/// </summary>
 		private static Dictionary<string, object> SimpleTypeNameSet = null;
 
+        /// <summary>
+        /// EnumType map.
+        /// </summary>
+        private static IDictionary<Type, IDictionary<object, string>> EnumTypeMap = new Dictionary<Type, IDictionary<object, string>>();
+
 		/// <summary>
 		/// 判断简单类型. 如 <see cref="String"/>, <see cref="StringBuilder"/>, <see cref="Decimal"/>, <see cref="DateTime"/>, <see cref="TimeSpan"/> .
 		/// </summary>
@@ -248,9 +253,107 @@ namespace zyllibcs.text {
 			}
 			else {
 				rt = string.Format("<{0}>", tp.Name);
+                string enumname = GetEnumTypeName(value);
+                if (!string.IsNullOrEmpty(enumname)) {
+                    rt += string.Format(":{0}", enumname);
+                }
 			}
 			return rt;
 		}
+
+        /// <summary>
+        /// Get EnumType's item Name
+        /// </summary>
+        /// <param name="obj">The Object.</param>
+        /// <returns>Return name. Return null if not found.</returns>
+        public static string GetEnumTypeName(object obj) {
+            string rt = null;
+            if (null == obj) return rt;
+            Type tp = obj.GetType();
+            IDictionary<object, string> map;
+            if (EnumTypeMap.TryGetValue(tp, out map)) {
+                if (null != map) {
+                    map.TryGetValue(obj, out rt);
+                }
+            }
+            return rt;
+        }
+
+        /// <summary>
+        /// Add EnumType.
+        /// </summary>
+        /// <param name="tp">The type.</param>
+        /// <returns>Return true is success.</returns>
+        public static bool AddEnumType(Type tp) {
+            if (null == tp) return false;
+            if (EnumTypeMap.ContainsKey(tp)) return false;
+            IDictionary<object, string> map = new Dictionary<object, string>();
+            FillEnumTypeValueMap(map, tp);
+            PutEnumType(tp, map);
+            return true;
+        }
+
+        /// <summary>
+        /// Put EnumType.
+        /// </summary>
+        /// <param name="tp">The type.</param>
+        /// <param name="map">The map</param>
+        /// <returns>Return true is success.</returns>
+        public static bool PutEnumType(Type tp, IDictionary<object, string> map) {
+            if (EnumTypeMap.ContainsKey(tp)) {
+                EnumTypeMap[tp] = map;
+            } else {
+                EnumTypeMap.Add(tp, map);
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Fill EnumType value map.
+        /// </summary>
+        /// <param name="map">The output map.</param>
+        /// <param name="tp">The type.</param>
+        public static int FillEnumTypeValueMap(IDictionary<object, string> map, Type tp) {
+            int rt = 0;
+            if (null == map) return rt;
+            if (null == tp) return rt;
+            object owner = null;
+            // foreach.
+            IndentedWriterMemberOptions options = IndentedWriterMemberOptions.OnlyStatic;
+            foreach (MemberInfo mi in GetMembers(tp, options)) {
+                string name = mi.Name;
+                object data = null;
+                // get value.
+                if (false) {
+                } else if (mi is FieldInfo) {
+                    FieldInfo fi = mi as FieldInfo;
+                    if (fi.IsStatic && tp.Equals(fi.FieldType)) {
+                        try {
+                            data = fi.GetValue(owner);
+                        } catch (Exception ex) {
+                            Debug.WriteLine(ex);
+                        }
+                    }
+                } else if (mi is PropertyInfo) {
+                    PropertyInfo pi = mi as PropertyInfo;
+                    if (pi.CanRead && pi.GetIndexParameters().Length <= 0 && tp.Equals(pi.PropertyType)) {
+                        try {
+                            data = pi.GetValue(owner, null);
+                        } catch (Exception ex) {
+                            Debug.WriteLine(ex);
+                        }
+                    }
+                }
+                // append.
+                if (null != data) {
+                    if (!map.ContainsKey(data)) {
+                        ++rt;
+                        map.Add(data, name);
+                    }
+                }
+            }
+            return rt;
+        }
 
 		/// <summary>
 		/// 输出值的信息行.
