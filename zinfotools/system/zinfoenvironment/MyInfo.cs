@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using zyllibcs.system;
 using zyllibcs.text;
+using System.Runtime.InteropServices;
 
 namespace zinfoenvironment {
 	/// <summary>
@@ -179,7 +180,10 @@ namespace zinfoenvironment {
 			iw.WriteLine("Environment:");
 			//IndentedObjectFunctor.CommonProc(iw, Environment.OSVersion, context);
 			outl_Environment(iw, null, context);
-			//iw.WriteLine("Application Assembly:");
+            iw.WriteLine("OperatingSystem:"); IndentedWriterUtil.WriteTypeStaticM(iw, typeof(OperatingSystem), context);
+            iw.WriteLine("RuntimeEnvironment:"); IndentedWriterUtil.WriteTypeStaticM(iw, typeof(RuntimeEnvironment), context);
+            //iw.WriteLine("RuntimeInformation:"); IndentedWriterUtil.WriteTypeStaticM(iw, typeof(RuntimeInformation), context); // .NET Standard 1.1, NET Framework 4.7.1
+            //iw.WriteLine("Application Assembly:");
 			//IndentedObjectFunctor.CommonProc(iw, myAssembly, context);
 			iw.WriteLine("Application AssemblyName:");
 			IndentedObjectFunctor.CommonProc(iw, myAssembly.GetName(), context);
