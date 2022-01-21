@@ -6,6 +6,7 @@ using zyllibcs.text;
 using System.Reflection;
 using System.Drawing.Imaging;
 using System.Diagnostics;
+using System.IO;
 
 namespace zinfoimage {
     /// <summary>
@@ -356,15 +357,47 @@ namespace zinfoimage {
                 iw.WriteLine("FilePath is empty!");
                 return true;
             }
+            // file.
+            try {
+                FileInfo fi = new FileInfo(FilePath);
+                iw.WriteLine("FileInfo:");
+                iw.Indent(fi);
+                try {
+                    if (ShowBytes) {
+                        IndentedWriterMemberOptions options = IndentedWriterMemberOptions.AllowMethod;
+                        IndentedWriterUtil.ForEachMember(iw, fi, null, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
+                            //Debug.WriteLine(e.MemberName);
+                        }, context);
+                        // GetAccessControl
+                        object fileSecurity = fi.GetAccessControl();
+                        iw.WriteLine("GetAccessControl():");
+                        iw.Indent(fileSecurity);
+                        try {
+                            IndentedWriterUtil.ForEachMember(iw, fileSecurity, null, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
+                                //Debug.WriteLine(e.MemberName);
+                            }, context); // 太长, 必须在 SimpleTypeNames 里增加 `System.RuntimeType` .
+                        } finally {
+                            iw.Unindent();
+                        }
+                    } else {
+                        iw.WriteLine("Length:\t{0}", fi.Length);
+                    }
+                } finally {
+                    iw.Unindent();
+                }
+            } catch (Exception ex) {
+                iw.WriteLine(ex);
+            }
+            // image.
             Image image = null;
+            iw.WriteLine("Image:");
             try {
                 image = Image.FromFile(FilePath);
             } catch (Exception ex) {
                 iw.WriteLine(ex);
             }
             if (null == image) return true;
-            iw.WriteLine("Image.FromFile done.");
-            iw.WriteLine("Image:");
+            //iw.WriteLine("Image.FromFile done.");
             outl_Image(iw, image, context);
             // GetImageEncoders.
             iw.WriteLine("ImageCodecInfo.GetImageEncoders():");

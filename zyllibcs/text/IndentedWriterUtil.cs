@@ -143,6 +143,7 @@ namespace zyllibcs.text {
 		/// 简单类型全名数组.
 		/// </summary>
 		private static readonly String[] SimpleTypeNames = new String[] {
+			"System.RuntimeType",
 			"System.String",
 			"System.StringBuilder",
 			"System.Decimal",
