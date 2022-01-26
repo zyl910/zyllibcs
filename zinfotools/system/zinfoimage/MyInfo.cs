@@ -17,11 +17,23 @@ namespace zinfoimage {
         public static string FilePath { get; set; }
         /// <summary>Show bytes.</summary>
         public static bool ShowBytes { get; set; }
+        /// <summary>Show Compression.</summary>
+        public static bool ShowCompression = true;
+
+        /// <summary>IMAGE_COMPRESSION_ Map</summary>
+        private static readonly Dictionary<int, string> IMAGE_COMPRESSION_Map = new Dictionary<int, string>{
+            {1, "UNCOMPRESSED"},
+            {2, "CCITT_T3"},
+            {3, "CCITT_T4"},
+            {4, "CCITT_T6"},
+            {5, "LZW"},
+            {6, "JPEG"}
+        };
 
         // https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-constant-property-tags-in-numerical-order
         // https://docs.microsoft.com/zh-cn/dotnet/api/system.drawing.imaging.propertyitem.id?view=dotnet-plat-ext-6.0
         /// <summary>The PropertyId name map</summary>
-        private static Dictionary<int, string> PropertyIdMap = new Dictionary<int, string>{
+        private static readonly Dictionary<int, string> PropertyIdMap = new Dictionary<int, string>{
             {0x0000, "PropertyTagGpsVer"},
             {0x0001, "PropertyTagGpsLatitudeRef"},
             {0x0002, "PropertyTagGpsLatitude"},
@@ -242,6 +254,15 @@ namespace zinfoimage {
         };
 
         /// <summary>
+        /// FrameDimension Map.
+        /// </summary>
+        private static IDictionary<Guid, KeyValuePair<string, FrameDimension>> FrameDimensionMap = new Dictionary<Guid, KeyValuePair<string, FrameDimension>>{
+            {FrameDimension.Page.Guid, new KeyValuePair<string, FrameDimension>("Page", FrameDimension.Page)},
+            {FrameDimension.Resolution.Guid, new KeyValuePair<string, FrameDimension>("Resolution", FrameDimension.Resolution)},
+            {FrameDimension.Time.Guid, new KeyValuePair<string, FrameDimension>("Time", FrameDimension.Time)},
+        };
+
+        /// <summary>
         /// 输出多行_图像编码参数.
         /// </summary>
         /// <param name="iw">带缩进输出者.</param>
@@ -306,6 +327,21 @@ namespace zinfoimage {
             Type tp = obj.GetType();
             if (!iw.Indent(obj)) return false;
             iw.WriteLine(string.Format("# <{0}>", tp.FullName));
+            // ShowCompression
+            bool ShowCompression = true;
+            if (ShowCompression) {
+                //EncoderValue
+                const int PropertyTagCompression = 0x103; // 0x103: PropertyTagCompression
+                int compressionTagIndex = Array.IndexOf(obj.PropertyIdList, PropertyTagCompression);
+                if (compressionTagIndex >= 0) {
+                    PropertyItem compressionTag = obj.PropertyItems[compressionTagIndex];
+                    int compression = BitConverter.ToInt16(compressionTag.Value, 0);
+                    string name = null;
+                    IMAGE_COMPRESSION_Map.TryGetValue(compression, out name);
+                    iw.WriteLine("# Compression:\t{0}	# (0x{0:X}), {1}", compression, name);
+                }
+            }
+            // body.
             IndentedWriterMemberOptions options = IndentedWriterMemberOptions.AllowMethod;
             IndentedWriterUtil.ForEachMember(iw, obj, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
                 //Debug.WriteLine(e.MemberName);
@@ -330,6 +366,56 @@ namespace zinfoimage {
                     iw.WriteLine("[{0}]:\t{1}\t# 0x{1:X}: {2}", i, m, name);
                 }
                 iw.Unindent();
+            }
+            // FrameDimensionsList
+            const int frameIndex = 1;
+            try {
+                Guid[] frameDimensionsList = obj.FrameDimensionsList;
+                if (null != frameDimensionsList && frameDimensionsList.Length > 0) {
+                    foreach (Guid guid in frameDimensionsList) {
+                        FrameDimension dimension = null; // new FrameDimension(guid);
+                        string nameFrameDimension = null;
+                        KeyValuePair<string, FrameDimension> found;
+                        if (FrameDimensionMap.TryGetValue(guid, out found)) {
+                            nameFrameDimension = found.Key;
+                            dimension = found.Value;
+                        } else {
+                            dimension = new FrameDimension(guid);
+                        }
+                        iw.WriteLine("FrameDimension({0}, {1}):", guid, nameFrameDimension);
+                        iw.Indent(guid);
+                        try {
+                            int n = obj.GetFrameCount(dimension);
+                            iw.WriteLine("GetFrameCount():\t{0}", n);
+                            if (frameIndex < n) {
+                                iw.WriteLine("SelectActiveFrame({0}):", frameIndex);
+                                iw.Indent(null);
+                                try {
+                                    obj.SelectActiveFrame(dimension, frameIndex);
+                                    IndentedWriterUtil.ForEachMember(iw, obj, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
+                                        //Debug.WriteLine(e.MemberName);
+                                        if (false) {
+                                        } else if (IndentedWriterUtil.StringComparer.Equals(e.MemberName, "PropertyItems")) {
+                                            if (!ShowBytes) {
+                                                e.IsCancel = true;
+                                            }
+                                        } else if (IndentedWriterUtil.StringComparer.Equals(e.MemberName, "PropertyIdList")) {
+                                            e.IsCancel = true;
+                                        }
+                                    }, context);
+                                } catch (Exception ex2) {
+                                    Debug.WriteLine(ex2.Message);
+                                } finally {
+                                    iw.Unindent();
+                                }
+                            }
+                        } finally {
+                            iw.Unindent();
+                        }
+                    }
+                }
+            } catch(Exception ex) {
+                Debug.WriteLine(ex);
             }
             // done.
             iw.Unindent();

@@ -11,6 +11,10 @@ namespace zinfoimage {
             if (args.Length >= 1) {
                 MyInfo.FilePath = args[0];
             }
+            if (args.Length >= 2) {
+                string s = args[1];
+                MyInfo.ShowBytes = !"0".Equals(s);
+            }
             MyInfo.outl_main(iw, null, null);
         }
     }
