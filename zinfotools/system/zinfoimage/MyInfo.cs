@@ -20,16 +20,6 @@ namespace zinfoimage {
         /// <summary>Show Compression.</summary>
         public static bool ShowCompression = true;
 
-        /// <summary>IMAGE_COMPRESSION_ Map</summary>
-        private static readonly Dictionary<int, string> IMAGE_COMPRESSION_Map = new Dictionary<int, string>{
-            {1, "UNCOMPRESSED"},
-            {2, "CCITT_T3"},
-            {3, "CCITT_T4"},
-            {4, "CCITT_T6"},
-            {5, "LZW"},
-            {6, "JPEG"}
-        };
-
         // https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-constant-property-tags-in-numerical-order
         // https://docs.microsoft.com/zh-cn/dotnet/api/system.drawing.imaging.propertyitem.id?view=dotnet-plat-ext-6.0
         /// <summary>The PropertyId name map</summary>
@@ -253,6 +243,28 @@ namespace zinfoimage {
             {0xA302, "PropertyTagExifCfaPattern"}
         };
 
+        /// <summary>IMAGE_COMPRESSION_ Map. propkey.h .</summary>
+        private static readonly Dictionary<int, string> IMAGE_COMPRESSION_Map = new Dictionary<int, string>{
+            {1, "UNCOMPRESSED"},
+            {2, "CCITT_T3"},
+            {3, "CCITT_T4"},
+            {4, "CCITT_T6"},
+            {5, "LZW"},
+            {6, "JPEG"}
+        };
+
+        /// <summary>PHOTO_ORIENTATION_ Map. propkey.h .</summary>
+        private static readonly Dictionary<int, string> PHOTO_ORIENTATION_Map = new Dictionary<int, string>{
+            {1, "NORMAL (RotateNoneFlipNone)"},
+            {2, "FLIPHORIZONTA (RotateNoneFlipX, Rotate180FlipY)"},
+            {3, "ROTATE180 (Rotate180FlipNone, RotateNoneFlipXY)"},
+            {4, "FLIPVERTICAL (RotateNoneFlipY, Rotate180FlipX)"},
+            {5, "TRANSPOSE (Rotate90FlipX, Rotate270FlipY)"},
+            {6, "ROTATE270 (Rotate90FlipNone, Rotate270FlipXY)"},
+            {7, "TRANSVERSE (Rotate270FlipX, Rotate90FlipY)"},
+            {8, "ROTATE90 (Rotate270FlipNone, Rotate90FlipXY)"},
+        };
+
         /// <summary>
         /// FrameDimension Map.
         /// </summary>
@@ -330,15 +342,37 @@ namespace zinfoimage {
             // ShowCompression
             bool ShowCompression = true;
             if (ShowCompression) {
-                //EncoderValue
+                //Compression
                 const int PropertyTagCompression = 0x103; // 0x103: PropertyTagCompression
                 int compressionTagIndex = Array.IndexOf(obj.PropertyIdList, PropertyTagCompression);
                 if (compressionTagIndex >= 0) {
                     PropertyItem compressionTag = obj.PropertyItems[compressionTagIndex];
-                    int compression = BitConverter.ToInt16(compressionTag.Value, 0);
+                    short compression = BitConverter.ToInt16(compressionTag.Value, 0);
                     string name = null;
                     IMAGE_COMPRESSION_Map.TryGetValue(compression, out name);
                     iw.WriteLine("# Compression:\t{0}	# (0x{0:X}), {1}", compression, name);
+                }
+                // Orientation.
+                // 0x0112: PropertyTagOrientation # 274
+                // 0x5029: PropertyTagThumbnailOrientation # 5029
+                int[] idList = { 0x0112, 0x5029 };
+                string[] fieldList = { "Orientation", "ThumbnailOrientation" };
+                for (int i=0; i<idList.Length; ++i) {
+                    int id = idList[i];
+                    string field = fieldList[i];
+                    int idx = Array.IndexOf(obj.PropertyIdList, id);
+                    if (idx >= 0) {
+                        PropertyItem propertyItem = obj.PropertyItems[idx];
+                        short v = 0;
+                        if (propertyItem.Len == 2) {
+                            v = BitConverter.ToInt16(propertyItem.Value, 0);
+                        } else if (propertyItem.Len > 0) {
+                            v = propertyItem.Value[0];
+                        }
+                        string name = null;
+                        PHOTO_ORIENTATION_Map.TryGetValue(v, out name);
+                        iw.WriteLine("# {0}:\t{1}	# (0x{1:X}), {2}", field, v, name);
+                    }
                 }
             }
             // body.
@@ -346,6 +380,14 @@ namespace zinfoimage {
             IndentedWriterUtil.ForEachMember(iw, obj, tp, options, delegate(object sender, IndentedWriterMemberEventArgs e) {
                 //Debug.WriteLine(e.MemberName);
                 if (false) {
+                } else if (IndentedWriterUtil.StringComparer.Equals(e.MemberName, "Flags")) {
+                    try {
+                        int n = (int)e.Value;
+                        ImageFlags imageFlags = (ImageFlags)n; // Mean: (ImageFlags)_image.Flags;
+                        e.AppendComment = imageFlags.ToString();
+                    } catch (Exception ex) {
+                        Debug.WriteLine(ex);
+                    }
                 } else if (IndentedWriterUtil.StringComparer.Equals(e.MemberName, "PropertyItems")) {
                     if (!ShowBytes) {
                         e.IsCancel = true;
